@@ -26,22 +26,26 @@ import * as structformat from './ui/data/convert/structformat';
 import ui from './ui';
 import Render from './render';
 
+// Return a SMILES string that represents the molecules draw in the editor
 function getSmiles() {
 	return smiles.stringify(ketcher.editor.struct(),
 		{ ignoreErrors: true });
 }
 
+// Return a promise that can be used to save the SMILES string to a file
 function saveSmiles() {
 	const struct = ketcher.editor.struct();
 	return structformat.toString(struct, 'smiles-ext', ketcher.server)
 		.catch(() => smiles.stringify(struct));
 }
 
+// Return the MOL string  of the molecules draw in the edit
 function getMolfile() {
 	return molfile.stringify(ketcher.editor.struct(),
 		{ ignoreErrors: true });
 }
 
+// Clear the current fragments on the canvas and load the molecule from the MOL string
 function setMolecule(molString) {
 	if (!(typeof molString === 'string'))
 		return;
@@ -50,6 +54,7 @@ function setMolecule(molString) {
 	});
 }
 
+// Add the following fragment to the canvas
 function addFragment(molString) {
 	if (!(typeof molString === 'string'))
 		return;
@@ -72,28 +77,24 @@ function showMolfile(clientArea, molString, options) {
 	return render;
 }
 
-// TODO: replace window.onload with something like <https://github.com/ded/domready>
-// to start early
-window.onload = function () {
+// Function that initalizes the ketcher UI and editing area
+function intializeKetcher(){
 	const params = queryString.parse(document.location.search);
-	if (params.api_path)
-		ketcher.apiPath = params.api_path;
-	ketcher.server = api(ketcher.apiPath, {
-		'smart-layout': true,
-		'ignore-stereochemistry-errors': true,
-		'mass-skip-error-on-pseudoatoms': false,
-		'gross-formula-add-rsites': true
-	});
-	ketcher.ui = ui(Object.assign({}, params, buildInfo), ketcher.server);
+
+	// Create an object that contains the information about this app
+	const appInformation = Object.assign({}, params, buildInfo);
+
+	// Initialize the UI and return a link back to the redux store
+	ketcher.ui = ui(appInformation);
 	ketcher.editor = global._ui_editor;
-	ketcher.server.then(() => {
-		if (params.mol)
-			ketcher.ui.load(params.mol);
-	}, () => {
-		document.title += ' (standalone)';
-	});
+}
+
+// On load of the window, load up the ketcher UI and editor
+window.onload = function () {
+	intializeKetcher();
 };
 
+// Set the build info of this application
 const buildInfo = {
 	version: '__VERSION__',
 	apiPath: '__API_PATH__',
@@ -101,6 +102,7 @@ const buildInfo = {
 	buildNumber: '__BUILD_NUMBER__' || null
 };
 
+// Export the following functions to the ketcher module
 const ketcher = module.exports = Object.assign({ // eslint-disable-line no-multi-assign
 	getSmiles,
 	saveSmiles,

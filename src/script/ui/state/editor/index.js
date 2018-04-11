@@ -21,7 +21,6 @@ import { fromBond, toBond, fromSgroup, toSgroup, fromElement, toElement } from '
 import acts from '../../action';
 
 import { openDialog } from '../modal';
-import { serverCall } from '../server';
 
 export default function initEditor(dispatch, getState) {
 	const updateAction = debounce(100, () => dispatch({ type: 'UPDATE' }));
@@ -122,16 +121,6 @@ export default function initEditor(dispatch, getState) {
 		onMessage: (msg) => {
 			if (msg.error)
 				alert(msg.error); // eslint-disable-line no-undef
-		},
-		onAromatizeStruct: (struct) => {
-			const state = getState();
-			const serverOpts = state.options.getServerSettings();
-			return serverCall(state.editor, state.server, 'aromatize', serverOpts, struct);
-		},
-		onDearomatizeStruct: (struct) => {
-			const state = getState();
-			const serverOpts = state.options.getServerSettings();
-			return serverCall(state.editor, state.server, 'dearomatize', serverOpts, struct);
 		},
 		onMouseDown: () => {
 			updateAction();

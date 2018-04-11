@@ -109,8 +109,7 @@ export default {
 	},
 	'reaction-automap': {
 		title: 'Reaction Auto-Mapping Tool',
-		action: { dialog: 'automap' },
-		disabled: (editor, server, options) => !options.app.server || !editor.struct().hasRxnArrow()
+		action: { dialog: 'automap' }
 	},
 	'period-table': {
 		title: 'Periodic Table',

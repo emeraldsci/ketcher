@@ -1,24 +1,9 @@
-/****************************************************************************
- * Copyright 2018 EPAM Systems
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *    http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- ***************************************************************************/
+// The following is the style sheet for Ketcher. To override a default option,
+// specify a value key. If value is not specified, the default option will be
+// used.
 
-import jsonschema from 'jsonschema';
-import stylesheet from '../../../stylesheet.js';
-
-const editor = {
-	resetToSelect: {
+const styleSheet = {
+  resetToSelect: {
 		title: 'Reset to Select Tool',
 		enum: [true, 'paste', false],
 		enumNames: ['on', 'After Paste', 'off'],
@@ -29,12 +14,10 @@ const editor = {
 		type: 'integer',
 		minimum: 1,
 		maximum: 90,
-		default: 15
-	}
-};
-
-const render = {
-	showValenceWarnings: {
+		default: 15,
+    value: 1
+	},
+  showValenceWarnings: {
 		title: 'Show valence warnings',
 		type: 'boolean',
 		default: true
@@ -115,11 +98,8 @@ const render = {
 		default: 6,
 		minimum: 1,
 		maximum: 96
-	}
-};
-
-const server = {
-	'smart-layout': {
+	},
+  'smart-layout': {
 		title: 'Smart-layout',
 		type: 'boolean',
 		default: true
@@ -143,13 +123,8 @@ const server = {
 		title: 'Add Isotopes at mass calculation',
 		type: 'boolean',
 		default: true
-	}
-};
-
-export const SERVER_OPTIONS = Object.keys(server);
-
-const debug = {
-	showAtomIds: {
+	},
+  showAtomIds: {
 		title: 'Show atom Ids',
 		type: 'boolean',
 		default: false
@@ -168,11 +143,8 @@ const debug = {
 		title: 'Show loop Ids',
 		type: 'boolean',
 		default: false
-	}
-};
-
-const miew = {
-	miewMode: {
+	},
+  miewMode: {
 		title: 'Display mode',
 		enum: ['LN', 'BS', 'LC'],
 		enumNames: ['Lines', 'Balls and Sticks', 'Licorice'],
@@ -192,44 +164,4 @@ const miew = {
 	}
 };
 
-export const MIEW_OPTIONS = Object.keys(miew);
-
-const optionsSchema = {
-	title: 'Settings',
-	type: 'object',
-	required: [],
-	properties: {
-		...editor,
-		...render,
-		...server,
-		...debug,
-		...miew
-	}
-};
-
-export default optionsSchema;
-
-export function getDefaultOptions() {
-	return Object.keys(optionsSchema.properties).reduce((res, prop) => {
-		if("value" in stylesheet[prop]){
-			res[prop] = stylesheet[prop].value;
-		}else{
-			res[prop] = optionsSchema.properties[prop].default;
-		}
-		return res;
-	}, {});
-}
-
-export function validation(settings) {
-	if (typeof settings !== 'object' || settings === null) return null;
-
-	const v = new jsonschema.Validator();
-	const { errors } = v.validate(settings, optionsSchema);
-	const errProps = errors.map(err => err.property.split('.')[1]);
-
-	return Object.keys(settings).reduce((res, prop) => {
-		if (optionsSchema.properties[prop] && errProps.indexOf(prop) === -1)
-			res[prop] = settings[prop];
-		return res;
-	}, {});
-}
+export default styleSheet;

@@ -19,11 +19,6 @@ import { h, Component } from 'preact';
 class OpenButton extends Component {
 	constructor(props) {
 		super(props);
-		if (props.server) {
-			fileOpener(props.server).then((opener) => {
-				this.setState({ opener });
-			});
-		}
 	}
 
 	open(ev) {
@@ -41,7 +36,7 @@ class OpenButton extends Component {
 
 	render() {
 		const { children, type, server, className = 'open-button', ...props } = this.props;
-
+    
 		return (
 			<button onClick={() => this.btn.click()} className={className} {...props}>
 				<input

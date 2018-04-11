@@ -39,13 +39,6 @@ function parametrizeUrl(url, params) {
 function api(base, defaultOptions) {
 	const baseUrl = !base || /\/$/.test(base) ? base : base + '/';
 
-	const info = request('GET', 'info').then(res => ({
-		indigoVersion: res['indigo_version'],
-		imagoVersions: res['imago_versions']
-	})).catch(() => {
-		throw Error('Server is not compatible');
-	});
-
 	function request(method, url, data, headers) {
 		if (data && method === 'GET')
 			url = parametrizeUrl(url, data);

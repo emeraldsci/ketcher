@@ -32,7 +32,7 @@ function Atom({ el, shortcut, className, ...props }) {
 		<button
 			title={shortcut ? `${el.title} (${shortcut})` : el.title}
 			className={[...atomClass(el), className].join(' ')}
-			style={{ color: elementColor[el.label] }}
+			//style={{ color: elementColor[el.label] }} // This commented out line gives color to atoms on the atom toolbar
 			value={element.map[el.label]}
 			{...props}
 		>

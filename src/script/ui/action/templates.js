@@ -20,8 +20,7 @@ const templateLib = {
 	'template-lib': {
 		shortcut: 'Shift+t',
 		title: 'Custom Templates',
-		action: { dialog: 'templates' },
-		disabled: (editor, server, options) => !options.app.templates
+		action: { dialog: 'templates' }
 	}
 };
 
@@ -36,4 +35,3 @@ export default templates.reduce((res, struct, i) => {
 	};
 	return res;
 }, templateLib);
-

@@ -7,3 +7,5 @@
 *.pyc
 /extra
 .tern-port
+
+package-lock.json

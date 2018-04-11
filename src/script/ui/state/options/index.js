@@ -19,31 +19,38 @@ import { pick } from 'lodash/fp';
 import { SERVER_OPTIONS, getDefaultOptions, validation } from '../../data/schema/options-schema';
 import { storage } from '../../storage-ext';
 
-export const initOptionsState = {
-	app: {
-		server: false,
-		templates: false
-	},
-	analyse: {
-		values: null,
-		roundWeight: 3,
-		roundMass: 3
-	},
-	check: {
-		checkOptions: ['valence', 'radicals', 'pseudoatoms', 'stereo', 'query', 'overlapping_atoms',
-			'overlapping_bonds', 'rgroups', 'chiral', '3d', 'chiral_flag']
-	},
-	recognize: {
-		file: null,
-		structStr: null,
-		fragment: false,
-		version: null
-	},
-	settings: Object.assign(getDefaultOptions(), validation(storage.getItem('ketcher-opts'))),
-	getServerSettings() {
-		return pick(SERVER_OPTIONS, this.settings);
-	}
-};
+export function initOptionsState(){
+	// Get the default options for Ketcher. This includes any custom stylesheet
+	// options that the user may have included in stylesheet.js at the root
+	// folder.
+	const defaultSettings = getDefaultOptions();
+
+	// Save these settings as the new settings
+	//saveSettings(defaultSettings);
+
+	return {
+		app: {
+			server: false,
+			templates: false
+		},
+		analyse: {
+			values: null,
+			roundWeight: 3,
+			roundMass: 3
+		},
+		check: {
+			checkOptions: ['valence', 'radicals', 'pseudoatoms', 'stereo', 'query', 'overlapping_atoms',
+				'overlapping_bonds', 'rgroups', 'chiral', '3d', 'chiral_flag']
+		},
+		recognize: {
+			file: null,
+			structStr: null,
+			fragment: false,
+			version: null
+		},
+		settings: Object.assign(getDefaultOptions(), validation(storage.getItem('ketcher-opts')))
+	};
+}
 
 export function appUpdate(data) {
 	return (dispatch) => {

@@ -16,9 +16,9 @@
 
 import app from './app';
 
-function init(opts, apiServer) {
+function init(opts) {
 	const ketcherWindow = document.querySelector('[role=application]') || document.body;
-	return app(ketcherWindow, opts, apiServer);
+	return app(ketcherWindow, opts);
 }
 
 export default init;

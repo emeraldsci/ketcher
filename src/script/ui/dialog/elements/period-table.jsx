@@ -188,7 +188,6 @@ class PeriodTable extends Component {
 		onMouseLeave: () => this.setState({ isInfo: false })
 	});
 	render() {
-		const tabs = ['Table', 'Extended'];
 		const { type, value } = this.state;
 		return (
 			<Dialog
@@ -197,31 +196,15 @@ class PeriodTable extends Component {
 				params={this.props}
 				result={() => this.result()}
 			>
-				<Tabs
-					className="tabs"
-					captions={tabs}
-					tabIndex={type !== 'gen' ? 0 : 1}
-					changeTab={i => this.changeType(i === 0 ? 'atom' : 'gen')}
-				>
-					<div className="period-table">
-						<AtomInfo el={this.state.cur} isInfo={this.state.isInfo} />
-						<ElementsTable
-							value={value}
-							curEvents={this.curEvents}
-							selected={this.selected}
-							onSelect={this.onSelect}
-						/>
-						<TypeChoise
-							value={type}
-							onChange={t => this.changeType(t)}
-						/>
-					</div>
-					<GenericGroups
-						className="generic-groups"
+				<div className="period-table">
+					<AtomInfo el={this.state.cur} isInfo={this.state.isInfo} />
+					<ElementsTable
+						value={value}
+						curEvents={this.curEvents}
 						selected={this.selected}
 						onSelect={this.onSelect}
 					/>
-				</Tabs>
+				</div>
 			</Dialog>
 		);
 	}

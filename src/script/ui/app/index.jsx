@@ -23,17 +23,14 @@ import AppModal from './modal';
 import Toolbar from './toolbar';
 
 import createStore, { onAction, load } from '../state';
-import { checkServer } from '../state/server';
 import { initKeydownListener } from '../state/hotkeys';
 import { initResize } from '../state/toolbar';
 
+// Connect the application UI to the redux store
 const App = connect(
 	null,
-	{ onAction, checkServer }
+	{onAction}
 )(class extends Component { // eslint-disable-line
-	componentDidMount() {
-		this.props.checkServer();
-	}
 	render = props => (
 		<main role="application">
 			<AppHidden />
@@ -45,8 +42,8 @@ const App = connect(
 	)
 });
 
-function init(el, options, server) {
-	const store = createStore(options, server);
+function init(el, options) {
+	const store = createStore(options);
 	store.dispatch(initKeydownListener(el));
 	store.dispatch(initResize());
 

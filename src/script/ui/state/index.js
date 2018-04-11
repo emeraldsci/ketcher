@@ -34,7 +34,6 @@ const shared = combineReducers({
 	actionState: actionStateReducer,
 	toolbar: toolbarReducer,
 	modal: modalReducer,
-	server: (store = null) => store,
 	editor: (store = null) => store,
 	options: optionsReducer,
 	templates: templatesReducer
@@ -53,7 +52,7 @@ function root(state, action) {
 
 	const sh = shared(state, {
 		...action,
-		...pick(['editor', 'server', 'options'], state)
+		...pick(['editor', 'options'], state)
 	});
 
 	return (sh === state.shared) ? state : {
@@ -61,21 +60,24 @@ function root(state, action) {
 	};
 }
 
-export default function (options, server) {
-	// TODO: redux localStorage here
+export default function (appInformation) {
+	// Create a dictionary that contains our intiial redux state
 	const initState = {
 		actionState: null,
 		editor: null,
 		modal: null,
-		options: Object.assign(initOptionsState, { app: options }),
-		server: server || Promise.reject(new Error('Standalone mode!')),
+		// server: server || Promise.reject(new Error('Standalone mode!')),
+		// I took out the server: initServer() part here, we should put information about the mathematica server here.
+		options: Object.assign(initOptionsState(), { app: appInformation }),
 		templates: initTmplsState
 	};
-
+	// Here is where the settings are set.
+	//console.log(Object.assign(initOptionsState, { app: options }));
 	const middleware = [thunk];
 
 	if (process.env.NODE_ENV !== 'production')
 		middleware.push(logger);
 
+	// Create the redux store
 	return createStore(root, initState, applyMiddleware(...middleware));
 }

@@ -50,9 +50,7 @@ function Editor(clientArea, options) {
 		quickEdit: new s.PipelineSubscription(),
 		attachEdit: new s.PipelineSubscription(),
 		change: new s.PipelineSubscription(),
-		selectionChange: new s.PipelineSubscription(),
-		aromatizeStruct: new s.PipelineSubscription(),
-		dearomatizeStruct: new s.PipelineSubscription()
+		selectionChange: new s.PipelineSubscription()
 	};
 
 	domEventSetup(this, clientArea);
@@ -87,6 +85,7 @@ Editor.prototype.options = function (value) {
 		var struct = this.render.ctab.molecule;
 		var zoom = this.render.options.zoom;
 		this.render.clientArea.innerHTML = '';
+		console.log(value);
 		this.render = new Render(this.render.clientArea, Object.assign({ scale: SCALE }, value));
 		this.render.setMolecule(struct); // TODO: reuse this.struct here?
 		this.render.setZoom(zoom);
