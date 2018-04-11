@@ -26,7 +26,7 @@ export function initOptionsState(){
 	const defaultSettings = getDefaultOptions();
 
 	// Save these settings as the new settings
-	//saveSettings(defaultSettings);
+	saveSettings(defaultSettings);
 
 	return {
 		app: {
