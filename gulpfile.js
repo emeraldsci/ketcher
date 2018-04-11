@@ -104,27 +104,8 @@ gulp.task('patch-version', getTask('./gulp/utils', {
 	pkg: pkg
 }));
 
-/*== check ==*/
-gulp.task('lint', getTask('./gulp/check', {
-	expName: 'lint',
-	src: 'src/script/**'
-}));
 
-gulp.task('check-epam-email', getTask('./gulp/check', {
-	expName: 'checkEpamEmail'
-}));
-
-gulp.task('check-deps-exact', getTask('./gulp/check', {
-	expName: 'checkDepsExact',
-	pkg: pkg
-}));
-
-gulp.task('clean', getTask('./gulp/clean', {
-	dist: options.dist,
-	pkgName: pkg.name
-}));
-
-gulp.task('pre-commit', ['lint', 'check-epam-email', 'check-deps-exact']);
+gulp.task('pre-commit', []);
 gulp.task('assets', ['copy', 'help']);
 gulp.task('code', ['style', 'script', 'html']);
 
