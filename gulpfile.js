@@ -104,6 +104,16 @@ gulp.task('patch-version', getTask('./gulp/utils', {
 	pkg: pkg
 }));
 
+/*== check ==*/
+gulp.task('lint', getTask('./gulp/check', {
+	expName: 'lint',
+	src: 'src/script/**'
+}));
+
+gulp.task('clean', getTask('./gulp/clean', {
+	dist: options.dist,
+	pkgName: pkg.name
+}));
 
 gulp.task('pre-commit', []);
 gulp.task('assets', ['copy', 'help']);
