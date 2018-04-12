@@ -14,6 +14,9 @@
  * limitations under the License.
  ***************************************************************************/
 
+// This file grabs the hotkey definitions from /ui/action and adds event
+// listeners to update the current tool when the hotkey is pressed.
+
 import { isEqual, debounce } from 'lodash/fp';
 
 import molfile from '../../chem/molfile';

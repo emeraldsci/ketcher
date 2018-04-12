@@ -41,10 +41,10 @@ const shared = combineReducers({
 
 /* ROOT REDUCER */
 function root(state, action) {
-	switch (action.type) { // eslint-disable-line default-case
+	switch (action.type) {
 	case 'INIT':
 		global._ui_editor = action.editor;
-	case 'UPDATE': // eslint-disable-line no-case-declarations
+	case 'UPDATE':
 		const { type, ...data } = action;
 		if (data)
 			state = { ...state, ...data };

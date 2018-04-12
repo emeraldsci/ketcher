@@ -51,22 +51,26 @@ function status(key, activeTool, params) {
 	});
 }
 
-export default function (state = null, { type, action, ...params }) {
+export default function actionStateReducer (state = null, { type, action, ...params }) {
 	switch (type) {
-	case 'INIT':
-		action = acts['select-lasso'].action;
-	case 'ACTION': // eslint-disable-line no-case-declarations
-		const activeTool = execute(state && state.activeTool, {
-			...params, action
-		});
-	case 'UPDATE':
-		return Object.keys(acts).reduce((res, key) => {
-			const value = status(key, res.activeTool, params);
-			if (!isEmpty(value))
-				res[key] = value;
-			return res;
-		}, { activeTool: activeTool || state.activeTool });
-	default:
-		return state;
+		// When we first initialize the application, the select-lasso tool is
+		// the current action.
+		case 'INIT':
+			action = acts['select-lasso'].action;
+		// Change the active tool if an action is taken.
+		case 'ACTION':
+			const activeTool = execute(state && state.activeTool, {
+				...params, action
+			});
+		// Reload the status of the active tool when an explicit UPDATE is called.
+		case 'UPDATE':
+			return Object.keys(acts).reduce((res, key) => {
+				const value = status(key, res.activeTool, params);
+				if (!isEmpty(value))
+					res[key] = value;
+				return res;
+			}, { activeTool: activeTool || state.activeTool });
+		default:
+			return state;
 	}
 }

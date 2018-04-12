@@ -86,6 +86,9 @@ function intializeKetcher(){
 
 	// Initialize the UI and return a link back to the redux store
 	ketcher.ui = ui(appInformation);
+
+	// Store a pointer to the canvas region. This pointer is set by the root
+	// reducer 
 	ketcher.editor = global._ui_editor;
 }
 

@@ -59,9 +59,14 @@ export const toolbox = [
 	{
 		id: 'select',
 		menu: [
-			'select-lasso',
-			'select-rectangle',
-			'select-fragment'
+			{
+				id: 'select-common',
+				menu: [
+					'select-lasso',
+					'select-rectangle',
+					'select-fragment'
+				]
+			}
 		]
 	},
 	'erase',
@@ -73,9 +78,26 @@ export const toolbox = [
 				menu: [
 					'bond-single',
 					'bond-double',
-					'bond-triple',
-          'bond-up',
-					'bond-down'
+					'bond-triple'
+				]
+			},
+			{
+				id: 'bond-stereo',
+				menu: [
+					'bond-up',
+					'bond-down',
+					'bond-updown',
+					'bond-crossed'
+				]
+			},
+			{
+				id: 'bond-query',
+				menu: [
+					'bond-any',
+					'bond-aromatic',
+					'bond-singledouble',
+					'bond-singlearomatic',
+					'bond-doublearomatic'
 				]
 			}
 		]
@@ -118,6 +140,7 @@ export const toolbox = [
 	}
 ];
 
+// Definition of the ZoomList
 function ZoomList({ status, onAction }) {
 	const zoom = status.zoom && status.zoom.selected; // TMP
 	return (
