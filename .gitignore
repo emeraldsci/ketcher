@@ -9,3 +9,5 @@
 .tern-port
 
 package-lock.json
+
+/src/script/toolbar.js

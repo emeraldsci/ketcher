@@ -24,6 +24,10 @@ import debug from './debug';
 import templates from './templates';
 import { exec } from '../component/cliparea';
 
+// The right thing to do here is https://stackoverflow.com/questions/43476774/es6-export-the-result-of-a-function
+
+// Create a function that resolves all of the shortcuts based on any overrides the
+// user includes 
 export default {
 	new: {
 		shortcut: 'Mod+Delete',

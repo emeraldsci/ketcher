@@ -28,7 +28,34 @@ import action from '../action';
 import { atomCuts, basic as basicAtoms } from '../action/atoms';
 import templates from '../data/templates';
 
-import {mainmenu, toolbox} from '../../toolbar.jsx'
+import { zoomList } from '../../ui/action/zoom';
+
+import kvp from 'key-value-pointer';
+
+// This file is copied from outside of the src directory when gulp is run.
+import toolbarSettings from '../../toolbar.js';
+
+const mainmenu=toolbarSettings.mainmenu;
+const toolbox=toolbarSettings.toolbox;
+
+// Replace any strings with the actual react components
+kvp(mainmenu).query(function (node) {
+	console.log(node);
+		if (node.key === 'component') {
+			console.log(node.value);
+			switch(node.value){
+				case "ZoomList":
+					this.replace(node.pointer, ZoomList);
+					break;
+				case "AtomsList":
+					this.replace(node.pointer, AtomsList);
+					break;
+				case "TemplatesList":
+					this.replace(node.pointer, TemplatesList);
+					break;
+			}
+		}
+});
 
 const template = [
 	{
@@ -58,6 +85,23 @@ const toolbar = [
 	{ id: 'template', menu: template },
 	{ id: 'elements', menu: elements }
 ];
+
+
+function ZoomList({ status, onAction }) {
+	const zoom = status.zoom && status.zoom.selected; // TMP
+	return (
+		<select
+			value={zoom}
+			onChange={ev => onAction(editor => editor.zoom(parseFloat(ev.target.value)))}
+		>
+			{
+				zoomList.map(val => (
+					<option value={val}>{`${(val * 100).toFixed()}%`}</option>
+				))
+			}
+		</select>
+	);
+}
 
 function AtomsList(atoms, { active, onAction }) {
 	const isAtom = active && active.tool === 'atom';

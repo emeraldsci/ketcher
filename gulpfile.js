@@ -17,6 +17,8 @@ const gulp = require('gulp');
 const minimist = require('minimist');
 const pkg = require('./package.json');
 
+const iconsPath = 'src/icons/*.svg';
+
 const options = minimist(process.argv.slice(2), {
 	string: ['dist', 'api-path', 'build-number', 'build-date', 'miew-path'],
 	default: {
@@ -74,6 +76,11 @@ gulp.task('html', ['patch-version'], getTask('./gulp/style-html', Object.assign(
 	pkg: pkg
 }, options)));
 
+gulp.task('stylesheet', function () {
+    gulp.src('./toolbar.js')
+        .pipe(gulp.dest('./src/script/'));
+});
+
 /*== assets ==*/
 gulp.task('doc', function () {
 	return gulp.src('doc/*.{png, jpg, gif}')
@@ -120,12 +127,12 @@ gulp.task('assets', ['copy', 'help']);
 gulp.task('code', ['style', 'script', 'html']);
 
 /*== dev ==*/
-gulp.task('serve', ['clean', 'style', 'html', 'assets'], getTask('./gulp/dev-script', Object.assign({
+gulp.task('serve', ['clean', 'stylesheet', 'style', 'html', 'assets'], getTask('./gulp/dev-script', Object.assign({
 	entry: 'src/script',
 	pkg: pkg
 }, options)));
 /*== production ==*/
-gulp.task('build', ['clean', 'code', 'assets']);
+gulp.task('build', ['clean', 'stylesheet', 'style', 'html', 'code', 'assets']);
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',
 	pkg: pkg,
