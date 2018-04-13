@@ -20,7 +20,6 @@ const download = require("gulp-download");
 const unzip = require('gulp-unzip')
 const fileExists = require('file-exists');
 const runSequence = require('run-sequence');
-var request = require('request');
 
 const iconsPath = 'src/icons/*.svg';
 
@@ -157,7 +156,6 @@ gulp.task('serve', ['clean', 'stylesheet', 'style', 'html', 'assets'], getTask('
 
 /*== production ==*/
 gulp.task('build', function(callback) {
-	console.log(request);
   runSequence(['clean', 'stylesheet', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs'],
               callback);
 });

@@ -80,6 +80,7 @@
   },
   "scripts": {
     "build": "gulp build",
+    "copy-nwjs": "gulp copy-nwjs",
     "archive": "gulp archive",
     "start": "gulp serve",
     "test": "npm run test-io && npm run test-render",
