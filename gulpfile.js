@@ -16,6 +16,9 @@
 const gulp = require('gulp');
 const minimist = require('minimist');
 const pkg = require('./package.json');
+const download = require("gulp-download");
+const unzip = require('gulp-unzip')
+const fileExists = require('file-exists');
 
 const iconsPath = 'src/icons/*.svg';
 
@@ -126,13 +129,32 @@ gulp.task('pre-commit', []);
 gulp.task('assets', ['copy', 'help']);
 gulp.task('code', ['style', 'script', 'html']);
 
+gulp.task('copy-package-info', function(){
+	return gulp.src('package.json')
+		.pipe(gulp.dest('./dist/'));
+});
+
+gulp.task('copy-nwjs', function(){
+	if(!fileExists('./nwjs-v0.29.4-win-x64.zip')){
+		download("https://dl.nwjs.io/v0.29.4/nwjs-v0.29.4-win-x64.zip")
+			.pipe(gulp.dest("./"));
+
+		gulp.src('nwjs-v0.29.4-win-x64.zip')
+			.pipe(unzip())
+			.pipe(gulp.dest('./nwjs-v0.29.4-win-x64/'));
+	}
+
+	return gulp.src('./nwjs-v0.29.4-win-x64/nwjs-v0.29.4-win-x64/**/*')
+		.pipe(gulp.dest('./dist/'));
+});
+
 /*== dev ==*/
 gulp.task('serve', ['clean', 'stylesheet', 'style', 'html', 'assets'], getTask('./gulp/dev-script', Object.assign({
 	entry: 'src/script',
 	pkg: pkg
 }, options)));
 /*== production ==*/
-gulp.task('build', ['clean', 'stylesheet', 'style', 'html', 'code', 'assets']);
+gulp.task('build', ['clean', 'stylesheet', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-nwjs']);
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',
 	pkg: pkg,
