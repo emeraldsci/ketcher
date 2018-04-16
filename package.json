@@ -26,7 +26,7 @@
     "frame": true,
     "width": 1200,
     "height": 800,
-    "position": "mouse"
+    "position": "center"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
