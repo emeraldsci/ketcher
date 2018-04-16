@@ -20,6 +20,8 @@ const download = require("gulp-download");
 const unzip = require('gulp-unzip')
 const fileExists = require('file-exists');
 const runSequence = require('run-sequence');
+const pathExists = require('path-exists');
+var untar = require('gulp-untar')
 
 const iconsPath = 'src/icons/*.svg';
 
@@ -136,16 +138,20 @@ gulp.task('copy-package-info', function(){
 });
 
 gulp.task('download-nwjs', function(){
-	if(!fileExists.sync('./nwjs-v0.29.4-win-x64.zip')){
-		download("https://dl.nwjs.io/v0.29.4/nwjs-v0.29.4-win-x64.zip")
-			.pipe(unzip())
-			.pipe(gulp.dest("./"));
-	}
-});
-
-gulp.task('copy-nwjs', function(){
-	return gulp.src('./nwjs-v0.29.4-win-x64/**/*')
-		.pipe(gulp.dest('./dist/'));
+	return Promise.all([
+		pathExists('./nwjs-v0.29.4-win-x64').then(
+			exists => {
+				if(!exists){
+					download("https://dl.nwjs.io/v0.29.4/nwjs-v0.29.4-win-x64.zip")
+						.pipe(unzip())
+						.pipe(gulp.dest("./"));
+				}
+			}
+		)
+	]).then(function() {
+		return gulp.src('./nwjs-v0.29.4-win-x64/**/*')
+			.pipe(gulp.dest('./dist/'));
+	});
 });
 
 /*== dev ==*/
@@ -155,10 +161,7 @@ gulp.task('serve', ['clean', 'stylesheet', 'style', 'html', 'assets'], getTask('
 }, options)));
 
 /*== production ==*/
-gulp.task('build', function(callback) {
-  runSequence(['clean', 'stylesheet', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs'],
-              callback);
-});
+gulp.task('build', ['clean', 'stylesheet', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs']);
 
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',
