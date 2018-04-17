@@ -39,151 +39,83 @@ import kvp from 'key-value-pointer';
 if(typeof toolbar_configuration === "undefined"){
 	console.log("File toolbar_configuration.json was not in the root of the ketcher application. Falling back on defaults.");
 	const toolbar_configuration={
-		mainmenu: [
-			{
-				id: 'document',
-				menu: [
-					'new',
-					'open',
-					'save'
-				]
-			},
-			{
-				id: 'edit',
-				menu: [
-					'undo',
-					'redo',
-					'cut',
-					'copy',
-					'paste'
-				]
-			},
-			{
-				id: 'zoom',
-				menu: [
-					'zoom-in',
-					'zoom-out',
-					{
-						id: 'zoom-list',
-						component: "ZoomList"
-					}
-				]
-			},
-			{
-				id: 'zoom',
-				menu: [
-					'zoom-in',
-					'zoom-out',
-					{
-						id: 'zoom-list',
-						component: "ZoomList"
-					}
-				]
-			},
-			{
-				id: 'process',
-				menu: [
-					'layout',
-					'clean',
-					'arom',
-					'dearom',
-					'cip',
-					'check',
-					'analyse',
-					'recognize',
-					'miew'
-				]
-			},
-			{
-				id: 'meta',
-				menu: [
-					'settings',
-					'help',
-					'about'
-				]
-			}
+		"mainmenu": [
+			"new",
+			"open",
+			"save",
+			"vertical-seperator",
+			"undo",
+			"redo",
+			"cut",
+			"copy",
+			"paste",
+			"vertical-seperator",
+			"zoom-in",
+			"zoom-out",
+			"vertical-seperator",
+			"layout",
+			"clean",
+			"arom",
+			"dearom",
+			"cip",
+			"check",
+			"analyse",
+			"vertical-seperator",
+			"recognize",
+			"miew"
 		],
-		toolbox: [
+		"toolbox": [
 			{
-				id: 'select',
-				menu: [
-					{
-						id: 'select-common',
-						menu: [
-							'select-lasso',
-							'select-rectangle',
-							'select-fragment'
-						]
-					}
+				"id": "select",
+				"menu": [
+						"select-lasso",
+						"select-rectangle",
+						"select-fragment"
 				]
 			},
-			'erase',
+			"erase",
+			"horizontal-seperator",
 			{
-				id: 'bond',
-				menu: [
-					{
-						id: 'bond-common',
-						menu: [
-							'bond-single',
-							'bond-double',
-							'bond-triple'
-						]
-					},
-					{
-						id: 'bond-stereo',
-						menu: [
-							'bond-up',
-							'bond-down',
-							'bond-updown',
-							'bond-crossed'
-						]
-					},
-					{
-						id: 'bond-query',
-						menu: [
-							'bond-any',
-							'bond-aromatic',
-							'bond-singledouble',
-							'bond-singlearomatic',
-							'bond-doublearomatic'
-						]
-					}
+				"id": "bond-common",
+				"menu": [
+					"bond-single",
+					"bond-double",
+					"bond-triple"
 				]
 			},
-			'chain',
+			"chain",
+			"horizontal-seperator",
 			{
-				id: 'charge',
-				menu: [
-					'charge-plus',
-					'charge-minus'
+				"id": "charge",
+				"menu": [
+					"charge-plus",
+					"charge-minus"
 				]
 			},
+			"horizontal-seperator",
+			"transform-rotate",
+			"transform-flip-h",
+			"transform-flip-v",
+			"sgroup",
+			"sgroup-data",
+			"horizontal-seperator",
 			{
-				id: 'transform',
-				menu: [
-					'transform-rotate',
-					'transform-flip-h',
-					'transform-flip-v'
+				"id": "reaction",
+				"menu": [
+					"reaction-arrow",
+					"reaction-plus",
+					"reaction-automap",
+					"reaction-map",
+					"reaction-unmap"
 				]
 			},
-			'sgroup',
-			'sgroup-data',
+			"horizontal-seperator",
 			{
-				id: 'reaction',
-				menu: [
-					'reaction-arrow',
-					'reaction-plus',
-					'reaction-automap',
-					'reaction-map',
-					'reaction-unmap'
-				]
-			},
-			{
-				id: 'rgroup',
-				menu: [
-					'rgroup-label',
-					'rgroup-fragment',
-					'rgroup-attpoints'
+				"id": "rgroup",
+				"menu": [
+					"rgroup-label",
+					"rgroup-fragment",
+					"rgroup-attpoints"
 				]
 			}
 		]
