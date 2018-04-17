@@ -32,17 +32,173 @@ import { zoomList } from '../../ui/action/zoom';
 
 import kvp from 'key-value-pointer';
 
-// This file is copied from outside of the src directory when gulp is run.
-import toolbarSettings from '../../toolbar.js';
+// The variable toolbar_configuration is imported if a toolbar_configuration.json
+// file exists in the main directory. If this configuration file does not exist,
+// fall back on defaults.
+console.log(toolbar_configuration);
+if(typeof toolbar_configuration === "undefined"){
+	console.log("File toolbar_configuration.json was not in the root of the ketcher application. Falling back on defaults.");
+	const toolbar_configuration={
+		mainmenu: [
+			{
+				id: 'document',
+				menu: [
+					'new',
+					'open',
+					'save'
+				]
+			},
+			{
+				id: 'edit',
+				menu: [
+					'undo',
+					'redo',
+					'cut',
+					'copy',
+					'paste'
+				]
+			},
+			{
+				id: 'zoom',
+				menu: [
+					'zoom-in',
+					'zoom-out',
+					{
+						id: 'zoom-list',
+						component: "ZoomList"
+					}
+				]
+			},
+			{
+				id: 'zoom',
+				menu: [
+					'zoom-in',
+					'zoom-out',
+					{
+						id: 'zoom-list',
+						component: "ZoomList"
+					}
+				]
+			},
+			{
+				id: 'process',
+				menu: [
+					'layout',
+					'clean',
+					'arom',
+					'dearom',
+					'cip',
+					'check',
+					'analyse',
+					'recognize',
+					'miew'
+				]
+			},
+			{
+				id: 'meta',
+				menu: [
+					'settings',
+					'help',
+					'about'
+				]
+			}
+		],
+		toolbox: [
+			{
+				id: 'select',
+				menu: [
+					{
+						id: 'select-common',
+						menu: [
+							'select-lasso',
+							'select-rectangle',
+							'select-fragment'
+						]
+					}
+				]
+			},
+			'erase',
+			{
+				id: 'bond',
+				menu: [
+					{
+						id: 'bond-common',
+						menu: [
+							'bond-single',
+							'bond-double',
+							'bond-triple'
+						]
+					},
+					{
+						id: 'bond-stereo',
+						menu: [
+							'bond-up',
+							'bond-down',
+							'bond-updown',
+							'bond-crossed'
+						]
+					},
+					{
+						id: 'bond-query',
+						menu: [
+							'bond-any',
+							'bond-aromatic',
+							'bond-singledouble',
+							'bond-singlearomatic',
+							'bond-doublearomatic'
+						]
+					}
+				]
+			},
+			'chain',
+			{
+				id: 'charge',
+				menu: [
+					'charge-plus',
+					'charge-minus'
+				]
+			},
+			{
+				id: 'transform',
+				menu: [
+					'transform-rotate',
+					'transform-flip-h',
+					'transform-flip-v'
+				]
+			},
+			'sgroup',
+			'sgroup-data',
+			{
+				id: 'reaction',
+				menu: [
+					'reaction-arrow',
+					'reaction-plus',
+					'reaction-automap',
+					'reaction-map',
+					'reaction-unmap'
+				]
+			},
+			{
+				id: 'rgroup',
+				menu: [
+					'rgroup-label',
+					'rgroup-fragment',
+					'rgroup-attpoints'
+				]
+			}
+		]
+	};
+}else{
+	console.log("Found a toolbar configuration file. Loading in settings.")
+}
 
-const mainmenu=toolbarSettings.mainmenu;
-const toolbox=toolbarSettings.toolbox;
+// Extract the mainmenu and toolbar settings from the toolbar configuration.
+const mainmenu=toolbar_configuration.mainmenu;
+const toolbox=toolbar_configuration.toolbox;
 
 // Replace any strings with the actual react components
 kvp(mainmenu).query(function (node) {
-	console.log(node);
 		if (node.key === 'component') {
-			console.log(node.value);
 			switch(node.value){
 				case "ZoomList":
 					this.replace(node.pointer, ZoomList);

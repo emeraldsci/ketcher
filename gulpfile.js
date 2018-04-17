@@ -82,11 +82,6 @@ gulp.task('html', ['patch-version'], getTask('./gulp/style-html', Object.assign(
 	pkg: pkg
 }, options)));
 
-gulp.task('stylesheet', function () {
-    gulp.src('./toolbar.js')
-        .pipe(gulp.dest('./src/script/'));
-});
-
 /*== assets ==*/
 gulp.task('doc', function () {
 	return gulp.src('doc/*.{png, jpg, gif}')
@@ -137,6 +132,11 @@ gulp.task('copy-package-info', function(){
 		.pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('copy-toolbar-configuration', function(){
+	return gulp.src('./toolbar_configuration.json')
+		.pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('download-nwjs', function(){
 	return Promise.all([
 		pathExists('./nwjs-v0.29.4-win-x64').then(
@@ -155,13 +155,13 @@ gulp.task('download-nwjs', function(){
 });
 
 /*== dev ==*/
-gulp.task('serve', ['clean', 'stylesheet', 'style', 'html', 'assets'], getTask('./gulp/dev-script', Object.assign({
+gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configuration'], getTask('./gulp/dev-script', Object.assign({
 	entry: 'src/script',
 	pkg: pkg
 }, options)));
 
 /*== production ==*/
-gulp.task('build', ['clean', 'stylesheet', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs']);
+gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs', 'copy-toolbar-configuration']);
 
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',

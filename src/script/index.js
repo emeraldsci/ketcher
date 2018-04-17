@@ -88,7 +88,7 @@ function intializeKetcher(){
 	ketcher.ui = ui(appInformation);
 
 	// Store a pointer to the canvas region. This pointer is set by the root
-	// reducer 
+	// reducer
 	ketcher.editor = global._ui_editor;
 }
 
