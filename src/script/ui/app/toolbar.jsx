@@ -35,7 +35,7 @@ import kvp from 'key-value-pointer';
 // The variable toolbar_configuration is imported if a toolbar_configuration.json
 // file exists in the main directory. If this configuration file does not exist,
 // fall back on defaults.
-console.log(toolbar_configuration);
+
 if(typeof toolbar_configuration === "undefined"){
 	console.log("File toolbar_configuration.json was not in the root of the ketcher application. Falling back on defaults.");
 	const toolbar_configuration={

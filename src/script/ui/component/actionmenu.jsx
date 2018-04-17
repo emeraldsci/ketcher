@@ -88,16 +88,30 @@ function ActionMenu({ name, menu, className, role, ...props }) {
 			style={toolMargin(name, menu, props.visibleTools)}
 		>
 			{
-				menu.map(item => (
-					<li
-						id={item.id || item}
-						className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`}
-						onClick={ev => openHandle(ev, props.onOpen)}
-					>
-						{ showMenuOrButton(action, item, props.status[item], props) }
-						{ item.menu && <Icon name="dropdown" /> }
-					</li>
-				))
+				menu.map(item => {
+					// Vertical and Horizontal seperators are specified by divs
+					if(item === "vertical-seperator" || item === "horizontal-seperator"){
+						return(<div id={item}/>);
+					}
+
+					// Otherwise, we recursively specify the rest of the menus.
+
+					// A menu-button is a button that expands into another menu. Manually
+					// check that the main toolbars (mainmenu, toolbox, template, elements)
+					// are not specified this way. The atoms and templates should also not
+					// be specified this way.
+					return(
+						<li
+							id={item.id || item}
+							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`
+								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common"].includes(item.id)) ? 'menu-button' : ''}`}
+							onClick={ev => openHandle(ev, props.onOpen)}
+						>
+							{ showMenuOrButton(action, item, props.status[item], props) }
+							{ item.menu && <Icon name="dropdown" /> }
+						</li>
+					)
+				})
 			}
 		</menu>
 	);

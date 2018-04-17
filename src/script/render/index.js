@@ -29,7 +29,6 @@ DEBUG.logMethod = function () { };
 // DEBUG.logMethod = function (method) {addionalAtoms("METHOD: " + method);
 
 function Render(clientArea, opt) {
-	console.log(opt);
 	let renderWidth = clientArea.clientWidth - 10;
 	let renderHeight = clientArea.clientHeight - 10;
 	renderWidth = renderWidth > 0 ? renderWidth : 0;

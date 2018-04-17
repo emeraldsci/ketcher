@@ -148,19 +148,25 @@ select {
 //////////////////////////
 // Adjust to custom sizes
 
-#select, #bond-common, #bond-stereo, #bond-query, #reaction {
+ li.menu-button {
 	.collapsed-ifnot(opened);
+	height: 40px;
+	width: 40px;
+}
+
+#vertical-seperator{
+	display: inline-block;
+	vertical-align: top;
+}
+
+#horizontal-seperator{
+	display: inline-block;
+	vertical-align: top;
 }
 
 @media (max-width: 840px) {
 	#zoom-in, #zoom-out {
 		display: none;
-	}
-}
-
-@media (max-width: 1040px) {
-	#bond-common, #bond-stereo, #bond-query {
-		.collapsed-size(small);
 	}
 }
 
@@ -190,26 +196,17 @@ select {
 	li.opened {
 		.expanded-menu;
 	}
-	#bond-common, #bond-stereo, #bond-query {
-		.collapsed(none);
-	}
-	#bond {
-		.collapsed-ifnot(opened);
-	}
+
 	@media (max-width: 850px) {
 		li.opened {
 			.expanded-menu(small);
 		}
 	}
-	@media (max-width: 1040px) {
-		#bond {
-			.collapsed-size(small);
-		}
-	}
+
 }
 
 @media (max-height: 600px) {
-	#rgroup, #transform, #bond {
+	#rgroup, #transform {
 		.collapsed-size(small);
 	}
 }
@@ -221,14 +218,14 @@ select {
 }
 
 @media (min-height: 650px) {
-	#erase, #chain, #charge, #transform, #atom, #freq-atoms {
+	#horizontal-seperator{
 		.separate-item(vertical, 5px);
 	}
 }
 
 @media (min-width: 1160px) {
-	#analyse, #document, #edit, #zoom {
-		.separate-item(horizontal, 10px);
+	#vertical-seperator{
+		.separate-item(horizontal, 5px);
 	}
 }
 
@@ -255,7 +252,7 @@ select {
 		.toolbutton-horizontal(small, 2);
 	}
 
-	#select, #reaction {
+	li.menu-button {
 		.collapsed-size(small);
 	}
 
