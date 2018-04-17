@@ -25,7 +25,7 @@ import Icon from '../component/view/icon';
 import ActionMenu, { shortcutStr } from '../component/actionmenu';
 
 import action from '../action';
-import { atomCuts, basic as basicAtoms } from '../action/atoms';
+import { atomCuts } from '../action/atoms';
 import templates from '../data/templates';
 
 import { zoomList } from '../../ui/action/zoom';
@@ -33,13 +33,11 @@ import { zoomList } from '../../ui/action/zoom';
 import kvp from 'key-value-pointer';
 
 // The variable toolbar_configuration is imported if a toolbar_configuration.json
-// file exists in the main directory. If this configuration file does not exist,
-// fall back on defaults.
-
-if(typeof toolbar_configuration === "undefined"){
-	console.log("File toolbar_configuration.json was not in the root of the ketcher application. Falling back on defaults.");
-	const toolbar_configuration={
-		"mainmenu": [
+// file exists in the main directory. If the correct settings are not found in
+// this file, it falls back on defaults.
+if(typeof toolbar_configuration.mainmenu === "undefined"){
+	console.log("Mainmenu settings not found in toolbar_configuration.json - falling back on defaults.");
+	var mainmenu=[
 			"new",
 			"open",
 			"save",
@@ -63,70 +61,80 @@ if(typeof toolbar_configuration === "undefined"){
 			"vertical-seperator",
 			"recognize",
 			"miew"
-		],
-		"toolbox": [
-			{
-				"id": "select",
-				"menu": [
-						"select-lasso",
-						"select-rectangle",
-						"select-fragment"
-				]
-			},
-			"erase",
-			"horizontal-seperator",
-			{
-				"id": "bond-common",
-				"menu": [
-					"bond-single",
-					"bond-double",
-					"bond-triple"
-				]
-			},
-			"chain",
-			"horizontal-seperator",
-			{
-				"id": "charge",
-				"menu": [
-					"charge-plus",
-					"charge-minus"
-				]
-			},
-			"horizontal-seperator",
-			"transform-rotate",
-			"transform-flip-h",
-			"transform-flip-v",
-			"sgroup",
-			"sgroup-data",
-			"horizontal-seperator",
-			{
-				"id": "reaction",
-				"menu": [
-					"reaction-arrow",
-					"reaction-plus",
-					"reaction-automap",
-					"reaction-map",
-					"reaction-unmap"
-				]
-			},
-			"horizontal-seperator",
-			{
-				"id": "rgroup",
-				"menu": [
-					"rgroup-label",
-					"rgroup-fragment",
-					"rgroup-attpoints"
-				]
-			}
-		]
-	};
+		];
 }else{
-	console.log("Found a toolbar configuration file. Loading in settings.")
+	// Extract the mainmenu settings from the toolbar configuration.
+	var mainmenu=toolbar_configuration.mainmenu;
 }
 
-// Extract the mainmenu and toolbar settings from the toolbar configuration.
-const mainmenu=toolbar_configuration.mainmenu;
-const toolbox=toolbar_configuration.toolbox;
+if(typeof toolbar_configuration.toolbox === "undefined"){
+	console.log("Toolbar settings not found in toolbar_configuration.json - falling back on defaults.");
+	var toolbox=[
+		{
+			"id": "select",
+			"menu": [
+					"select-lasso",
+					"select-rectangle",
+					"select-fragment"
+			]
+		},
+		"erase",
+		"horizontal-seperator",
+		{
+			"id": "bond-common",
+			"menu": [
+				"bond-single",
+				"bond-double",
+				"bond-triple"
+			]
+		},
+		"chain",
+		"horizontal-seperator",
+		{
+			"id": "charge",
+			"menu": [
+				"charge-plus",
+				"charge-minus"
+			]
+		},
+		"horizontal-seperator",
+		"transform-rotate",
+		"transform-flip-h",
+		"transform-flip-v",
+		"sgroup",
+		"sgroup-data",
+		"horizontal-seperator",
+		{
+			"id": "reaction",
+			"menu": [
+				"reaction-arrow",
+				"reaction-plus",
+				"reaction-automap",
+				"reaction-map",
+				"reaction-unmap"
+			]
+		},
+		"horizontal-seperator",
+		{
+			"id": "rgroup",
+			"menu": [
+				"rgroup-label",
+				"rgroup-fragment",
+				"rgroup-attpoints"
+			]
+		}
+	]
+}else{
+	var toolbox=toolbar_configuration.toolbox;
+}
+
+
+if(typeof toolbar_configuration.atoms === "undefined"){
+	console.log("Atom settings not found in toolbar_configuration.json - falling back on defaults.");
+	var atoms = ['H', 'C', 'N', 'O', 'S', 'P', 'F', 'Cl', 'Br', 'I'];
+}else{
+	var atoms=toolbar_configuration.atoms;
+}
 
 // Replace any strings with the actual react components
 kvp(mainmenu).query(function (node) {
@@ -157,7 +165,7 @@ const template = [
 const elements = [
 	{
 		id: 'atom',
-		component: props => AtomsList(basicAtoms, props)
+		component: props => AtomsList(atoms, props)
 	},
 	{
 		id: 'freq-atoms',
@@ -198,7 +206,7 @@ function AtomsList(atoms, { active, onAction }) {
 			{
 				atoms.map((label) => {
 					const index = element.map[label];
-					const shortcut = basicAtoms.indexOf(label) > -1 ? shortcutStr(atomCuts[label]) : null;
+					const shortcut = Object.keys(atomCuts).indexOf(label) > -1 ? shortcutStr(atomCuts[label]) : null;
 					return (
 						<li
 							className={classNames({

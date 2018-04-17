@@ -110,5 +110,17 @@ var toolbar_configuration = {
 				"rgroup-attpoints"
 			]
 		}
+	],
+	"atoms":[
+		"H",
+		"C",
+		"N",
+		"O",
+		"S",
+		"P",
+		"F",
+		"Cl",
+		"Br",
+		"I"
 	]
 };
