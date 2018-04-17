@@ -39,7 +39,7 @@ function isMenuOpened(currentNode) {
 	return parentNode && parentNode.classList.contains('opened');
 }
 
-export function showMenuOrButton(action, item, status, props) { // eslint-disable-line no-shadow
+export function showMenuOrButton(action, item, status, direction, props) { // eslint-disable-line no-shadow
 	if (typeof item !== 'object') {
 		return (
 			<ActionButton
@@ -56,6 +56,7 @@ export function showMenuOrButton(action, item, status, props) { // eslint-disabl
 				{...props}
 				name={item.id}
 				menu={item.menu}
+				direction={item.direction}
 			/>
 		);
 	}
@@ -80,7 +81,7 @@ function ActionButton({ name, action, status = {}, onAction }) { // eslint-disab
 	);
 }
 
-function ActionMenu({ name, menu, className, role, ...props }) {
+function ActionMenu({ name, menu, className, direction, role, ...props }) {
 	return (
 		<menu
 			className={className}
@@ -106,8 +107,9 @@ function ActionMenu({ name, menu, className, role, ...props }) {
 							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`
 								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common"].includes(item.id)) ? 'menu-button' : ''}`}
 							onClick={ev => openHandle(ev, props.onOpen)}
+							style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
 						>
-							{ showMenuOrButton(action, item, props.status[item], props) }
+							{ showMenuOrButton(action, item, props.status[item], direction, props) }
 							{ item.menu && <Icon name="dropdown" /> }
 						</li>
 					)

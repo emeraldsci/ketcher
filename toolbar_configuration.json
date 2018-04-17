@@ -17,6 +17,7 @@
 // a menu):
 //{
 //	"id": "select",
+//  "direction": "horizontal", (valid directions include "horizontal" and "vertical")
 //	"menu": [
 //			"select-lasso",
 //			"select-rectangle",
@@ -53,6 +54,7 @@ var toolbar_configuration = {
 	"toolbox": [
 		{
 			"id": "select",
+			"direction": "horizontal",
 			"menu": [
 					"select-lasso",
 					"select-rectangle",
@@ -63,6 +65,7 @@ var toolbar_configuration = {
 		"horizontal-seperator",
 		{
 			"id": "bond-common",
+			"direction": "horizontal",
 			"menu": [
 				"bond-single",
 				"bond-double",
@@ -73,6 +76,7 @@ var toolbar_configuration = {
 		"horizontal-seperator",
 		{
 			"id": "charge",
+			"direction": "horizontal",
 			"menu": [
 				"charge-plus",
 				"charge-minus"
@@ -87,6 +91,7 @@ var toolbar_configuration = {
 		"horizontal-seperator",
 		{
 			"id": "reaction",
+			"direction": "horizontal",
 			"menu": [
 				"reaction-arrow",
 				"reaction-plus",
@@ -98,6 +103,7 @@ var toolbar_configuration = {
 		"horizontal-seperator",
 		{
 			"id": "rgroup",
+			"direction": "horizontal",
 			"menu": [
 				"rgroup-label",
 				"rgroup-fragment",
