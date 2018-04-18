@@ -136,6 +136,9 @@ if(typeof toolbar_configuration.atoms === "undefined"){
 	var atoms=toolbar_configuration.atoms;
 }
 
+// After we load in our atoms, export it for use in other locations in the app.
+export const basicAtoms = atoms;
+
 // Replace any strings with the actual react components
 kvp(mainmenu).query(function (node) {
 		if (node.key === 'component') {

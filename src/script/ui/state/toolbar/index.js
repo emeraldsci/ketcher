@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 import { capitalize, throttle, isEqual } from 'lodash/fp';
-import { basic as basicAtoms } from '../../action/atoms';
+import { basicAtoms } from '../../app/toolbar';
 import tools from '../../action/tools';
 
 const initial = {
