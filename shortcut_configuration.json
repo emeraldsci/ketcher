@@ -1,0 +1,93 @@
+// The following are the shortcuts for the tools in the molecule drawer. To
+// specify the ⌘/Ctrl key (for Mac and Windows, respsectively) use Mod
+// (e.g. Mod+s for save).
+
+// To remove a shortcut, you can delete both the key and the value or set the
+// value of the key to null.
+
+// If multiple tools are set to the same shortcut, pressing the same shortcut
+// will alternate between said tools in round-robin fashion.
+
+// Multiple shortcuts for a tool can be specified by using array syntax
+// (e.g. ["Delete", "Backspace"]).
+
+// System reserved shortcuts may not be used (e.g. Ctrl+Alt+Delete). However,
+// browser shortcuts may be overridden (e.g. Mod + t).
+
+// Note that if you set a shortcut in this configuration file but remove the
+// physical button from the toolbar configuration file, the tool will still be
+// selected by the shortcut. For example, if you get rid of the save button,
+// but still bind save to "Mod+s", the save shortcut will still work.
+
+var shortcut_configuration = {
+	"mainmenu": {
+		"new": "Mod+Delete",
+		"open": "Mod+o",
+		"save": "Mod+s",
+		"undo": "Mod+z",
+		"redo": ["Mod+Shift+z", "Mod+y"],
+		"cut": "Mod+x",
+		"copy": "Mod+c",
+		"paste": "Mod+v",
+		"help": ["?", "Shift+/"],
+		"select-all": "Mod+a",
+		"deselect-all": "Mod+Shift+a",
+		"period-table": "Mod+p",
+		"select-descriptors": "Mod+d",
+		"undo": "Mod+z"
+	},
+	"tools": {
+		"select-lasso": "Escape",
+		"select-rectangle": "Escape",
+		"select-fragment": "Escape",
+		"erase": ["Delete", "Backspace"],
+		"chain": null,
+		"chiral-flag": null,
+		"charge-plus": "5",
+		"charge-minus": "5",
+		"transform-rotate": "Alt+r",
+		"transform-flip-h": "Alt+h",
+		"transform-flip-v": "Alt+v",
+		"sgroup": "Mod+g",
+		"sgroup-data": "Mod+g",
+		"reaction-arrow": null,
+		"reaction-plus": null,
+		"reaction-map": null,
+		"reaction-unmap": null,
+		"rgroup-label": "Mod+r",
+		"rgroup-fragment": ["Mod+Shift+r", "Mod+r"],
+		"rgroup-attpoints": "Mod+r"
+	},
+	"bonds": {
+		"single": "1",
+		"double": "2",
+		"triple": "3",
+		"up": "1",
+		"down": "1",
+		"updown": "1",
+		"crossed": "2",
+		"any": "0",
+		"aromatic": "4"
+	},
+	"atoms": {
+		"H": "h",
+		"C": "c",
+		"N": "n",
+		"O": "o",
+		"S": "s",
+		"P": "p",
+		"F": "f",
+		"Cl": "Shift+c",
+		"Br": "Shift+b",
+		"I": "i",
+		"A": "a"
+	},
+	"zoom": {
+		"zoom-out": ["-", "_", "Shift+-"],
+		"zoom-in": ["+", "=", "Shift+="]
+	},
+	"templates": {
+		"template-lib": "Shift+t",
+		"default-template": "t"
+	}
+};

@@ -14,28 +14,44 @@
  * limitations under the License.
  ***************************************************************************/
 
-export const atomCuts = {
-	H: 'h',
-	C: 'c',
-	N: 'n',
-	O: 'o',
-	S: 's',
-	P: 'p',
-	F: 'f',
-	Cl: 'Shift+c',
-	Br: 'Shift+b',
-	I: 'i',
-	A: 'a'
-};
+// Resolve the atom shortcuts from the shortcut_configuration object.
+function resolveAtomShortcuts(){
+	if(typeof shortcut_configuration["atoms"] !== "undefined"){
+		return shortcut_configuration["atoms"];
+	}else{
+		return null;
+	}
+}
 
-export default Object.keys(atomCuts).reduce((res, label) => {
-	res[`atom-${label.toLowerCase()}`] = {
-		title: `Atom ${label}`,
-		shortcut: atomCuts[label],
-		action: {
-			tool: 'atom',
-			opts: { label }
+// Generate the atom shortcut objects
+function generateAtomShortcutObjects(){
+	var atomShortcuts = resolveAtomShortcuts();
+
+	return Object.keys(atomShortcuts).reduce((res, label) => {
+		// If the user has specified a shortcut for this atom, add a shortcut
+		// object with the new shortcut.
+		if(atomShortcuts !== null && typeof atomShortcuts[label] !== undefined){
+			res[`atom-${label.toLowerCase()}`] = {
+				title: `Atom ${label}`,
+				shortcut: atomShortcuts[label],
+				action: {
+					tool: 'atom',
+					opts: { label }
+				}
+			};
+			return res;
+		}else{ // Otherwise, return the shortcut object without a shortcut.
+			res[`atom-${label.toLowerCase()}`] = {
+				title: `Atom ${label}`,
+				action: {
+					tool: 'atom',
+					opts: { label }
+				}
+			};
+			return res;
 		}
-	};
-	return res;
-}, {});
+	}, {});
+}
+
+export default generateAtomShortcutObjects();
+export const atomCuts = resolveAtomShortcuts();

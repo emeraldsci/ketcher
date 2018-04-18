@@ -21,12 +21,11 @@ export const zoomList = [
 	1.1, 1.2, 1.3, 1.4, 1.5, 1.7, 2, 2.5, 3, 3.5, 4
 ];
 
-export default {
+var zoomRawShortcutObjects = {
 	zoom: {
 		selected: editor => editor.zoom()
 	},
 	'zoom-out': {
-		shortcut: ['-', '_', 'Shift+-'],
 		title: 'Zoom Out',
 		disabled: editor => (
 			editor.zoom() <= zoomList[0] // unsave
@@ -40,7 +39,6 @@ export default {
 		}
 	},
 	'zoom-in': {
-		shortcut: ['+', '=', 'Shift+='],
 		title: 'Zoom In',
 		disabled: editor => (
 			zoomList[zoomList.length - 1] <= editor.zoom()
@@ -54,3 +52,36 @@ export default {
 		}
 	}
 };
+
+function resolveZoomShortcuts(){
+	if(typeof shortcut_configuration["zoom"] !== "undefined"){
+		return shortcut_configuration["zoom"];
+	}else{
+		return null;
+	}
+}
+// Generate the atom shortcut objects
+function generateZoomShortcutObjects(){
+	var zoomShortcuts = resolveZoomShortcuts();
+
+  // For each mainmenu shortcut object, look at the user configuration to see
+  // if the user has specified a shortcut. If so, add the shortcut to the
+  // object.
+	return Object.keys(zoomRawShortcutObjects).reduce((res, label) => {
+    // Create a new shortcut object
+		var newShortcutObject = zoomRawShortcutObjects[label];
+
+    // If the user specified a shortcut, add it to this object.
+    if(zoomShortcuts !== null && typeof zoomShortcuts[label] !== "undefined"){
+      newShortcutObject.shortcut = zoomShortcuts[label];
+    }
+
+    // Add this new object to the reduced result.
+    res[label] = newShortcutObject;
+
+    // Return the reduced result.
+		return res;
+	}, {});
+}
+
+export default generateZoomShortcutObjects();

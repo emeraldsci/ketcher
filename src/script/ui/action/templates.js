@@ -14,24 +14,66 @@
  * limitations under the License.
  ***************************************************************************/
 
-import templates from '../data/templates';
+import templates from "../data/templates";
 
-const templateLib = {
-	'template-lib': {
-		shortcut: 'Shift+t',
-		title: 'Custom Templates',
-		action: { dialog: 'templates' }
+const templateRawShortcutObjects = {
+	"template-lib": {
+		title: "Custom Templates",
+		action: { dialog: "templates" }
 	}
 };
 
+function resolveTemplateShortcuts(){
+	if(typeof shortcut_configuration["templates"] !== "undefined"){
+		return shortcut_configuration["templates"];
+	}else{
+		return null;
+	}
+}
+// Generate the atom shortcut objects
+function generateTemplateShortcutObjects(){
+	var templateShortcuts = resolveTemplateShortcuts();
+
+  // For each mainmenu shortcut object, look at the user configuration to see
+  // if the user has specified a shortcut. If so, add the shortcut to the
+  // object.
+	return Object.keys(templateRawShortcutObjects).reduce((res, label) => {
+    // Create a new shortcut object
+		var newShortcutObject = templateRawShortcutObjects[label];
+
+    // If the user specified a shortcut, add it to this object.
+    if(templateShortcuts !== null && typeof templateShortcuts[label] !== "undefined"){
+      newShortcutObject.shortcut = templateShortcuts[label];
+    }
+
+    // Add this new object to the reduced result.
+    res[label] = newShortcutObject;
+
+    // Return the reduced result.
+		return res;
+	}, {});
+}
+
 export default templates.reduce((res, struct, i) => {
-	res[`template-${i}`] = {
-		title: `${struct.name}`,
-		shortcut: 't',
-		action: {
-			tool: 'template',
-			opts: { struct }
-		}
-	};
+	var templateShortcuts = resolveTemplateShortcuts();
+
+	if(templateShortcuts !== null && typeof templateShortcuts["default-template"] !== "undefined"){
+		res[`template-${i}`] = {
+			title: `${struct.name}`,
+			shortcut: templateShortcuts["default-template"],
+			action: {
+				tool: "template",
+				opts: { struct }
+			}
+		};
+	}else{
+		res[`template-${i}`] = {
+			title: `${struct.name}`,
+			action: {
+				tool: "template",
+				opts: { struct }
+			}
+		};
+	}
 	return res;
-}, templateLib);
+}, generateTemplateShortcutObjects());
