@@ -79,8 +79,7 @@ var shortcut_configuration = {
 		"F": "f",
 		"Cl": "Shift+c",
 		"Br": "Shift+b",
-		"I": "i",
-		"A": "a"
+		"I": "i"
 	},
 	"zoom": {
 		"zoom-out": ["-", "_", "Shift+-"],
