@@ -49,7 +49,9 @@ var toolbar_configuration = {
 		"analyse",
 		"vertical-seperator",
 		"recognize",
-		"miew"
+		"miew",
+		"vertical-seperator",
+		"settings",
 	],
 	"toolbox": [
 		{
