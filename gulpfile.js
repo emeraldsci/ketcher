@@ -142,6 +142,11 @@ gulp.task('copy-shortcut-configuration', function(){
 		.pipe(gulp.dest('./dist/'));
 });
 
+gulp.task('copy-stylesheet', function(){
+	return gulp.src('./stylesheet.json')
+		.pipe(gulp.dest('./dist/'));
+});
+
 gulp.task('download-nwjs', function(){
 	return Promise.all([
 		pathExists('./nwjs-v0.29.4-win-x64').then(
@@ -160,13 +165,13 @@ gulp.task('download-nwjs', function(){
 });
 
 /*== dev ==*/
-gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configuration', 'copy-shortcut-configuration'], getTask('./gulp/dev-script', Object.assign({
+gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet'], getTask('./gulp/dev-script', Object.assign({
 	entry: 'src/script',
 	pkg: pkg
 }, options)));
 
 /*== production ==*/
-gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs', 'copy-toolbar-configuration', 'copy-shortcut-configuration']);
+gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
 
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',

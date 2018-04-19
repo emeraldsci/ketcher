@@ -18,7 +18,7 @@ import utils from '../editor/shared/utils';
 import Vec2 from '../util/vec2';
 
 function defaultOptions(opt) {
-	const scaleFactor = opt.scale || 100;
+	const scaleFactor = opt.scale || 40;
 
 	if (opt.rotationStep)
 		utils.setFracAngle(opt.rotationStep);
@@ -26,6 +26,8 @@ function defaultOptions(opt) {
 	const labelFontSize = Math.ceil(1.9 * (scaleFactor / 6));
 	const subFontSize = Math.ceil(0.7 * labelFontSize);
 
+	// All of these options must be set. These are the default backups that we
+	// fall back on if one of these options is not provided by the user.
 	const defaultOptions = {
 		// flags for debugging
 		showAtomIds: false,
@@ -89,7 +91,6 @@ function defaultOptions(opt) {
 		},
 		atomSelectionPlateRadius: labelFontSize * 1.2
 	};
-
 	return Object.assign({}, defaultOptions, opt);
 }
 

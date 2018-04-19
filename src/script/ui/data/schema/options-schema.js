@@ -15,7 +15,6 @@
  ***************************************************************************/
 
 import jsonschema from 'jsonschema';
-import stylesheet from '../../../stylesheet.js';
 
 const editor = {
 	resetToSelect: {
@@ -93,7 +92,7 @@ const render = {
 	aromaticCircle: {
 		title: 'Aromatic Bonds as circle',
 		type: 'boolean',
-		default: true
+		default: false
 	},
 	doubleBondWidth: {
 		title: 'Double bond width',
@@ -194,25 +193,35 @@ const miew = {
 
 export const MIEW_OPTIONS = Object.keys(miew);
 
-const optionsSchema = {
-	title: 'Settings',
-	type: 'object',
-	required: [],
-	properties: {
-		...editor,
-		...render,
-		...server,
-		...debug,
-		...miew
-	}
-};
+// Look for an imported style sheet - if one is found, apply the options.
+if(typeof styleSheet === "undefined"){
+	var optionsSchema = {
+		title: 'Settings',
+		type: 'object',
+		required: [],
+		properties: {
+			...editor,
+			...render,
+			...server,
+			...debug,
+			...miew
+		}
+	};
+}else{
+	var optionsSchema = {
+		title: 'Settings',
+		type: 'object',
+		required: [],
+		properties: styleSheet
+	};
+}
 
 export default optionsSchema;
 
 export function getDefaultOptions() {
 	return Object.keys(optionsSchema.properties).reduce((res, prop) => {
-		if("value" in stylesheet[prop]){
-			res[prop] = stylesheet[prop].value;
+		if("value" in optionsSchema.properties[prop]){
+			res[prop] = optionsSchema.properties[prop].value;
 		}else{
 			res[prop] = optionsSchema.properties[prop].default;
 		}

@@ -71,8 +71,7 @@ export default function (appInformation) {
 		options: Object.assign(initOptionsState(), { app: appInformation }),
 		templates: initTmplsState
 	};
-	// Here is where the settings are set.
-	//console.log(Object.assign(initOptionsState, { app: options }));
+
 	const middleware = [thunk];
 
 	if (process.env.NODE_ENV !== 'production')
