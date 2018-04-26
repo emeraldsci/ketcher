@@ -137,7 +137,6 @@ export default connect(
 	store => ({
 		server: store.options.app.server ? store.server : null,
 		struct: store.editor.struct(),
-		options: store.options.getServerSettings(),
 		formState: store.modal.form
 	}),
 	dispatch => ({
