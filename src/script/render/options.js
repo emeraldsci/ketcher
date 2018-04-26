@@ -18,7 +18,7 @@ import utils from '../editor/shared/utils';
 import Vec2 from '../util/vec2';
 
 function defaultOptions(opt) {
-	const scaleFactor = opt.scale || 40;
+	const scaleFactor = 100;
 
 	if (opt.rotationStep)
 		utils.setFracAngle(opt.rotationStep);
@@ -52,7 +52,7 @@ function defaultOptions(opt) {
 		aromaticCircle: true,
 
 		scale: scaleFactor,
-		zoom: 1.0,
+		zoom: 1.00,
 		offset: new Vec2(),
 
 		lineWidth: scaleFactor / 20,

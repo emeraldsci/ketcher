@@ -24,7 +24,7 @@ import util from '../util';
 import Vec2 from '../../util/vec2';
 import { Bond } from '../../chem/struct';
 
-function ReAtom(/* chem.Atom*/atom) {
+function ReAtom(atom) {
 	this.init('atom');
 
 	this.a = atom; // TODO rename a to item
@@ -81,6 +81,8 @@ ReAtom.prototype.show = function (restruct, aid, options) { // eslint-disable-li
 		var leftMargin = -label.rbb.width / 2;
 		var implh = Math.floor(this.a.implicitH);
 		var isHydrogen = label.text === 'H';
+
+		// Add the bounding box behind the label
 		restruct.addReObjectPath('data', this.visel, label.path, ps, true);
 
 		var index = null;
@@ -193,7 +195,8 @@ ReAtom.prototype.show = function (restruct, aid, options) { // eslint-disable-li
 
 function isLabelVisible(restruct, options, atom) {
 	const visibleTerminal = options.showHydrogenLabels !== 'off' &&
-		options.showHydrogenLabels !== 'Hetero';
+		(options.showHydrogenLabels !== 'Hetero' &&
+		options.showHydrogenLabels !== "Lone and Hetero");
 
 	const neighborsLength = atom.a.neighbors.length === 0 || (atom.a.neighbors.length < 2 && visibleTerminal);
 
@@ -237,6 +240,7 @@ function displayHydrogen(hydrogenLabels, atom) {
 		(hydrogenLabels === 'on') ||
 		(hydrogenLabels === 'Terminal' && atom.a.neighbors.length < 2) ||
 		(hydrogenLabels === 'Hetero' && atom.label.text.toLowerCase() !== 'c') ||
+		(hydrogenLabels === "Lone and Hetero" && (atom.a.neighbors.length === 0 || atom.label.text.toLowerCase() !== 'c')) ||
 		(hydrogenLabels === 'Terminal and Hetero' && (atom.a.neighbors.length < 2 || atom.label.text.toLowerCase() !== 'c'))
 	);
 }
@@ -269,6 +273,7 @@ function setHydrogenPos(struct, atom) {
 }
 
 function buildLabel(atom, paper, ps, options) { // eslint-disable-line max-statements
+	// Build the label
 	let label = {};
 	label.text = getLabelText(atom.a);
 
@@ -281,6 +286,7 @@ function buildLabel(atom, paper, ps, options) { // eslint-disable-line max-state
 			atom.color = elementColor[label.text] || '#000';
 	}
 
+	// Draw the label on the canvas
 	label.path = paper.text(ps.x, ps.y, label.text)
 		.attr({
 			font: options.font,
@@ -289,6 +295,7 @@ function buildLabel(atom, paper, ps, options) { // eslint-disable-line max-state
 			'font-style': atom.a.pseudo ? 'italic' : ''
 		});
 
+	// Calculate the bounding box for this label
 	label.rbb = util.relBox(label.path.getBBox());
 	draw.recenterText(label.path, label.rbb);
 
@@ -435,7 +442,7 @@ function showCharge(atom, render, rightMargin) {
 	charge.rbb = util.relBox(charge.path.getBBox());
 	draw.recenterText(charge.path, charge.rbb);
 	/* eslint-disable no-mixed-operators*/
-	pathAndRBoxTranslate(charge.path, charge.rbb,
+	 pathAndRBoxTranslate(charge.path, charge.rbb,
 		rightMargin + 0.5 * charge.rbb.width + delta,
 		-0.3 * atom.label.rbb.height);
 	/* eslint-enable no-mixed-operators*/

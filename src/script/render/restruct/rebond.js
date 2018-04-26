@@ -557,17 +557,18 @@ function bondRecalc(bond, restruct, options) {
 	var p2 = scale.obj2scaled(atom2.a.pp, render.options);
 	var hb1 = restruct.molecule.halfBonds.get(bond.b.hb1);
 	var hb2 = restruct.molecule.halfBonds.get(bond.b.hb2);
-	hb1.p = shiftBondEnd(atom1, p1, hb1.dir, 2 * options.lineWidth);
-	hb2.p = shiftBondEnd(atom2, p2, hb2.dir, 2 * options.lineWidth);
+	hb1.p = shiftBondEnd(atom1, p1, hb1.dir, 2 * options.atomMargin);
+	hb2.p = shiftBondEnd(atom2, p2, hb2.dir, 2 * options.atomMargin);
 	bond.b.center = Vec2.lc2(atom1.a.pp, 0.5, atom2.a.pp, 0.5);
 	bond.b.len = Vec2.dist(p1, p2);
-	bond.b.sb = options.lineWidth * 5;
+	bond.b.sb = options.atomMargin * 5;
 	/* eslint-disable no-mixed-operators*/
-	bond.b.sa = Math.max(bond.b.sb, bond.b.len / 2 - options.lineWidth * 2);
+	bond.b.sa = Math.max(bond.b.sb, bond.b.len / 2 - options.atomMargin * 2);
 	/* eslint-enable no-mixed-operators*/
 	bond.b.angle = Math.atan2(hb1.dir.y, hb1.dir.x) * 180 / Math.PI;
 }
 
+// This is where atom and bond overlap is calculated
 function shiftBondEnd(atom, pos0, dir, margin) {
 	var t = 0;
 	var visel = atom.visel;

@@ -15,7 +15,7 @@ var styleSheet = {
 		"minimum": 1,
 		"maximum": 90,
 		"default": 15,
-    "value": 15
+    "value": 1
 	},
   "showValenceWarnings": {
 		"title": "Show valence warnings",
@@ -25,31 +25,33 @@ var styleSheet = {
 	"atomColoring": {
 		"title": "Atom coloring",
 		"type": "boolean",
-		"default": true
+		"default": false
 	},
 	"hideChiralFlag": {
 		"title": "Do not show the Chiral flag",
 		"type": "boolean",
-		"default": false
+		"default": true
 	},
 	"font": {
 		"title": "Font",
 		"type": "string",
-		"default": "30px Arial"
+		"default": "Arial"
 	},
 	"fontsz": {
 		"title": "Font size",
 		"type": "integer",
 		"default": 13,
 		"minimum": 1,
-		"maximum": 96
+		"maximum": 96,
+    "value": 14
 	},
 	"fontszsub": {
 		"title": "Sub font size",
 		"type": "integer",
 		"default": 13,
 		"minimum": 1,
-		"maximum": 96
+		"maximum": 96,
+    "value": 10
 	},
 	"carbonExplicitly": {
 		"title": "Display carbon explicitly",
@@ -68,8 +70,8 @@ var styleSheet = {
 	},
 	"showHydrogenLabels": {
 		"title": "Show hydrogen labels",
-		"enum": ["off", "Hetero", "Terminal", "Terminal and Hetero", "on"],
-		"default": "on"
+		"enum": ["off", "Hetero", "Terminal", "Terminal and Hetero", "Lone and Hetero", "on"],
+		"default": "Lone and Hetero"
 	},
 	"aromaticCircle": {
 		"title": "Aromatic Bonds as circle",
@@ -81,14 +83,16 @@ var styleSheet = {
 		"type": "integer",
 		"default": 6,
 		"minimum": 1,
-		"maximum": 96
+		"maximum": 96,
+    "value": 5
 	},
 	"bondThickness": {
 		"title": "Bond thickness",
 		"type": "integer",
 		"default": 2,
-		"minimum": 1,
-		"maximum": 96
+		"minimum": 0,
+		"maximum": 96,
+    "value": 1.2
 	},
 	"stereoBondWidth": {
 		"title": "Stereo (Wedge) bond width",
@@ -97,6 +101,22 @@ var styleSheet = {
 		"minimum": 1,
 		"maximum": 96
 	},
+  "atomMargin": {
+    "title": "The space between an atom's label and its bond.",
+    "type": "integer",
+		"default": 10,
+		"minimum": 0,
+		"maximum": 10,
+    "value": 0
+  },
+  "atomSelectionPlateRadius":{
+    "title": "The radius of the circle that appears when the user hovers over an atom.",
+    "type": "float",
+    "default": 16,
+    "minimum": 0,
+    "maximum": 100,
+    "value": 16
+  },
   "smart-layout": {
 		"title": "Smart-layout",
 		"type": "boolean",

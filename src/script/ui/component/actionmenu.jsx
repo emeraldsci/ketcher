@@ -105,7 +105,7 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 						<li
 							id={item.id || item}
 							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`
-								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common"].includes(item.id)) ? 'menu-button' : ''}`}
+								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id)) ? 'menu-button' : ''}`}
 							onClick={ev => openHandle(ev, props.onOpen)}
 							style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
 						>

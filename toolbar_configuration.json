@@ -39,6 +39,10 @@ var toolbar_configuration = {
 		"vertical-seperator",
 		"zoom-in",
 		"zoom-out",
+		{
+				"id": "zoom-list",
+				"component": "ZoomList"
+		},
 		"vertical-seperator",
 		"layout",
 		"clean",
@@ -49,9 +53,7 @@ var toolbar_configuration = {
 		"analyse",
 		"vertical-seperator",
 		"recognize",
-		"miew",
-		"vertical-seperator",
-		"settings",
+		"miew"
 	],
 	"toolbox": [
 		{
@@ -71,7 +73,9 @@ var toolbar_configuration = {
 			"menu": [
 				"bond-single",
 				"bond-double",
-				"bond-triple"
+				"bond-triple",
+				"bond-up",
+				"bond-down"
 			]
 		},
 		"chain",
