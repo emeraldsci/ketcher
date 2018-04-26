@@ -305,9 +305,9 @@ function getBondSingleDownPath(render, hb1, hb2) {
 	var d = b.sub(a);
 	var len = d.length() + 0.2;
 	d = d.normalized();
-	var interval = 1.2 * options.lineWidth;
-	var nlines = Math.max(Math.floor((len - options.lineWidth) /
-			(options.lineWidth + interval)), 0) + 2;
+	var interval = 1.2 * options.downBondMargin;
+	var nlines = Math.max(Math.floor((len - options.downBondMargin) /
+			(options.downBondMargin + interval)), 0) + 2;
 	var step = len / (nlines - 1);
 	return draw.bondSingleDown(render.paper, hb1, d, nlines, step, options);
 }

@@ -120,9 +120,7 @@ class TemplateLib extends Component {
 					title={greekify(tmplName(tmpl, (index * COLS) + i))}
 				>
 					<RenderTmpl tmpl={tmpl} className="struct" onClick={() => this.select(tmpl)} />
-					<button className="attach-button" onClick={() => this.props.onAttach(tmpl)}>
-						Edit
-					</button>
+					
 				</div>
 			))}
 			</div>

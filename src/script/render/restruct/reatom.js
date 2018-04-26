@@ -76,7 +76,7 @@ ReAtom.prototype.show = function (restruct, aid, options) { // eslint-disable-li
 	this.color = 'black'; // reset colour
 	if (this.showLabel) {
 		var label = buildLabel(this, render.paper, ps, options);
-		var delta = 0.5 * options.lineWidth;
+		var delta = 0.5 * options.subscriptMargin;
 		var rightMargin = label.rbb.width / 2;
 		var leftMargin = -label.rbb.width / 2;
 		var implh = Math.floor(this.a.implicitH);
@@ -207,7 +207,7 @@ function isLabelVisible(restruct, options, atom) {
 		atom.a.isotope !== 0 ||
 		atom.a.radical !== 0 ||
 		atom.a.charge !== 0 ||
-		atom.a.explicitValence >= 0 ||
+		(options.showValence && atom.a.explicitValence >= 0) ||
 		atom.a.atomList !== null ||
 		atom.a.rglabel !== null ||
 		atom.a.badConn && options.showValenceWarnings ||
@@ -333,7 +333,7 @@ function getLabelText(atom) {
 function showHydroIndex(atom, render, implh, rightMargin) {
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
 	var options = render.options;
-	var delta = 0.5 * options.lineWidth;
+	var delta = 0.5 * options.subscriptMargin;
 	var hydroIndex = {};
 	hydroIndex.text = (implh + 1).toString();
 	hydroIndex.path =
@@ -362,7 +362,7 @@ function showRadical(atom, render) {
 	switch (atom.a.radical) {
 	case 1:
 		radical.path = paper.set();
-		hshift = 1.6 * options.lineWidth;
+		hshift = 1.6 * options.subscriptMargin;
 		radical.path.push(
 			draw.radicalBullet(paper, ps.add(new Vec2(-hshift, 0)), options),
 			draw.radicalBullet(paper, ps.add(new Vec2(hshift, 0)), options)
@@ -378,7 +378,7 @@ function showRadical(atom, render) {
 		break;
 	case 3:
 		radical.path = paper.set();
-		hshift = 1.6 * options.lineWidth;
+		hshift = 1.6 * options.subscriptMargin;
 		radical.path.push(
 			draw.radicalCap(paper, ps.add(new Vec2(-hshift, 0)), options),
 			draw.radicalCap(paper, ps.add(new Vec2(hshift, 0)), options)
@@ -391,7 +391,7 @@ function showRadical(atom, render) {
 	radical.rbb = util.relBox(radical.path.getBBox());
 	var vshift = -0.5 * (atom.label.rbb.height + radical.rbb.height);
 	if (atom.a.radical === 3)
-		vshift -= options.lineWidth / 2;
+		vshift -= options.subscriptMargin / 2;
 	pathAndRBoxTranslate(radical.path, radical.rbb,
 		0, vshift);
 	return radical;
@@ -400,7 +400,7 @@ function showRadical(atom, render) {
 function showIsotope(atom, render, leftMargin) {
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
 	var options = render.options;
-	var delta = 0.5 * options.lineWidth;
+	var delta = 0.5 * options.subscriptMargin;
 	var isotope = {};
 	isotope.text = atom.a.isotope.toString();
 	isotope.path = render.paper.text(ps.x, ps.y, isotope.text)
@@ -422,7 +422,7 @@ function showIsotope(atom, render, leftMargin) {
 function showCharge(atom, render, rightMargin) {
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
 	var options = render.options;
-	var delta = 0.5 * options.lineWidth;
+	var delta = 0.5 * options.subscriptMargin;
 	var charge = {};
 	charge.text = '';
 	var absCharge = Math.abs(atom.a.charge);
@@ -469,7 +469,7 @@ function showExplicitValence(atom, render, rightMargin) {
 	};
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
 	var options = render.options;
-	var delta = 0.5 * options.lineWidth;
+	var delta = 0.5 * options.subscriptMargin;
 	var valence = {};
 	valence.text = mapValence[atom.a.explicitValence];
 	if (!valence.text)
@@ -496,7 +496,7 @@ function showHydrogen(atom, render, implh, data) { // eslint-disable-line max-st
 	var hydrogenLeft = atom.hydrogenOnTheLeft;
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
 	var options = render.options;
-	var delta = 0.5 * options.lineWidth;
+	var delta = 0.5 * options.subscriptMargin;
 	var hydrogen = data.hydrogen;
 	hydrogen.text = 'H';
 	hydrogen.path = render.paper.text(ps.x, ps.y, hydrogen.text).attr({
@@ -545,7 +545,7 @@ function showHydrogen(atom, render, implh, data) { // eslint-disable-line max-st
 
 function showWarning(atom, render, leftMargin, rightMargin) {
 	var ps = scale.obj2scaled(atom.a.pp, render.options);
-	var delta = 0.5 * render.options.lineWidth;
+	var delta = 0.5 * render.options.subscriptMargin;
 	var tfx = util.tfx;
 	var warning = {};
 	var y = ps.y + (atom.label.rbb.height / 2) + delta;
