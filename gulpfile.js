@@ -164,6 +164,23 @@ gulp.task('download-nwjs', function(){
 	});
 });
 
+gulp.task('download-nwjs-mac', function(){
+	return Promise.all([
+		pathExists('./nwjs-v0.29.4-win-x64').then(
+			exists => {
+				if(!exists){
+					download("https://dl.nwjs.io/v0.30.1/nwjs-v0.30.1-osx-x64.zip")
+						.pipe(unzip())
+						.pipe(gulp.dest("./"));
+				}
+			}
+		)
+	]).then(function() {
+		return gulp.src('./nwjs-v0.29.4-win-x64/**/*')
+			.pipe(gulp.dest('./dist/'));
+	});
+});
+
 /*== dev ==*/
 gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet'], getTask('./gulp/dev-script', Object.assign({
 	entry: 'src/script',
@@ -172,6 +189,8 @@ gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configurat
 
 /*== production ==*/
 gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+
+gulp.task('build-mac', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs-mac', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
 
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',
