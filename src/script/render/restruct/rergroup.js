@@ -120,7 +120,9 @@ ReRGroup.prototype.draw = function (render, options) { // eslint-disable-line ma
 		fill: 'black'
 	};
 
-	const logic = [rLogicToString(key, this.item)];
+	// Here I took out the r group logic. We need to replace this with whatever
+	// Wolfram decides to do for the chemical spec.
+	const logic = []; //rLogicToString(key, this.item)
 
 	let shift = labelBox.height / 2 + options.lineWidth / 2;
 	for (let i = 0; i < logic.length; ++i) {
