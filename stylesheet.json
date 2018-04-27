@@ -125,6 +125,14 @@ var styleSheet = {
 		"maximum": 10,
     "value": 0
   },
+  "rGroupMargin": {
+    "title": "The space between the R group label (on the left) and the left most brack [.",
+    "type": "integer",
+		"default": 0,
+		"minimum": 0,
+		"maximum": 100,
+    "value": 0
+  },
   "atomSelectionPlateRadius": {
     "title": "The radius of the circle that appears when the user hovers over an atom.",
     "type": "float",

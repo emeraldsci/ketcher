@@ -103,17 +103,50 @@ ReRGroup.prototype.draw = function (render, options) { // eslint-disable-line ma
 	const key = render.ctab.rgroups.keyOf(this);
 	const labelSet = render.paper.set();
 	const label = render.paper
-		.text(p0.x, (p0.y + p1.y) / 2, 'R' + key + '=')
+		.text(p0.x, (p0.y + p1.y) / 2, 'R ')
 		.attr({
 			font: options.font,
 			'font-size': options.fontRLabel,
 			fill: 'black'
 		});
 
+	// Create a bounding box for the R only
 	const labelBox = util.relBox(label.getBBox());
-	label.translateAbs(-labelBox.width / 2 - options.lineWidth, 0);
+	const labelNumber = render.paper
+		.text(p0.x + labelBox.width, (p0.y + p1.y) / 2 - labelBox.height/2, key)
+		.attr({
+			font: options.font,
+			'font-size': 20,
+			fill: 'black'
+		});
 
+	// Construct a bounding box for the R and number
+	const labelAndNumberSet = render.paper.set();
+	labelAndNumberSet.push(label);
+	labelAndNumberSet.push(labelNumber);
+	const labelAndNumberBox = util.relBox(labelAndNumberSet.getBBox());
+
+	// Insert the equals sign right after the R and number
+	const labelEquals = render.paper
+		.text(p0.x + labelAndNumberBox.width + 1, (p0.y + p1.y) / 2, "=")
+		.attr({
+			font: options.font,
+			'font-size': options.fontRLabel,
+			fill: 'black'
+		});
+
+	// We've finished the R, number, and equals. Now add these paths to the set.
 	labelSet.push(label);
+	labelSet.push(labelNumber);
+	labelSet.push(labelEquals);
+
+	// Figure out our final bounding box and move our paths left. (The brackets
+	// will start at p0.x and p0.y).
+	const labelCompleteBox = util.relBox(labelSet.getBBox());
+	label.translateAbs(-labelCompleteBox.width - options.rGroupMargin, 0);
+	labelNumber.translateAbs(-labelCompleteBox.width - options.rGroupMargin, 0);
+	labelEquals.translateAbs(-labelCompleteBox.width - options.rGroupMargin, 0);
+
 	const logicStyle = {
 		font: options.font,
 		'font-size': options.fontRLogic,
@@ -124,7 +157,7 @@ ReRGroup.prototype.draw = function (render, options) { // eslint-disable-line ma
 	// Wolfram decides to do for the chemical spec.
 	const logic = []; //rLogicToString(key, this.item)
 
-	let shift = labelBox.height / 2 + options.lineWidth / 2;
+	let shift = labelCompleteBox.height / 2 + options.lineWidth / 2;
 	for (let i = 0; i < logic.length; ++i) {
 		const logicPath = render.paper.text(p0.x, (p0.y + p1.y) / 2, logic[i]).attr(logicStyle);
 		const logicBox = util.relBox(logicPath.getBBox());
@@ -135,7 +168,12 @@ ReRGroup.prototype.draw = function (render, options) { // eslint-disable-line ma
 		labelSet.push(logicPath);
 	}
 
+	// Add these to the tracked paths so that they can be cleaned up on the next
+	// re-draw.
 	ret.data.push(label);
+	ret.data.push(labelNumber);
+	ret.data.push(labelEquals);
+
 	this.labelBox = Box2Abs.fromRelBox(labelSet.getBBox()).transform(scale.scaled2obj, render.options);
 	return ret;
 };
