@@ -285,15 +285,52 @@ function buildLabel(atom, paper, ps, options) { // eslint-disable-line max-state
 		if (options.atomColoring && elem)
 			atom.color = elementColor[label.text] || '#000';
 	}
+	// Are we dealing with an R group?
+	if(atom.a.label === 'R#'){
+		// Create a set to contain both the label and the superscript
+		const labelAndNumberSet = paper.set();
 
-	// Draw the label on the canvas
-	label.path = paper.text(ps.x, ps.y, label.text)
-		.attr({
-			font: options.font,
-			'font-size': options.fontsz,
-			fill: atom.color,
-			'font-style': atom.a.pseudo ? 'italic' : ''
-		});
+		// Create the path of the "R" and the superscript
+		const rLabel = paper.text(ps.x, ps.y, "R")
+			.attr({
+				font: options.font,
+				'font-size': options.fontsz,
+				fill: atom.color,
+				'font-style': atom.a.pseudo ? 'italic' : ''
+			});
+
+		// Translate the R label to the left to make way for the superscript
+		const rLabelBox = util.relBox(rLabel.getBBox());
+		rLabel.translateAbs(-rLabelBox.width / 2, 0);
+
+		// Create the path of the superscript
+		const superscriptLabel = paper.text(ps.x, ps.y, label.text.substring(1))
+			.attr({
+				font: options.font,
+				'font-size': options.fontszsub,
+				fill: atom.color,
+				'font-style': atom.a.pseudo ? 'italic' : ''
+			});
+
+		// Translate the superscript up and to the right
+		superscriptLabel.translateAbs(rLabelBox.width / 2, -rLabelBox.height/2-options.superscriptVerticalMargin);
+
+		// Combine the paths of the R label and the superscript
+		labelAndNumberSet.push(rLabel);
+		labelAndNumberSet.push(superscriptLabel);
+
+		// Set the combined paths as the label's path
+		label.path = labelAndNumberSet;
+	}else{
+		// We are not dealing with an R group, simply draw the label
+		label.path = paper.text(ps.x, ps.y, label.text)
+			.attr({
+				font: options.font,
+				'font-size': options.fontsz,
+				fill: atom.color,
+				'font-style': atom.a.pseudo ? 'italic' : ''
+			});
+	}
 
 	// Calculate the bounding box for this label
 	label.rbb = util.relBox(label.path.getBBox());

@@ -125,6 +125,14 @@ var styleSheet = {
 		"maximum": 10,
     "value": 0
   },
+  "superscriptVerticalMargin": {
+    "title": "The vertical space between a superscript and a atom label. (ex. R^4)",
+    "type": "integer",
+		"default": 0,
+		"minimum": -10,
+		"maximum": 10,
+    "value": -1
+  },
   "rGroupMargin": {
     "title": "The space between the R group label (on the left) and the left most brack [.",
     "type": "integer",
