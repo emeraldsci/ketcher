@@ -23,11 +23,25 @@ function oneOrMore(multipl, values, item) {
 
 function ButtonList({ value, onChange, schema, disabledIds, multiple }) {
 	let className;
+
+	// If all of our buttons start with R, assume that we're displaying the
+	// button list for the R group menu.
+	let matchesRGroup = schema.items.enumNames.every(element => element.startsWith("R"));
+
+	let innerText;
+
 	return (
 		<ul>
 			{
 				schema.items.enum.map((item, i) => {
 					className = value.includes(item) ? 'selected' : '';
+					innerText = matchesRGroup?(
+						<div>
+							R<sup>{schema.items.enumNames[i].substring(1)}</sup>
+						</div>
+					):(
+						schema.items.enumNames[i]
+					);
 					return (
 						<li>
 							<button
@@ -36,7 +50,7 @@ function ButtonList({ value, onChange, schema, disabledIds, multiple }) {
 								className={className}
 								onClick={() => (onChange(oneOrMore(multiple, value, item)))}
 							>
-								{schema.items.enumNames[i]}
+								{innerText}
 							</button>
 						</li>
 					);
@@ -47,4 +61,3 @@ function ButtonList({ value, onChange, schema, disabledIds, multiple }) {
 }
 
 export default ButtonList;
-
