@@ -44,16 +44,8 @@ var toolbar_configuration = {
 				"component": "ZoomList"
 		},
 		"vertical-seperator",
-		"layout",
 		"clean",
-		"arom",
-		"dearom",
-		"cip",
-		"check",
-		"analyse",
-		"vertical-seperator",
-		"recognize",
-		"miew"
+		"recognize"
 	],
 	"toolbox": [
 		{
@@ -67,36 +59,11 @@ var toolbar_configuration = {
 		},
 		"erase",
 		"horizontal-seperator",
-		{
-			"id": "bond-common",
-			"direction": "horizontal",
-			"menu": [
-				"bond-single",
-				"bond-double",
-				"bond-triple",
-				"bond-up",
-				"bond-down"
-			]
-		},
-		{
-			"id": "bond-stereo",
-			"menu": [
-				"bond-up",
-				"bond-down",
-				"bond-updown",
-				"bond-crossed"
-			]
-		},
-		{
-			"id": "bond-query",
-			"menu": [
-				"bond-any",
-				"bond-aromatic",
-				"bond-singledouble",
-				"bond-singlearomatic",
-				"bond-doublearomatic"
-			]
-		},
+		"bond-single",
+		"bond-double",
+		"bond-triple",
+		"bond-up",
+		"bond-down",
 		"chain",
 		"horizontal-seperator",
 		{
@@ -111,30 +78,10 @@ var toolbar_configuration = {
 		"transform-rotate",
 		"transform-flip-h",
 		"transform-flip-v",
-		"sgroup",
-		"sgroup-data",
 		"horizontal-seperator",
-		{
-			"id": "reaction",
-			"direction": "horizontal",
-			"menu": [
-				"reaction-arrow",
-				"reaction-plus",
-				"reaction-automap",
-				"reaction-map",
-				"reaction-unmap"
-			]
-		},
-		"horizontal-seperator",
-		{
-			"id": "rgroup",
-			"direction": "horizontal",
-			"menu": [
-				"rgroup-label",
-				"rgroup-fragment",
-				"rgroup-attpoints"
-			]
-		}
+		"rgroup-label",
+		"rgroup-fragment",
+		"rgroup-attpoints"
 	],
 	"atoms":[
 		"H",
