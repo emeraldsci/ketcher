@@ -21,7 +21,6 @@ const unzip = require('gulp-unzip')
 const fileExists = require('file-exists');
 const runSequence = require('run-sequence');
 const pathExists = require('path-exists');
-var untar = require('gulp-untar')
 
 const iconsPath = 'src/icons/*.svg';
 
