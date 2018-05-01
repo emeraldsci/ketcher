@@ -75,6 +75,16 @@ var toolbar_configuration = {
 			]
 		},
 		"horizontal-seperator",
+		{
+			"id": "radical",
+			"direction": "horizontal",
+			"menu": [
+				"monoradical",
+				"diradical-singlet",
+				"diradical-triplet"
+			]
+		},
+		"horizontal-seperator",
 		"transform-rotate",
 		"transform-flip-h",
 		"transform-flip-v",

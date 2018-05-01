@@ -52,6 +52,18 @@ var toolRawShortcutObjects = {
 		"title": "Charge Minus",
 		"action": { tool: "charge", opts: -1 }
 	},
+	"monoradical": {
+		"title": "Monoradical",
+		"action": { tool: "radical", opts: 2 }
+	},
+	"diradical-singlet": {
+		"title": "Diradical (singlet)",
+		"action": { tool: "radical", opts: 1 }
+	},
+	"diradical-triplet": {
+		"title": "Diradical (triplet)",
+		"action": { tool: "radical", opts: 3 }
+	},
 	"transform-rotate": {
 		"title": "Rotate Tool",
 		"action": { tool: "rotate" }

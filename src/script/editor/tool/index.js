@@ -24,6 +24,7 @@ import ChainTool from './chain';
 import ChiralFlagTool from './chiral-flag';
 import TemplateTool from './template';
 import ChargeTool from './charge';
+import RadicalTool from './radical';
 import RGroupFragmentTool from './rgroupfragment';
 import APointTool from './apoint';
 import AttachTool from './attach';
@@ -45,6 +46,7 @@ export default {
 	chiralFlag: ChiralFlagTool,
 	template: TemplateTool,
 	charge: ChargeTool,
+	radical: RadicalTool,
 	rgroupfragment: RGroupFragmentTool,
 	apoint: APointTool,
 	attach: AttachTool,
