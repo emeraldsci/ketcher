@@ -138,6 +138,6 @@ ChainTool.prototype.mouseup = function () {
 
 ChainTool.prototype.cancel = ChainTool.prototype.mouseup;
 
-ChainTool.prototype.mouseleave = ChainTool.prototype.mouseup;
+//ChainTool.prototype.mouseleave = ChainTool.prototype.mouseup;
 
 export default ChainTool;
