@@ -183,7 +183,9 @@ SelectTool.prototype.mouseup = function (event) { // eslint-disable-line max-sta
 	return true;
 };
 
-SelectTool.prototype.dblclick = function (event) { // eslint-disable-line max-statements
+// Removed double click functionality. This code allows a use to edit the
+// properties of an atom or bond by double clicking using the select tool.
+/*SelectTool.prototype.dblclick = function (event) { // eslint-disable-line max-statements
 	var editor = this.editor;
 	var rnd = this.editor.render;
 	var ci = this.editor.findItem(event, ['atoms', 'bonds', 'sgroups', 'sgroupData']);
@@ -211,7 +213,7 @@ SelectTool.prototype.dblclick = function (event) { // eslint-disable-line max-st
 		sgroupDialog(this.editor, ci.id);
 	}
 	return true;
-};
+};*/
 
 SelectTool.prototype.cancel = function () {
 	if (this.dragCtx && this.dragCtx.stopTapping)
@@ -228,7 +230,7 @@ SelectTool.prototype.cancel = function () {
 
 	this.editor.hover(null);
 };
-//SelectTool.prototype.mouseleave = SelectTool.prototype.cancel;
+SelectTool.prototype.mouseleave = SelectTool.prototype.cancel;
 
 function closestToSel(ci) {
 	const res = {};
