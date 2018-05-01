@@ -172,21 +172,21 @@ function topologyMark(paper, p, mark, options) {
 }
 
 function radicalCap(paper, p, options) {
-	var s = options.lineWidth * 0.9;
+	var s = options.radicalTripletHeight;
 	var dw = s,
 		dh = 2 * s;
 	return paper.path('M{0},{1}L{2},{3}L{4},{5}',
 		tfx(p.x - dw), tfx(p.y + dh), tfx(p.x), tfx(p.y), tfx(p.x + dw), tfx(p.y + dh))
 		.attr({
 			stroke: '#000',
-			'stroke-width': options.lineWidth * 0.7,
+			'stroke-width': options.radicalTripletWidth,
 			'stroke-linecap': 'square',
 			'stroke-linejoin': 'miter'
 		});
 }
 
 function radicalBullet(paper, p, options) {
-	return paper.circle(tfx(p.x), tfx(p.y), options.lineWidth)
+	return paper.circle(tfx(p.x), tfx(p.y), options.radicalRadius)
 		.attr({
 			stroke: null,
 			fill: '#000'

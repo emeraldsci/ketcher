@@ -399,7 +399,7 @@ function showRadical(atom, render) {
 	switch (atom.a.radical) {
 	case 1:
 		radical.path = paper.set();
-		hshift = 1.6 * options.subscriptMargin;
+		hshift = 1.6 * options.radicalRadius;
 		radical.path.push(
 			draw.radicalBullet(paper, ps.add(new Vec2(-hshift, 0)), options),
 			draw.radicalBullet(paper, ps.add(new Vec2(hshift, 0)), options)
@@ -415,10 +415,10 @@ function showRadical(atom, render) {
 		break;
 	case 3:
 		radical.path = paper.set();
-		hshift = 1.6 * options.subscriptMargin;
+		hshift = 1.7 * options.radicalRadius;
 		radical.path.push(
-			draw.radicalCap(paper, ps.add(new Vec2(-hshift, 0)), options),
-			draw.radicalCap(paper, ps.add(new Vec2(hshift, 0)), options)
+			draw.radicalCap(paper, ps.add(new Vec2(-hshift, 0.1)), options),
+			draw.radicalCap(paper, ps.add(new Vec2(hshift, 0.1)), options)
 		);
 		radical.path.attr('stroke', atom.color);
 		break;
@@ -428,7 +428,7 @@ function showRadical(atom, render) {
 	radical.rbb = util.relBox(radical.path.getBBox());
 	var vshift = -0.5 * (atom.label.rbb.height + radical.rbb.height);
 	if (atom.a.radical === 3)
-		vshift -= options.subscriptMargin / 2;
+		vshift -= options.radicalTripletVerticalMargin / 2;
 	pathAndRBoxTranslate(radical.path, radical.rbb,
 		0, vshift);
 	return radical;

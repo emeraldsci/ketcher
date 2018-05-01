@@ -36,6 +36,9 @@ module.exports = function (options, cb) {
 	gulp.watch('src/style/**.less', ['style']);
 	gulp.watch('src/template/**', ['html']);
 	gulp.watch('doc/**', ['help']);
+	gulp.watch('shortcut_configuration.json', ['copy-shortcut-configuration']);
+	gulp.watch('toolbar_configuration.json', ['copy-toolbar-configuration']);
+	gulp.watch('stylesheet.json', ['copy-stylesheet']);
 	gulp.watch(['gulpfile.js', 'package.json'], function () {
 		server.close();
 		cp.spawn('gulp', process.argv.slice(2), {

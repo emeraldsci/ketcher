@@ -228,7 +228,7 @@ SelectTool.prototype.cancel = function () {
 
 	this.editor.hover(null);
 };
-SelectTool.prototype.mouseleave = SelectTool.prototype.cancel;
+//SelectTool.prototype.mouseleave = SelectTool.prototype.cancel;
 
 function closestToSel(ci) {
 	const res = {};
