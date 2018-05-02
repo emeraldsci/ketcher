@@ -189,7 +189,7 @@ gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configurat
 /*== production ==*/
 gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
 
-gulp.task('build-mac', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'download-nwjs-mac', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+gulp.task('build-mac', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
 
 gulp.task('archive', ['build'], getTask('./gulp/prod-script', {
 	expName: 'archive',

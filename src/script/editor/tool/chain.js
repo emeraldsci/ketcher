@@ -71,9 +71,12 @@ ChainTool.prototype.mousemove = function (event) { // eslint-disable-line max-st
 		const pos0 = dragCtx.item ?
 			atoms.get(dragCtx.item.id).pp :
 			dragCtx.xy0;
-
 		const pos1 = editor.render.page2obj(event);
-		const sectCount = Math.ceil(Vec2.diff(pos1, pos0).length());
+
+		// Hard-coded length of a double bond
+		const doubleBondLength = 1.1625;
+
+		const sectCount = Math.floor(Vec2.diff(pos1, pos0).length() * doubleBondLength);
 
 		const angle = event.ctrlKey ?
 			utils.calcAngle(pos0, pos1) :

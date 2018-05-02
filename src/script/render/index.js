@@ -42,6 +42,8 @@ function Render(clientArea, opt) {
 	this.options = defaultOptions(this.userOpts);
 }
 
+// Get the position in the current canvas view w.r.t. the canvas (take into
+// account the canvas when we have scroll bars)
 Render.prototype.view2obj = function (p, isRelative) {
 	var scroll = this.scrollPos();
 	if (!this.useOldZoom) {
@@ -77,6 +79,7 @@ function cumulativeOffset(el) {
 	return { left: curleft, top: curtop };
 }
 
+// Get the position in the canvas from the position in the page
 Render.prototype.page2obj = function (pagePos) {
 	var offset = cumulativeOffset(this.clientArea);
 	var pp = new Vec2(pagePos.pageX - offset.left, pagePos.pageY - offset.top);
