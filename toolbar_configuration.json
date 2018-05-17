@@ -27,30 +27,17 @@
 
 var toolbar_configuration = {
 	"mainmenu": [
-		"new",
 		"open",
-		"save",
 		"vertical-seperator",
 		"undo",
 		"redo",
-		"cut",
 		"copy",
+		"cut",
 		"paste",
 		"vertical-seperator",
-		"zoom-in",
-		"zoom-out",
 		{
-				"id": "zoom-list",
-				"component": "ZoomList"
-		},
-		"vertical-seperator",
-		"clean",
-		"recognize"
-	],
-	"toolbox": [
-		{
-			"id": "select",
-			"direction": "horizontal",
+			"id": "select-menu",
+			"direction": "vertical",
 			"menu": [
 					"select-lasso",
 					"select-rectangle",
@@ -58,37 +45,37 @@ var toolbar_configuration = {
 			]
 		},
 		"erase",
-		"horizontal-seperator",
+		"vertical-seperator",
+		"transform-rotate",
+		"transform-flip-h",
+		"transform-flip-v",
+		"vertical-seperator",
+		"clean"
+	],
+	"toolbox": [
 		"bond-single",
 		"bond-double",
 		"bond-triple",
 		"bond-up",
 		"bond-down",
 		"chain",
-		"horizontal-seperator",
 		{
 			"id": "charge",
-			"direction": "horizontal",
+			"direction": "vertical",
 			"menu": [
 				"charge-plus",
 				"charge-minus"
 			]
 		},
-		"horizontal-seperator",
 		{
 			"id": "radical",
-			"direction": "horizontal",
+			"direction": "vertical",
 			"menu": [
 				"monoradical",
 				"diradical-singlet",
 				"diradical-triplet"
 			]
 		},
-		"horizontal-seperator",
-		"transform-rotate",
-		"transform-flip-h",
-		"transform-flip-v",
-		"horizontal-seperator",
 		"rgroup-label",
 		"rgroup-fragment",
 		"rgroup-attpoints"

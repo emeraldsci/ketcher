@@ -10,6 +10,22 @@ li, ul, menu { // move to reset
 	padding: 0;
 }
 
+#vertical-seperator{
+	display: inline-block;
+	vertical-align: middle;
+	height:30px;
+	width:2px;
+	background-color: @divider-color;
+}
+
+#horizontal-seperator{
+	display: inline-block;
+	vertical-align: top;
+	height:2px;
+	width:30px;
+	background-color: @divider-color;
+}
+
 /////////////////////
 // Basic layout
 
@@ -25,7 +41,8 @@ body, main[role=application] {
 	position: relative;
 	font: @base-size FreeSans, Arimo, "Droid Sans", Helvetica,
 	                 "Helvetica Neue", Arial, sans-serif;
-	background-color: white;
+
+	background-color: #D6DCE2;
 	color: @main-color;
 
 	min-width: 640px;
@@ -42,10 +59,16 @@ body, main[role=application] {
 			opacity: 1;
 		}
 	}
+
+	background-color: white;
 }
 
 #mainmenu {
 	.toolbar(top);
+}
+#toolbox {
+	.toolbar(top);
+	top: 45px; // Add extra padding
 }
 #elements {
 	.toolbar(right);
@@ -56,9 +79,7 @@ body, main[role=application] {
 		overflow: hidden; // #300 quick fix,
 	}                     // no menu expansion
 }
-#toolbox {
-	.toolbar(left);
-}
+
 
 #meta {
 	position: absolute;
@@ -86,16 +107,35 @@ body, main[role=application] {
 		display: inline-block;
 		vertical-align: top;
 		& > svg {
-			fill: @main-color;
+			fill: @dropdown-color;
 			display: none; // dropdown
 		}
+
+		border-radius: 5px;
 	}
+
+	li li { // For buttons in general, add a margin
+		margin: 5px;
+	}
+
+	li li li { // For buttons inside menus, don't add a margin
+		margin: 0px;
+	}
+
 	button {
 		.toolbutton;
 	}
-	.selected button {
-		.highlight-invert;
+
+	li.selected {
+		background-color: @selected-button-color;
 	}
+
+	li.opened.menu-button {
+		li{
+			display:inline;
+		}
+	}
+
 	kbd {
 		display: none;
 		font: 0.8em monospace;
@@ -154,22 +194,6 @@ li.menu-button {
 	width: 40px;
 }
 
-#vertical-seperator{
-	display: inline-block;
-	vertical-align: top;
-}
-
-#horizontal-seperator{
-	display: inline-block;
-	vertical-align: top;
-}
-
-@media (max-width: 840px) {
-	#zoom-in, #zoom-out {
-		display: none;
-	}
-}
-
 @media (max-height: 850px) {
 	#rgroup {
 		.collapsed-ifnot(opened);
@@ -192,19 +216,6 @@ li.menu-button {
 	}
 }
 
-@media (max-height: 700px) {
-	li.opened {
-		.expanded-menu;
-	}
-
-	@media (max-width: 850px) {
-		li.opened {
-			.expanded-menu(small);
-		}
-	}
-
-}
-
 @media (max-height: 600px) {
 	#rgroup, #transform {
 		.collapsed-size(small);
@@ -217,18 +228,6 @@ li.menu-button {
 	}
 }
 
-@media (min-height: 650px) {
-	#horizontal-seperator{
-		.separate-item(vertical, 5px);
-	}
-}
-
-@media (min-width: 1160px) {
-	#vertical-seperator{
-		.separate-item(horizontal, 5px);
-	}
-}
-
 @media (max-height: 600px), (max-width: 1040px) {
 	.set-size(small);
 
@@ -238,13 +237,31 @@ li.menu-button {
 	#canvas {
 		.canvas-size(small);
 	}
-	#mainmenu, #template {
-		.toolbar-size(horizontal, small);
+	#mainmenu, #template, #toolbox {
+		padding-left: 15px;
+		left: 0px;
+		right: 0px;
+		height: 32px;
 	}
-	#elements, #toolbox {
+	#mainmenu{
+		top: 0px;
+		padding-top: @toolbar-top-bottom-padding;
+		padding-bottom: @toolbar-top-bottom-padding;
+		padding-left: @toolbar-left-padding;
+		border-bottom:1px solid #BDC8D2;;
+	}
+	#toolbox{
+		padding-top: @toolbar-top-bottom-padding;
+		padding-bottom: @toolbar-top-bottom-padding;
+		padding-left: @toolbar-left-padding;
+	}
+	#elements {
 		.toolbar-size(vertical, small);
 	}
-
+	#vertical-seperator{
+		margin-top:5px;
+		margin-bottom:5px;
+	}
 	[role='toolbar'] button {
 		.toolbutton-size(small);
 	}
@@ -252,28 +269,29 @@ li.menu-button {
 		.toolbutton-horizontal(small, 2);
 	}
 
+	li li { // Buttons
+		width: 2*@button-grow + @button-size;
+		height: 2*@button-grow + @button-size;
+	}
+
+	li.vertical-menu{
+		top: 30px;
+		left: 0px;
+	}
+
 	li.menu-button {
-		.collapsed-size(small);
+		width: 2*@button-grow + @button-size;
+		height: 2*@button-grow + @button-size;
 	}
 
 	li.opened {
 		.expanded-size(small);
+		.expanded-menu;
 	}
 
 	#atom button,
 	#freq-atoms button {
 		font-size: @atom-size;
-	}
-}
-
-@media (max-width: 770px) {
-	#help, #about {
-		display: none;
-	}
-	#mainmenu {
-		@set-size(@small-dim);
-		left: @toolbar-gap;
-		right: @toolbar-gap;
 	}
 }
 

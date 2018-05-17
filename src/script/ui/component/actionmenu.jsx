@@ -105,9 +105,9 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 						<li
 							id={item.id || item}
 							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`
-								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id)) ? 'menu-button' : ''}`}
+								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id)) ? 'menu-button' : ''}` + `${direction==="vertical" ? 'vertical-menu' : ''}`}
 							onClick={ev => openHandle(ev, props.onOpen)}
-							style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
+							//style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
 						>
 							{ showMenuOrButton(action, item, props.status[item], direction, props) }
 							{ item.menu && <Icon name="dropdown" /> }
@@ -122,7 +122,7 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 function toolMargin(menuName, menu, visibleTools) {
 	if (!visibleTools[menuName]) return {};
 	// now not found better way
-	const iconHeight = (window.innerHeight < 600 || window.innerWidth < 1040) ? 32 : 40;
+	const iconHeight = (window.innerHeight < 600 || window.innerWidth < 1040) ? 30 : 40;
 	let index = menu.indexOf(visibleTools[menuName]); // first level
 
 	if (index === -1) {

@@ -29,9 +29,9 @@
 
 .canvas-size(@dim) {
 	.set-size(@dim);
-	top: @canvas-padding;
-	left: @canvas-padding;
-	right: @canvas-padding;
+	top: @toolbar-size*2;
+	left: 0;
+	right: 0;
 	bottom: @canvas-padding;
 
 	.measure-log {
@@ -75,7 +75,6 @@
 	padding: 0;
 	position: relative;
 	background: inherit;
-	background-color: white;
 	//background-image: none;
 
 	//text-align: center;
@@ -93,7 +92,6 @@
 	}
 	&:hover { // &:hover:not(:active)
 		.highlight-scale(@scale:1.25);
-		.highlight-shadow(black);
 	}
 	&:active, &[disabled] {
 		.highlight-scale(none);
@@ -111,8 +109,8 @@
 
 	& > svg {
 		position: absolute; // TODO fix it
-		top: 0.1em;
-		left: 0.1em;
+		top: 0em;
+		left: 0em;
 		font-size: @icon-size;
 		width: @icon-size;
 		height: @icon-size;
@@ -133,7 +131,6 @@
 		width: @icon-size * @width-cells;
 	}
 }
-////////////////////
 
 .collapsed(@dim: inherit) when not (@dim = none) {
 	position: relative;
@@ -213,7 +210,8 @@
 .expanded-size(@dim) {
 	& > menu {
 		.set-size(@dim);
-		left: @toolbar-size + @menu-pad;
+		left: 0px;
+		top: 2*@button-grow + @button-size;
 	}
 }
 
@@ -256,11 +254,6 @@
 		.highlight-scale(none);
 		background-color: #eee;
 	}
-	.selected button {
-		//&:extend(button:active); not extended while in media
-		.highlight-scale(none);
-		.highlight-invert;
-	}
 }
 
 /////////////////////
@@ -268,7 +261,7 @@
 .separator(@orientation, @lose-pad, @rise-pad) {
 	.orientation(@orientation);
 	margin-@{main-lose}: @lose-pad;
-	border-@{main-lose}: 1px solid @border-color;
+	border-@{main-lose}: 1px solid @divider-color;
 	padding-@{main-lose}: @rise-pad - 1px; // substract 1px to assert
 	// width = lose-pad + rise-pad
 }

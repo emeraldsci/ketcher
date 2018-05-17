@@ -3,7 +3,7 @@
 @main-color: #333;
 @active-color: #1a7090;
 @hover-color: #5e5e5e;
-@border-color: #ccc;
+@border-color: #D6DCE2;
 @error-color: #ff5555;
 
 @disabled-color: #baa;
@@ -42,10 +42,10 @@
 #small-dim() {
 	@base-size: 11px;
 
-	@icon-size: 20px;
+	@icon-size: 18px;
 	@expanded-icon-size: 17px;
-	@button-size: 24px;
-	@button-grow: 4px;
+	@button-size: 18px;
+	@button-grow: 6px;
 
 	@atom-size: 16px;
 
@@ -56,10 +56,15 @@
 	@app-gap: 7px - @button-grow;
 	@toolbar-gap: 6px - @button-grow;
 
-	@toolbar-size: @button-size + 2 * @button-grow;
+	@toolbar-top-bottom-padding: 5px;
+	@toolbar-left-padding: 15px;
+	@toolbar-size: 43px;
 	@canvas-padding: @toolbar-size + @toolbar-gap + @app-gap;
 }
 
+@divider-color: #BDC8D2;
+@dropdown-color: #9AA7B4;
+@selected-button-color: #BDC8D2;
 // Periodic table coloring
 
 @atom-periodic-diatomic: #e7ff8f;
