@@ -118,10 +118,7 @@ function toolInMenu(action) {
 
 	const sel = document.getElementById(tool);
 	const dropdown = sel && hiddenAncestor(sel);
-
-	console.log(tools);
-	console.log(action);
-	console.log(tool);
+	
 	return (dropdown && dropdown.id !== '') ? { [dropdown.id]: sel.id } : null;
 }
 
