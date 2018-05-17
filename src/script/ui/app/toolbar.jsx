@@ -156,6 +156,23 @@ kvp(mainmenu).query(function (node) {
 		}
 });
 
+// Replace any strings with the actual react components
+kvp(toolbox).query(function (node) {
+		if (node.key === 'component') {
+			switch(node.value){
+				case "ZoomList":
+					this.replace(node.pointer, ZoomList);
+					break;
+				case "AtomsList":
+					this.replace(node.pointer, AtomsList);
+					break;
+				case "TemplatesList":
+					this.replace(node.pointer, TemplatesList);
+					break;
+			}
+		}
+});
+
 const template = [
 	{
 		id: 'template-common',

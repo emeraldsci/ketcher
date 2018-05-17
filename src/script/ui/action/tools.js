@@ -16,9 +16,11 @@
 
 import { bond as bondSchema } from "../data/schema/struct-schema";
 import { toBondType } from "../data/convert/structconv";
+import templates from '../data/templates';
+import templateShortcuts from './templates';
 
 // Define the behavior of each of our shortcuts
-var toolRawShortcutObjects = {
+var mainShortcutObjects={
 	"select-lasso": {
 		"title": "Lasso Selection",
 		"action": { tool: "select", opts: "lasso" }
@@ -76,7 +78,7 @@ var toolRawShortcutObjects = {
 		"title": "Vertical Flip",
 		"action": { tool: "rotate", opts: "vertical" }
 	},
-	sgroup: {
+	"sgroup": {
 		"title": "S-Group",
 		"action": { tool: "sgroup" }
 	},
@@ -113,6 +115,8 @@ var toolRawShortcutObjects = {
 		"action": { tool: "apoint" }
 	}
 };
+
+var toolRawShortcutObjects = Object.assign({},mainShortcutObjects,templateShortcuts);
 
 // Get the user defined tool shortcuts from shortcut_configuration.json
 function resolveToolShortcuts(){

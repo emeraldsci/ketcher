@@ -59,6 +59,29 @@ var toolbar_configuration = {
 		"bond-up",
 		"bond-down",
 		"chain",
+		"vertical-seperator",
+		{
+			"id": "aromatic-rings",
+			"direction": "vertical",
+			"menu": [
+				"template-0",
+				"template-1"
+			]
+		},
+		{
+			"id": "cyclic-rings",
+			"direction": "vertical",
+			"menu": [
+				"template-4",
+				"template-5",
+				"template-2",
+				"template-3",
+				"template-6",
+				"template-7"
+			]
+		},
+		"template-lib",
+		"vertical-seperator",
 		{
 			"id": "charge",
 			"direction": "vertical",
