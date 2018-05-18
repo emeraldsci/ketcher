@@ -58,7 +58,7 @@ export default templates.reduce((res, struct, i) => {
 	var templateShortcuts = resolveTemplateShortcuts();
 
 	if(templateShortcuts !== null && typeof templateShortcuts["default-template"] !== "undefined"){
-		res[`template-${i}`] = {
+		res[`${struct.name}`.toLowerCase()] = {
 			title: `${struct.name}`,
 			shortcut: templateShortcuts["default-template"],
 			action: {
@@ -67,7 +67,7 @@ export default templates.reduce((res, struct, i) => {
 			}
 		};
 	}else{
-		res[`template-${i}`] = {
+		res[`${struct.name}`.toLowerCase()] = {
 			title: `${struct.name}`,
 			action: {
 				tool: "template",

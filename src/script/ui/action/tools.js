@@ -18,6 +18,7 @@ import { bond as bondSchema } from "../data/schema/struct-schema";
 import { toBondType } from "../data/convert/structconv";
 import templates from '../data/templates';
 import templateShortcuts from './templates';
+import atomShortcuts from './atoms';
 
 // Define the behavior of each of our shortcuts
 var mainShortcutObjects={
@@ -116,7 +117,7 @@ var mainShortcutObjects={
 	}
 };
 
-var toolRawShortcutObjects = Object.assign({},mainShortcutObjects,templateShortcuts);
+var toolRawShortcutObjects = Object.assign({},Object.assign({},mainShortcutObjects,templateShortcuts),atomShortcuts);
 
 // Get the user defined tool shortcuts from shortcut_configuration.json
 function resolveToolShortcuts(){

@@ -29,8 +29,6 @@ li, ul, menu { // move to reset
 /////////////////////
 // Basic layout
 
-.set-size(large);
-
 html, body {
 	height: 100%;
 	width: 100%;
@@ -188,111 +186,93 @@ select {
 //////////////////////////
 // Adjust to custom sizes
 
+.set-size(small);
+
+body, select, form {
+	font-size: @base-size;
+}
+#canvas {
+	.canvas-size(small);
+}
+#mainmenu, #template, #toolbox {
+	padding-left: 15px;
+	left: 0px;
+	right: 0px;
+	height: 32px;
+}
+#mainmenu{
+	top: 0px;
+	padding-top: @toolbar-top-bottom-padding;
+	padding-bottom: @toolbar-top-bottom-padding;
+	padding-left: @toolbar-left-padding;
+	border-bottom:1px solid #BDC8D2;;
+}
+#toolbox{
+	padding-top: @toolbar-top-bottom-padding;
+	padding-bottom: @toolbar-top-bottom-padding;
+	padding-left: @toolbar-left-padding;
+}
+#elements {
+	.toolbar-size(vertical, small);
+}
+#vertical-seperator{
+	margin-top:5px;
+	margin-bottom:5px;
+}
+[role='toolbar'] button {
+	.toolbutton-size(small);
+}
+#chiral-flag button {
+	.toolbutton-horizontal(small, 2);
+}
+
+li li { // General buttons
+	width: 2*@button-grow + @button-size;
+	height: 2*@button-grow + @button-size;
+}
+
+li#template-lib{ //Template Library button
+	width: 2*@button-grow + @button-size + 80px;
+}
+
+li#clean{ //Clean up button
+	width: 2*@button-grow + @button-size + 80px;
+}
+
+span.button-span{
+	font-family: "Helvetica";
+	color: #31353B;
+	font-size:17px;
+	vertical-align: middle;
+}
+
+button.atom-button {
+	font-size:16px;
+	color: @atom-font-color;
+}
+
+li.vertical-menu{
+	top: 30px;
+	left: 0px;
+}
+
+li.menu-button {
+	width: 2*@button-grow + @button-size;
+	height: 2*@button-grow + @button-size;
+}
+
+li.opened {
+	.expanded-size(small);
+	.expanded-menu;
+}
+
+#atom button,
+#freq-atoms button {
+	font-size: @atom-size;
+}
+
 li.menu-button {
 	.collapsed-ifnot(opened);
-	height: 40px;
-	width: 40px;
-}
-
-@media (max-height: 850px) {
-	#rgroup {
-		.collapsed-ifnot(opened);
-	}
-	@media (max-width: 1040px) { // better way not to dublicate?
-		#rgroup {                // inherit 100%, small? overflow-x?
-			.collapsed-size(small);
-		}
-	}
-}
-
-@media (max-height: 800px) {
-	#transform {
-		.collapsed-ifnot(opened);
-	}
-	@media (max-width: 1040px) {
-		#transform {
-			.collapsed-size(small);
-		}
-	}
-}
-
-@media (max-height: 600px) {
-	#rgroup, #transform {
-		.collapsed-size(small);
-	}
-}
-
-@media (min-height: 800px) {
-	#reaction {
-		.separate-item(vertical, 5px);
-	}
-}
-
-@media (max-height: 600px), (max-width: 1040px) {
-	.set-size(small);
-
-	body, select, form {
-		font-size: @base-size;
-	}
-	#canvas {
-		.canvas-size(small);
-	}
-	#mainmenu, #template, #toolbox {
-		padding-left: 15px;
-		left: 0px;
-		right: 0px;
-		height: 32px;
-	}
-	#mainmenu{
-		top: 0px;
-		padding-top: @toolbar-top-bottom-padding;
-		padding-bottom: @toolbar-top-bottom-padding;
-		padding-left: @toolbar-left-padding;
-		border-bottom:1px solid #BDC8D2;;
-	}
-	#toolbox{
-		padding-top: @toolbar-top-bottom-padding;
-		padding-bottom: @toolbar-top-bottom-padding;
-		padding-left: @toolbar-left-padding;
-	}
-	#elements {
-		.toolbar-size(vertical, small);
-	}
-	#vertical-seperator{
-		margin-top:5px;
-		margin-bottom:5px;
-	}
-	[role='toolbar'] button {
-		.toolbutton-size(small);
-	}
-	#chiral-flag button {
-		.toolbutton-horizontal(small, 2);
-	}
-
-	li li { // Buttons
-		width: 2*@button-grow + @button-size;
-		height: 2*@button-grow + @button-size;
-	}
-
-	li.vertical-menu{
-		top: 30px;
-		left: 0px;
-	}
-
-	li.menu-button {
-		width: 2*@button-grow + @button-size;
-		height: 2*@button-grow + @button-size;
-	}
-
-	li.opened {
-		.expanded-size(small);
-		.expanded-menu;
-	}
-
-	#atom button,
-	#freq-atoms button {
-		font-size: @atom-size;
-	}
 }
 
 #template-common {

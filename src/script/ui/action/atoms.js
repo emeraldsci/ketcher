@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  ***************************************************************************/
+ import element from '../../chem/element';
 
 // Resolve the atom shortcuts from the shortcut_configuration object.
 function resolveAtomShortcuts(){
@@ -28,11 +29,13 @@ function generateAtomShortcutObjects(){
 	var atomShortcuts = resolveAtomShortcuts();
 
 	return Object.keys(atomShortcuts).reduce((res, label) => {
+		let elementName=element[element.map[label]].title;
+		
 		// If the user has specified a shortcut for this atom, add a shortcut
 		// object with the new shortcut.
 		if(atomShortcuts !== null && typeof atomShortcuts[label] !== undefined){
-			res[`atom-${label.toLowerCase()}`] = {
-				title: `Atom ${label}`,
+			res[`${label.toLowerCase()}`] = {
+				title: elementName,
 				shortcut: atomShortcuts[label],
 				action: {
 					tool: 'atom',
@@ -41,8 +44,8 @@ function generateAtomShortcutObjects(){
 			};
 			return res;
 		}else{ // Otherwise, return the shortcut object without a shortcut.
-			res[`atom-${label.toLowerCase()}`] = {
-				title: `Atom ${label}`,
+			res[`${label.toLowerCase()}`] = {
+				title: elementName,
 				action: {
 					tool: 'atom',
 					opts: { label }

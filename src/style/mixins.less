@@ -155,8 +155,8 @@
 
 .collapsed-size(@dim) {
 	.set-size(@dim);
-	height: @toolbar-size;
-	width: @toolbar-size;
+	height: 2*@button-grow + @button-size;
+	width: 2*@button-grow + @button-size;
 }
 
 .collapsed-ifnot(@classname, @dim: inherit) {

@@ -53,6 +53,14 @@ var toolbar_configuration = {
 		"clean"
 	],
 	"toolbox": [
+		"h",
+		"c",
+		"n",
+		"o",
+		"s",
+		"p",
+		"period-table",
+		"vertical-seperator",
 		"bond-single",
 		"bond-double",
 		"bond-triple",
@@ -64,20 +72,21 @@ var toolbar_configuration = {
 			"id": "aromatic-rings",
 			"direction": "vertical",
 			"menu": [
-				"template-0",
-				"template-1"
+				"benzene",
+				"cyclopentadiene"
 			]
 		},
 		{
 			"id": "cyclic-rings",
 			"direction": "vertical",
 			"menu": [
-				"template-4",
-				"template-5",
-				"template-2",
-				"template-3",
-				"template-6",
-				"template-7"
+				"cyclopropane",
+				"cyclobutane",
+				"cyclopentane",
+				"cyclohexane",
+				"cycloheptane",
+				"cyclooctane"
+
 			]
 		},
 		"template-lib",

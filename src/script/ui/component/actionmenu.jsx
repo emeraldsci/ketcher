@@ -21,6 +21,7 @@ import classNames from 'classnames';
 import action from '../action';
 import { hiddenAncestor } from '../state/toolbar';
 import Icon from './view/icon';
+import Atom from '../component/view/atom';
 
 const isMac = /Mac/.test(navigator.platform); // eslint-disable-line no-undef
 const shortcutAliasMap = {
@@ -65,6 +66,49 @@ export function showMenuOrButton(action, item, status, direction, props) { // es
 
 function ActionButton({ name, action, status = {}, onAction }) { // eslint-disable-line no-shadow
 	const shortcut = action.shortcut && shortcutStr(action.shortcut);
+	console.log(name);
+	const elementSymbol = name.charAt(0).toUpperCase() + name.slice(1);;
+	// If we are dealing with an atom (less than two letters, all lower case) -- FIX THIS HACK
+	if(name.length <= 2 && name == name.toLowerCase()){
+		return(
+			<button
+				disabled={status.disabled}
+				class = "atom-button"
+				onClick={(ev) => {
+					if (!status.selected || isMenuOpened(this.base) || action.action.tool === 'chiralFlag') {
+						onAction(action.action);
+						ev.stopPropagation();
+					}
+				}}
+				title={shortcut ? `${action.title} (${shortcut})` : action.title}
+			>
+				<span>{elementSymbol}</span>
+			</button>
+		);
+	}
+	// If we are dealing with the template or clean up button, add text after the button
+	if(name==="template-lib" || name==="clean"){
+		const textLabel=(name==="template-lib"?"Templates":"Clean Up");
+		return(
+			<div>
+			<button
+			disabled={status.disabled}
+			onClick={(ev) => {
+				if (!status.selected || isMenuOpened(this.base) || action.action.tool === 'chiralFlag') {
+					onAction(action.action);
+					ev.stopPropagation();
+				}
+			}}
+			title={shortcut ? `${action.title} (${shortcut})` : action.title}
+			style="display: inline"
+		>
+			<Icon name={name} />{action.title}<kbd>{shortcut}</kbd>
+		</button>
+		<span class="button-span">{textLabel}</span>
+		</div>
+		);
+	}
+	// Otherwise, return a regular button
 	return (
 		<button
 			disabled={status.disabled}
@@ -122,7 +166,7 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 function toolMargin(menuName, menu, visibleTools) {
 	if (!visibleTools[menuName]) return {};
 	// now not found better way
-	const iconHeight = (window.innerHeight < 600 || window.innerWidth < 1040) ? 30 : 40;
+	const iconHeight = 26;
 	let index = menu.indexOf(visibleTools[menuName]); // first level
 
 	if (index === -1) {

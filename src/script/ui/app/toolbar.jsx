@@ -246,7 +246,7 @@ function AtomsList(atoms, { active, onAction }) {
 }
 
 function TemplatesList({ active, onAction }) {
-	const shortcut = shortcutStr(action['template-0'].shortcut);
+	const shortcut = shortcutStr(action['benzene'].shortcut);
 	const isTmpl = active && active.tool === 'template';
 	return (
 		<menu>

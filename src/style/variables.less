@@ -18,7 +18,7 @@
 @common-screen-medium: 992px;
 @common-screen-large: 1200px;
 
-#large-dim() {
+#large-dim() { // This isn't used at all
 	@base-size: 14px;
 
 	@icon-size: 26px;
@@ -45,7 +45,7 @@
 	@icon-size: 18px;
 	@expanded-icon-size: 17px;
 	@button-size: 18px;
-	@button-grow: 6px;
+	@button-grow: 4px;
 
 	@atom-size: 16px;
 
@@ -56,12 +56,14 @@
 	@app-gap: 7px - @button-grow;
 	@toolbar-gap: 6px - @button-grow;
 
-	@toolbar-top-bottom-padding: 5px;
+	@toolbar-top-bottom-padding: 7px;
 	@toolbar-left-padding: 15px;
-	@toolbar-size: 43px;
+	@toolbar-height: 32px;
+	@toolbar-size: @toolbar-height+2*@toolbar-top-bottom-padding;
 	@canvas-padding: @toolbar-size + @toolbar-gap + @app-gap;
 }
 
+@atom-font-color: #31353B;
 @divider-color: #BDC8D2;
 @dropdown-color: #9AA7B4;
 @selected-button-color: #BDC8D2;
