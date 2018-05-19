@@ -200,18 +200,14 @@ body, select, form {
 	left: 0px;
 	right: 0px;
 	height: 32px;
+	padding-top: @toolbar-top-bottom-padding;
+	padding-bottom: @toolbar-top-bottom-padding;
+	padding-left: @toolbar-left-padding;
 }
+
 #mainmenu{
 	top: 0px;
-	padding-top: @toolbar-top-bottom-padding;
-	padding-bottom: @toolbar-top-bottom-padding;
-	padding-left: @toolbar-left-padding;
 	border-bottom:1px solid #BDC8D2;;
-}
-#toolbox{
-	padding-top: @toolbar-top-bottom-padding;
-	padding-bottom: @toolbar-top-bottom-padding;
-	padding-left: @toolbar-left-padding;
 }
 #elements {
 	.toolbar-size(vertical, small);
@@ -227,6 +223,53 @@ body, select, form {
 	.toolbutton-horizontal(small, 2);
 }
 
+// Cancel and Done Button styling
+#cancel, #done{
+	float: right;
+	margin-top:4px;
+	margin-right: 10px;
+	height:28px;
+	width:82px;
+}
+#cancel-button, #done-button{
+	margin:0px;
+	padding-top: 7px;
+}
+
+#done-button, #done{
+	color: #232628;
+	background-color: #35B8FF;
+}
+
+#cancel-button, #cancel {
+	color: #B2B2B2;
+	background-color: #232628;
+}
+#cancel-button, #cancel, #done-button, #done{
+	font-size: 15px;
+	text-align: center;
+	border-radius:5px;
+}
+
+//Zoom list styling
+#zoom-list{
+	margin: 0px;
+	width: 85px;
+	height: 36px;
+
+	select{
+		border: 1px solid #C3CED2;
+		border-radius: 2px;
+		height: 30px;
+		width: 89px;
+		font-family: Helvetica;
+		font-size: 15px;
+		padding: 4px 4px 4px 7px;
+		appearance: none; //Remove default arrow
+		background-color: white;
+		background: url("logo/method-draw-image.svg") 100% 50% no-repeat white; //Add custom arrow
+	}
+}
 li li { // General buttons
 	width: 2*@button-grow + @button-size;
 	height: 2*@button-grow + @button-size;

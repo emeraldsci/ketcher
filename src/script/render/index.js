@@ -29,8 +29,9 @@ DEBUG.logMethod = function () { };
 // DEBUG.logMethod = function (method) {addionalAtoms("METHOD: " + method);
 
 function Render(clientArea, opt) {
-	let renderWidth = clientArea.clientWidth - 10;
-	let renderHeight = clientArea.clientHeight - 10;
+
+	let renderWidth = clientArea.offsetWidth-5;
+	let renderHeight = clientArea.offsetHeight-5;
 	renderWidth = renderWidth > 0 ? renderWidth : 0;
 	renderHeight = renderHeight > 0 ? renderHeight : 0;
 
@@ -169,8 +170,9 @@ Render.prototype.setMolecule = function (ctab) {
 };
 
 Render.prototype.update = function (force, viewSz) { // eslint-disable-line max-statements
-	viewSz = viewSz || new Vec2(this.clientArea.clientWidth || 100,
-		this.clientArea.clientHeight || 100);
+
+	viewSz = viewSz || new Vec2(this.clientArea.offsetWidth-5 || 100,
+		this.clientArea.offsetHeight-5 || 100);
 
 	var changes = this.ctab.update(force);
 	this.ctab.setSelection(); // [MK] redraw the selection bits where necessary
@@ -178,10 +180,12 @@ Render.prototype.update = function (force, viewSz) { // eslint-disable-line max-
 		var sf = this.options.scale;
 		var bb = this.ctab.getVBoxObj().transform(scale.obj2scaled, this.options).translate(this.options.offset || new Vec2());
 
+		// The following is logic on how big to make the canvas.
+		// I didn't write it, it came with the open source code. The variable naming is atrocious. 
 		if (!this.options.autoScale) {
 			var ext = Vec2.UNIT.scaled(sf);
 			var eb = bb.sz().length() > 0 ? bb.extend(ext, ext) : bb;
-			var vb = new Box2Abs(this.scrollPos(), viewSz.scaled(1 / this.options.zoom).sub(Vec2.UNIT.scaled(20)));
+			var vb = new Box2Abs(this.scrollPos(), viewSz.scaled(1 / this.options.zoom));
 			var cb = Box2Abs.union(vb, eb);
 			if (!this.oldCb)
 				this.oldCb = new Box2Abs();
@@ -189,9 +193,10 @@ Render.prototype.update = function (force, viewSz) { // eslint-disable-line max-
 			var sz = cb.sz().floor();
 			var delta = this.oldCb.p0.sub(cb.p0).ceil();
 			this.oldBb = bb;
-			if (!this.sz || sz.x != this.sz.x || sz.y != this.sz.y)
+			if (!this.sz || sz.x != this.sz.x || sz.y != this.sz.y){
 				this.setPaperSize(sz);
-
+				console.log(sz);
+			}
 			this.options.offset = this.options.offset || new Vec2();
 			if (delta.x != 0 || delta.y != 0) {
 				this.setOffset(this.options.offset.add(delta));

@@ -181,11 +181,40 @@ kvp(toolbox).query(function (node) {
 
 const template = [
 	{
-		id: 'template-common',
-		component: TemplatesList
+	    "id": "zoom-list",
+	    "component": ZoomList
 	},
-	'template-lib'
+	{
+			"id": "done",
+			"component": DoneButton
+	},
+	{
+			"id": "cancel",
+			"component": CancelButton
+	}
 ];
+
+function CancelButton({ status, onAction }) {
+	return (
+		<div
+			id="cancel-button"
+			onClick={() => (window.close())}
+		>
+		Cancel
+		</div>
+	);
+}
+
+function DoneButton({ status, onAction }) {
+	return (
+		<div
+			id="done-button"
+			onClick={() => (window.close())}
+		>
+		Insert
+		</div>
+	);
+}
 
 const elements = [
 	{
