@@ -152,6 +152,9 @@ kvp(mainmenu).query(function (node) {
 				case "TemplatesList":
 					this.replace(node.pointer, TemplatesList);
 					break;
+				case "FrequentAtom":
+					this.replace(node.pointer, (props => AtomsList(props['freqAtoms'], props)));
+					break;
 			}
 		}
 });
@@ -168,6 +171,9 @@ kvp(toolbox).query(function (node) {
 					break;
 				case "TemplatesList":
 					this.replace(node.pointer, TemplatesList);
+					break;
+				case "FrequentAtom":
+					this.replace(node.pointer, (props => AtomsList(props['freqAtoms'], props)));
 					break;
 			}
 		}
@@ -189,7 +195,6 @@ const elements = [
 	{
 		id: 'freq-atoms',
 		component: props => AtomsList(props['freqAtoms'], props)
-
 	},
 	'period-table'
 ];
@@ -197,8 +202,7 @@ const elements = [
 const toolbar = [
 	{ id: 'mainmenu', menu: mainmenu },
 	{ id: 'toolbox', menu: toolbox },
-	{ id: 'template', menu: template },
-	{ id: 'elements', menu: elements }
+	{ id: 'template', menu: template }
 ];
 
 
@@ -220,10 +224,14 @@ function ZoomList({ status, onAction }) {
 
 function AtomsList(atoms, { active, onAction }) {
 	const isAtom = active && active.tool === 'atom';
+
+	// atoms is a list of atoms to display. We just want to display the last in the array.
+	let lastAtomArray = (atoms.length==0?[]:[atoms[atoms.length-1]]);
+
 	return (
 		<menu>
 			{
-				atoms.map((label) => {
+				lastAtomArray.map((label) => {
 					const index = element.map[label];
 					const shortcut = Object.keys(atomCuts).indexOf(label) > -1 ? shortcutStr(atomCuts[label]) : null;
 					return (

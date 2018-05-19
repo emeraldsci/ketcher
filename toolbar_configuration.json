@@ -59,6 +59,10 @@ var toolbar_configuration = {
 		"o",
 		"s",
 		"p",
+		{
+			"id": "freq-atoms",
+			"component": "FrequentAtom"
+		},
 		"period-table",
 		"vertical-seperator",
 		"bond-single",
@@ -85,8 +89,10 @@ var toolbar_configuration = {
 				"cyclopentane",
 				"cyclohexane",
 				"cycloheptane",
-				"cyclooctane"
-
+				"cyclooctane",
+				"12-crown-4",
+				"15-crown-5",
+				"18-crown-6"
 			]
 		},
 		"template-lib",

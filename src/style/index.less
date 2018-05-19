@@ -109,11 +109,11 @@ body, main[role=application] {
 			display: none; // dropdown
 		}
 
-		border-radius: 5px;
 	}
 
 	li li { // For buttons in general, add a margin
-		margin: 5px;
+		margin: 4px;
+		border: 1.5px solid #D6DCE2;
 	}
 
 	li li li { // For buttons inside menus, don't add a margin
@@ -125,12 +125,13 @@ body, main[role=application] {
 	}
 
 	li.selected {
-		background-color: @selected-button-color;
+		border: 1.5px solid #1EA7F2;
 	}
 
 	li.opened.menu-button {
 		li{
 			display:inline;
+			border: 1.5px solid white;
 		}
 	}
 
@@ -242,7 +243,7 @@ li#clean{ //Clean up button
 span.button-span{
 	font-family: "Helvetica";
 	color: #31353B;
-	font-size:17px;
+	font-size:17.5px;
 	vertical-align: middle;
 }
 
@@ -257,8 +258,8 @@ li.vertical-menu{
 }
 
 li.menu-button {
-	width: 2*@button-grow + @button-size;
-	height: 2*@button-grow + @button-size;
+	width: 2*@button-grow + @button-size + 3;
+	height: 2*@button-grow + @button-size + 3;
 }
 
 li.opened {

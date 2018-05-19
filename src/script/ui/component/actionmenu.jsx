@@ -22,6 +22,8 @@ import action from '../action';
 import { hiddenAncestor } from '../state/toolbar';
 import Icon from './view/icon';
 import Atom from '../component/view/atom';
+import isEqual from 'lodash/fp/isEqual';
+import toolsSchema from '../action/tools';
 
 const isMac = /Mac/.test(navigator.platform); // eslint-disable-line no-undef
 const shortcutAliasMap = {
@@ -66,7 +68,7 @@ export function showMenuOrButton(action, item, status, direction, props) { // es
 
 function ActionButton({ name, action, status = {}, onAction }) { // eslint-disable-line no-shadow
 	const shortcut = action.shortcut && shortcutStr(action.shortcut);
-	console.log(name);
+
 	const elementSymbol = name.charAt(0).toUpperCase() + name.slice(1);;
 	// If we are dealing with an atom (less than two letters, all lower case) -- FIX THIS HACK
 	if(name.length <= 2 && name == name.toLowerCase()){
@@ -139,6 +141,15 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 						return(<div id={item}/>);
 					}
 
+					// Are we dealing with the freq-atoms tool and are there no frequent atoms?
+					if(item && item.id==="freq-atoms" && props.freqAtoms.length===0){
+						// If so, return nothing.
+						return(null);
+					}
+
+					// Make sure that if the active tool is an atom, we set that atom button to be selected
+					let isAtomActiveTool=(toolsSchema[item]&&this.props.active&&this.props.active.tool==="atom"&&toolsSchema[item].action&&toolsSchema[item].action.opts&&this.props.active.opts.label==toolsSchema[item].action.opts.label);
+
 					// Otherwise, we recursively specify the rest of the menus.
 
 					// A menu-button is a button that expands into another menu. Manually
@@ -148,7 +159,7 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 					return(
 						<li
 							id={item.id || item}
-							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}`
+							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}` + ` ${isAtomActiveTool?'selected':''} `
 								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id)) ? 'menu-button' : ''}` + `${direction==="vertical" ? 'vertical-menu' : ''}`}
 							onClick={ev => openHandle(ev, props.onOpen)}
 							//style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
@@ -166,7 +177,7 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 function toolMargin(menuName, menu, visibleTools) {
 	if (!visibleTools[menuName]) return {};
 	// now not found better way
-	const iconHeight = 26;
+	const iconHeight = 29;
 	let index = menu.indexOf(visibleTools[menuName]); // first level
 
 	if (index === -1) {

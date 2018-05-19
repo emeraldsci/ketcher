@@ -135,7 +135,8 @@
 .collapsed(@dim: inherit) when not (@dim = none) {
 	position: relative;
 	overflow: hidden;
-	.collapsed-size(@dim);
+	width: 2*@button-grow + @button-size + 3;
+	height: 2*@button-grow + @button-size + 3;
 	.collapsed-icon;
 }
 
