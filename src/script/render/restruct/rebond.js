@@ -55,8 +55,22 @@ ReBond.prototype.makeHighlightPlate = function (render) {
 ReBond.prototype.makeSelectionPlate = function (restruct, paper, options) {
 	bondRecalc(this, restruct, options);
 	var c = scale.obj2scaled(this.b.center, options);
-	return paper.circle(c.x, c.y, 0.8 * options.atomSelectionPlateRadius)
-		.attr(options.selectionStyle);
+
+	// Get the coordinates of the two atoms in this bond
+	var firstAtomCoordinates=restruct.atoms.get(this.b.begin).a.pp;
+	var secondAtomCoordinates=restruct.atoms.get(this.b.end).a.pp;
+
+	// Get the scaled coordinates of these two atoms
+	var firstAtomCoordinatesScaled = scale.obj2scaled(firstAtomCoordinates, options);
+	var secondAtomCoordinatesScaled = scale.obj2scaled(secondAtomCoordinates, options);
+
+	// Draw a path between the first and second coordinates
+	return paper.path(["M", firstAtomCoordinatesScaled.x, firstAtomCoordinatesScaled.y, "L", secondAtomCoordinatesScaled.x, secondAtomCoordinatesScaled.y])
+		.attr(options.bondSelectionStyle);
+
+	// Old code to instead draw a circle around the bond
+	//return paper.circle(c.x, c.y, 0.8 * options.atomSelectionPlateRadius)
+	//	.attr(options.selectionStyle);
 };
 
 /**

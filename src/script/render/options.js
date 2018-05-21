@@ -73,12 +73,16 @@ function defaultOptions(opt) {
 			'stroke-linejoin': 'round'
 		},
 		/* eslint-enable quote-props */
-		selectionStyle: {
-			fill: '#7f7',
+		selectionStyle: { // selection style for not bonds
+			fill: '#A6D8F3',
 			stroke: 'none'
 		},
+		bondSelectionStyle: {
+			stroke: '#A6D8F3',
+			"stroke-width": '30px',
+		},
 		highlightStyle: {
-			stroke: '#0c0',
+			stroke: '#A6D8F3',
 			'stroke-width': 0.6 * scaleFactor / 20
 		},
 		sgroupBracketStyle: {
@@ -86,8 +90,9 @@ function defaultOptions(opt) {
 			'stroke-width': 0.5 * scaleFactor / 20
 		},
 		lassoStyle: {
+			"stroke-dasharray": "- ",
 			stroke: 'gray',
-			'stroke-width': '1px'
+			'stroke-width': 2
 		},
 		atomSelectionPlateRadius: labelFontSize * 1.2
 	};

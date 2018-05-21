@@ -214,10 +214,16 @@ function selectionRectangle(paper, p0, p1, options) {
 }
 
 function selectionPolygon(paper, r, options) {
-	var v = r[r.length - 1];
+	// Start by drawing the lasso tool at the first point ((M)ove to the first point )
+	var v = r[0];
 	var pstr = 'M' + tfx(v.x) + ',' + tfx(v.y);
+
+	// For each next point, draw a line to it
 	for (var i = 0; i < r.length; ++i)
 		pstr += 'L' + tfx(r[i].x) + ',' + tfx(r[i].y);
+
+	console.log(options.lassoStyle);
+	// Render the polygon lasso
 	return paper.path(pstr).attr(options.lassoStyle);
 }
 

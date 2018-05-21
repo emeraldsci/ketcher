@@ -48,11 +48,11 @@ var mainShortcutObjects={
 		"selected": editor => editor.struct().isChiral
 	},
 	"charge-plus": {
-		"title": "Charge Plus",
+		"title": "Increase Charge",
 		"action": { tool: "charge", opts: 1 }
 	},
 	"charge-minus": {
-		"title": "Charge Minus",
+		"title": "Decrease Charge",
 		"action": { tool: "charge", opts: -1 }
 	},
 	"monoradical": {
