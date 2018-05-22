@@ -72,20 +72,25 @@ form[role=dialog] {
 	}
 	header, footer {
 		margin: 0;
-		padding: 0.2em 0.6em;
 		background-color: #D6DCE2;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-left: 10px;
 	}
 	header {
 		font-size: 1.4em;
 		font-weight: 600;
 		line-height: 1.5;
-		border-bottom: 1px solid #ddd;
+		border-bottom: 1.1px solid #BDC8D2;
 	}
+
 	footer {
 		clear: both;
-		border-top: 1px solid #ddd;
+		border-top: 1.1px solid #BDC8D2;
 		text-align: right;
+		height: 28px;
 	}
+
 	.close {
 		.reset-button;
 		position: absolute;
@@ -109,37 +114,54 @@ form[role=dialog] {
 		position: absolute;
 		right: 0;
 		left: 0;
-		text-align: center;
-		line-height: 2.6em;
+		padding-top: 4px;
+		padding-left: 10px;
+		padding-bottom: 4px;
+		line-height: 13px;
+		margin:0px;
+
+		text-align: left;
+		font-family: Helvetica;
+		font-size: 11px;
+		color: #3E454C;
+		background-color: #D6DCE2;
+
 		input[type=search] {
-			float: right;
-			width: 660px;
+			position: relative;
+			left: 5px;
+			width: 60%;
 		}
 	}
 	.groups {
 		&:extend(.-SelectList all);
-		margin-top: 3.5em;
-		height: 27em;
-		width: 11em;
+		margin-top: 3.6em;
+		margin-left: 0px;
+		margin-bottom: 0px;
+		border-bottom-color: white;
+		height: 35.4em;
+		width: 13em;
 		float: left;
 		overflow: hidden;
 	}
 	.table {
-		margin-top: 3.5em;
+		margin-top: 3.6em;
+		margin-bottom: 0px;
+		border-bottom-color: white;
 		padding: 0;
 		float: left;
 		width: 550px;
-		height: 27em;
+		height: 35.4em;
 		overflow: auto;
 	}
 	.tr {
-		height: 120px;
+		height: 130px;
 	}
 	.td {
 		width: 33%;
 		float: left;
 		height: 100%;
 		position: relative;
+
 		&:before {
 			position: absolute;
 			z-index: 10;
@@ -147,13 +169,14 @@ form[role=dialog] {
 			top: 0;
 			padding: 0 4px;
 			border-radius: 3px;
-			font-size: 10px;
-			color: darken(@border-color, 30%);
-			background-color: white;
+			font-size: 11px;
+			color: black;
+			padding-top: 3px;
 			content: attr(title);
 		}
 		&.selected .struct {
-			background-color: lighten(@form-selected-background, 15%);
+			border: 1px solid #57C4FF;
+			background-color: #EFF1F3;
 		}
 	}
 	.attach-button {
@@ -166,14 +189,16 @@ form[role=dialog] {
 		position: absolute;
 		display: block;
 		box-sizing: border-box;
-		padding: 1em;
+		padding-bottom: .5em;
+		padding-right: 1.5em;
+		padding-left: 1em;
+		padding-top: 2em;
 		width: 98%;
 		height: 98%;
+		background-color: #F7F8F9;
 
-		border: 1px solid @border-color;
-		border-radius: 5px;
 		&:hover {
-			background: @form-hover-background;
+			background-color: #EFF1F3;
 		}
 	}
 	div.struct {
@@ -422,7 +447,7 @@ form.settings {
 }
 
 .elements-table {
-	width: 57em;
+	width: 750px;
 	.tabs {
 		&:extend(.-Tabs all);
 		.tabs-content {
@@ -432,6 +457,15 @@ form.settings {
 
 	.period-table {
     position: relative;
+		width: 671px;
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 50px;
+		margin-bottom: 50px;
+		tr.period-table-top-numbers>th{
+			padding-bottom: 50px;
+		}
+
 		table {
 			position: relative;
 		}
@@ -458,9 +492,10 @@ form.settings {
 		.ket-atom-info {
 			position: absolute;
 			padding: 0.75em 0.75em;
-			left: 18em;
-			top: 2em;
+			left: 17em;
+			top: 2.8em;
 			width: 7em;
+			zoom:1.16;
 			.highlight-shadow(black);
 			opacity: 1;
 			transition: opacity 1s, visibility 0s;
@@ -472,8 +507,8 @@ form.settings {
 
 		button {
 			font-size: 1.3em;
-			width: 2em;
-			height: 2em;
+			width: 2.2em;
+			height: 2.2em;
 			line-height: 2;
 			vertical-align: middle;
 			padding: 0.15em;
@@ -484,6 +519,7 @@ form.settings {
 			font-family: Helvetica;
 			color: #3E454C;
 			background-color: #F7F8F9;
+			border-radius: 0px;
 
 			&:after {
 				position: absolute;
@@ -496,21 +532,26 @@ form.settings {
 				color: #AAB4BE;
 			}
 
-			&:not(:hover) > span {
+			& > span {
+				position: absolute;
+				left: 6px;
+				bottom: 0px;
 				color: black;
 			}
+
 			&:hover {
 				.highlight-scale(@scale:1.25);
 				.highlight-shadow(black);
 				z-index: 60;
 				background: #fff;
 			}
+
 			&:active {
 				.highlight-scale(none);
 				.highlight-shadow(none);
 			}
 			&.selected {
-				.highlight-invert;
+				border: 1.5px solid #1EA7F2;
 			}
 		}
 

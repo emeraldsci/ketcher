@@ -120,7 +120,7 @@ class TemplateLib extends Component {
 					title={greekify(tmplName(tmpl, (index * COLS) + i))}
 				>
 					<RenderTmpl tmpl={tmpl} className="struct" onClick={() => this.select(tmpl)} />
-					
+
 				</div>
 			))}
 			</div>
@@ -141,13 +141,7 @@ class TemplateLib extends Component {
 				params={omit(['group'], props)}
 				result={() => this.result()}
 				buttons={[
-					<SaveButton
-						data={sdf.stringify(this.props.lib)}
-						filename="ketcher-tmpls.sdf"
-					>
-						Save To SDF…
-					</SaveButton>,
-					'Cancel', 'OK']}
+					'OK', 'Cancel']}
 			>
 				<label>
 					Filter:
@@ -170,7 +164,7 @@ class TemplateLib extends Component {
 				/>
 				<VisibleView
 					data={libRowsSelector({ lib, group, COLS })}
-					rowHeight={120}
+					rowHeight={130}
 					className="table"
 				>
 					{ (row, i) => this.renderRow(row, i, COLS) }

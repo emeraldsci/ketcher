@@ -60,7 +60,7 @@ class Open extends Component {
 					>
 						Open From File…
 					</OpenButton>,
-					'Cancel', 'OK'
+					'OK', 'Cancel'
 				]}
 			>
 				<textarea

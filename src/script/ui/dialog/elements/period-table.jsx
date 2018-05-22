@@ -53,7 +53,7 @@ const actinides = element.filter(el => el && el.type === 'actinide');
 
 function Header() {
 	return (
-		<tr>
+		<tr class="period-table-top-numbers">
 			{ range(0, 19).map(i => (<th>{i || ''}</th>)) }
 		</tr>
 	);
@@ -195,6 +195,8 @@ class PeriodTable extends Component {
 				className="elements-table"
 				params={this.props}
 				result={() => this.result()}
+        buttons={[
+					'OK', 'Cancel']}
 			>
 				<div className="period-table">
 					<AtomInfo el={this.state.cur} isInfo={this.state.isInfo} />
@@ -218,6 +220,7 @@ class ElementsTable extends Component { // eslint-disable-line
 	render() {
 		const { curEvents, selected, onSelect } = this.props;
 		const callbacks = { curEvents, selected, onSelect };
+
 		return (
 			<table summary="Periodic table of the chemical elements">
 				<Header />

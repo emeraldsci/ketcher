@@ -54,6 +54,7 @@ class Dialog extends Component {
 			result = () => null, valid = () => !!result(), // Hmm, dublicate.. No simple default props
 			buttons = ['Cancel', 'OK'], ...props
 		} = this.props; // see: https://git.io/v1KR6
+
 		return (
 			<form
 				role="dialog"
@@ -75,12 +76,15 @@ class Dialog extends Component {
 				<footer>{
 					buttons.map(b => (typeof b !== 'string' ?
 						b : (
-							<input
-								type="button"
-								value={b}
-								disabled={b === 'OK' && !valid()}
-								onClick={() => this.exit(b)}
-							/>
+              <li>
+							<div
+                id={b.toLowerCase()+"-dialog-button"}
+                style={(b === 'OK' && !valid())?"pointer-events:none;":""}
+                onClick={() => this.exit(b)}
+              >
+                {b}
+              </div>
+              </li>
 						)))
 				}
 				</footer>
