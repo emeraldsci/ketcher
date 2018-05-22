@@ -181,7 +181,7 @@ Render.prototype.update = function (force, viewSz) { // eslint-disable-line max-
 		var bb = this.ctab.getVBoxObj().transform(scale.obj2scaled, this.options).translate(this.options.offset || new Vec2());
 
 		// The following is logic on how big to make the canvas.
-		// I didn't write it, it came with the open source code. The variable naming is atrocious. 
+		// I didn't write it, it came with the open source code. The variable naming is atrocious.
 		if (!this.options.autoScale) {
 			var ext = Vec2.UNIT.scaled(sf);
 			var eb = bb.sz().length() > 0 ? bb.extend(ext, ext) : bb;
@@ -195,7 +195,6 @@ Render.prototype.update = function (force, viewSz) { // eslint-disable-line max-
 			this.oldBb = bb;
 			if (!this.sz || sz.x != this.sz.x || sz.y != this.sz.y){
 				this.setPaperSize(sz);
-				console.log(sz);
 			}
 			this.options.offset = this.options.offset || new Vec2();
 			if (delta.x != 0 || delta.y != 0) {

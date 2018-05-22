@@ -222,7 +222,6 @@ function selectionPolygon(paper, r, options) {
 	for (var i = 0; i < r.length; ++i)
 		pstr += 'L' + tfx(r[i].x) + ',' + tfx(r[i].y);
 
-	console.log(options.lassoStyle);
 	// Render the polygon lasso
 	return paper.path(pstr).attr(options.lassoStyle);
 }
