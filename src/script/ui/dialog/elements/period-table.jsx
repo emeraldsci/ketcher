@@ -124,8 +124,8 @@ function OutinerRow({ row, caption, selected, onSelect, curEvents }) {
 }
 
 function AtomInfo({ el, isInfo }) {
-	const numberStyle = { color: elementColor[el.label] || 'black', 'font-size': '1.2em' };
-	const elemStyle = { color: elementColor[el.label] || 'black', 'font-weight': 'bold', 'font-size': '2em' };
+	const numberStyle = { color: 'black', 'font-size': '1.2em' }; //color: elementColor[el.label] ||
+	const elemStyle = { color: 'black', 'font-weight': 'bold', 'font-size': '2em' }; //color: elementColor[el.label] ||
 	return (
 		<div className={`ket-atom-info ${isInfo ? '' : 'none'}`}>
 			<div style={numberStyle}>{element.map[el.label]}</div>
@@ -191,7 +191,7 @@ class PeriodTable extends Component {
 		const { type, value } = this.state;
 		return (
 			<Dialog
-				title="Periodic table"
+				title="Insert Element"
 				className="elements-table"
 				params={this.props}
 				result={() => this.result()}
