@@ -41,9 +41,9 @@ const GREEK_SIMBOLS = {
 	gamma: 'γ'
 };
 
-function tmplName(tmpl, i) {
+function tmplName(tmpl) {
 	console.assert(tmpl.props && tmpl.props.group, 'No group');
-	return tmpl.struct.name || `${tmpl.props.group} template ${i + 1}`;
+	return tmpl.struct.name;
 }
 
 function partition(n, array) {
@@ -79,13 +79,12 @@ function filterLib(lib, filter) {
 const libRowsSelector = createSelector(
 	props => props.lib,
 	props => props.group,
-	props => props.COLS,
 	libRows
 );
 
-function libRows(lib, group, COLS) {
+function libRows(lib, group) {
 	console.warn('Group', group);
-	return partition(COLS, lib[group]);
+	return partition(1, lib[group]);
 }
 
 function RenderTmpl({ tmpl, ...props }) {
@@ -112,28 +111,34 @@ class TemplateLib extends Component {
 		} : null;
 	}
 
-	renderRow(row, index, COLS) {
+  // This is a left
+	renderRow(row, index) {
 		return (
-			<div className="tr" key={index}>{ row.map((tmpl, i) => (
+			row.map((tmpl, i) => (
 				<div
 					className={tmpl === this.props.selected ? 'td selected' : 'td'}
-					title={greekify(tmplName(tmpl, (index * COLS) + i))}
+					title={greekify(tmplName(tmpl))}
 				>
 					<RenderTmpl tmpl={tmpl} className="struct" onClick={() => this.select(tmpl)} />
 
 				</div>
-			))}
-			</div>
+			))
 		);
 	}
 
 	render() {
-		const COLS = 3;
 		const { filter, onFilter, onChangeGroup, ...props } = this.props;
+
+    // Get the default group of the template library
 		let group = props.group;
+
+    // Filter the library to only include templates of this group
 		const lib = filterLibSelector(this.props);
 		group = lib[group] ? group : Object.keys(lib)[0];
 
+    // Partition the templates into a format that we can display them
+    const currentLib = libRowsSelector({ lib, group });
+    
 		return (
 			<Dialog
 				title="Template Library"
@@ -162,13 +167,9 @@ class TemplateLib extends Component {
 						enumNames: Object.keys(lib).map(g => greekify(g))
 					}}
 				/>
-				<VisibleView
-					data={libRowsSelector({ lib, group, COLS })}
-					rowHeight={130}
-					className="table"
-				>
-					{ (row, i) => this.renderRow(row, i, COLS) }
-				</VisibleView>
+        <div class="table">
+					{ currentLib.map((d, i) => this.renderRow(d, i)) }
+        </div>
 			</Dialog>
 		);
 	}

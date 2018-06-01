@@ -30,8 +30,8 @@ DEBUG.logMethod = function () { };
 
 function Render(clientArea, opt) {
 
-	let renderWidth = clientArea.offsetWidth-5;
-	let renderHeight = clientArea.offsetHeight-5;
+	let renderWidth = clientArea.offsetWidth-6;
+	let renderHeight = clientArea.offsetHeight-6;
 	renderWidth = renderWidth > 0 ? renderWidth : 0;
 	renderHeight = renderHeight > 0 ? renderHeight : 0;
 
