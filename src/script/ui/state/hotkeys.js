@@ -146,7 +146,9 @@ export function initClipboard(dispatch, getState) {
 
 			const struct = getState().editor.render.ctab.molecule;
 
-			if (structStr && (!struct.hasRxnArrow() || !rxnTextPlain.test(data['text/plain'])))
+			// Make sure that our struct doesn't have a reaction arow, isn't a reaction, and contains the Ketcher string (it was a molfile created in ketcher).
+			// Really we should test for a correct molfile but that's slow.
+			if (structStr && (!struct.hasRxnArrow() || !rxnTextPlain.test(data['text/plain'])) && structStr.includes("Ketcher"))
 				loadStruct(structStr, { fragment: true });
 		}
 	};
