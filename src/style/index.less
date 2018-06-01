@@ -4,6 +4,8 @@
 @import 'mixins';
 @import 'dialogs';
 
+.set-size(small);
+
 li, ul, menu { // move to reset
 	list-style: none;
 	margin: 0;
@@ -68,22 +70,22 @@ body, main[role=application] {
 }
 
 #mainmenu {
-	.toolbar(top);
+	position: absolute;
+	white-space: nowrap;
 }
 #toolbox {
-	.toolbar(top);
+	position: absolute;
 	top: 45px; // Add extra padding
+	white-space: nowrap;
 }
-#elements {
-	.toolbar(right);
-}
+
 #template {
 	.toolbar(bottom);
 	& > menu {
 		overflow: hidden; // #300 quick fix,
 	}                     // no menu expansion
+	white-space: nowrap;
 }
-
 
 #meta {
 	position: absolute;
@@ -197,14 +199,11 @@ select {
 //////////////////////////
 // Adjust to custom sizes
 
-.set-size(small);
 
 body, select, form {
 	font-size: @base-size;
 }
-#canvas {
-	.canvas-size(small);
-}
+
 #mainmenu, #template, #toolbox {
 	padding-left: 15px;
 	left: 0px;
@@ -231,6 +230,31 @@ body, select, form {
 }
 #chiral-flag button {
 	.toolbutton-horizontal(small, 2);
+}
+
+////////////////////
+// BUTTON STYLING
+////////////////////
+
+// General buttons
+li li {
+	width: 2*@button-grow + @button-size;
+	height: 2*@button-grow + @button-size;
+}
+
+li#template-lib{ //Template Library button
+	width: 2*@button-grow + @button-size + 80px;
+}
+
+li#clean{ //Clean up button
+	width: 2*@button-grow + @button-size + 80px;
+}
+
+span.button-span{
+	font-family: "Helvetica";
+	color: #31353B;
+	font-size:17.5px;
+	vertical-align: middle;
 }
 
 // Cancel and Done Button styling (bottom of the app)
@@ -262,7 +286,6 @@ body, select, form {
 	border-radius:5px;
 }
 
-//Dialog button styling
 #cancel-dialog-button,  #ok-dialog-button{
 	float: right;
 	height: 18px;
@@ -273,7 +296,7 @@ body, select, form {
 }
 
 #cancel-dialog-button{
-	margin-top: 4px;
+	margin-top: 2px;
 	margin-right: 10px;
 	text-align: center;
 	color: #B2B2B2;
@@ -281,7 +304,7 @@ body, select, form {
 }
 
 #ok-dialog-button{
-	margin-top: 4px;
+	margin-top: 2px;
 	margin-right: 10px;
 	text-align: center;
 	color: #232628;
@@ -307,31 +330,13 @@ body, select, form {
 		background: url("logo/method-draw-image.svg") 100% 50% no-repeat white; //Add custom arrow
 	}
 }
-li li { // General buttons
-	width: 2*@button-grow + @button-size;
-	height: 2*@button-grow + @button-size;
-}
-
-li#template-lib{ //Template Library button
-	width: 2*@button-grow + @button-size + 80px;
-}
-
-li#clean{ //Clean up button
-	width: 2*@button-grow + @button-size + 80px;
-}
-
-span.button-span{
-	font-family: "Helvetica";
-	color: #31353B;
-	font-size:17.5px;
-	vertical-align: middle;
-}
 
 // Custom case for frequent atoms since it has another li inside of it
 li#freq-atoms{
 	border: 0px;
 }
 
+// Atom button styling
 button.atom-button {
 	font-size:16px;
 	color: @atom-font-color;
@@ -352,11 +357,17 @@ li.opened {
 	.expanded-menu;
 }
 
-#atom button,
-#freq-atoms button {
+#atom button, #freq-atoms button {
 	font-size: @atom-size;
 }
 
+@media (max-width: 925px) {
+	#h, #c, #n, #o, #s, #p {
+		display: none;
+	}
+}
+
+// Menu button styling
 li.menu-button {
 	.collapsed-ifnot(opened);
 }
@@ -365,26 +376,7 @@ li.menu-button {
 	.separate-item(horizontal, 15px);
 }
 
+// Do not display our canvas overlay by default
 .cellar {
 	display: none;
-}
-
-.warning {
-	color: @error-color;
-	&:before {
-		content: '⚠ ';
-	}
-}
-
-.arrange-icons-new(analyse check cip clean generic-groups layout miew
-				   reaction-arrow reaction-automap reaction-map
-				   reaction-plus reaction-unmap recognize rgroup-attpoints
-				   rgroup-fragment rgroup-label template-lib);
-
-.arrange-icons-new(@names, @i: 1) when (@i <= length(@names)) {
-	@item: extract(@names, @i);
-	#@{item} button:before {
-		padding: 0.2em 0 0 0.2em;
-	}
-	.arrange-icons-new(@names, (@i + 1));
 }

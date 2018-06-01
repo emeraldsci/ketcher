@@ -33,6 +33,8 @@
 	}
 
 	form[role=dialog] {
+		width:100%;
+		height:100%;
 		outline: 0;
 		display: inline-block;
 		position: relative;
@@ -75,20 +77,25 @@ form[role=dialog] {
 		background-color: #D6DCE2;
 		padding-top: 5px;
 		padding-bottom: 5px;
-		padding-left: 10px;
 	}
 	header {
 		font-size: 1.4em;
 		font-weight: 600;
 		line-height: 1.5;
 		border-bottom: 1.1px solid #BDC8D2;
+		padding-left: 10px;
 	}
 
 	footer {
+		position: absolute;
+		width:100%;
+		height: 28px;
+
+		bottom: 0px;
 		clear: both;
 		border-top: 1.1px solid #BDC8D2;
 		text-align: right;
-		height: 28px;
+
 	}
 
 	.close {
@@ -129,28 +136,30 @@ form[role=dialog] {
 		input[type=search] {
 			position: relative;
 			left: 5px;
-			width: 60%;
+			width: 80%;
 		}
 	}
 	.groups {
 		&:extend(.-SelectList all);
-		margin-top: 3.6em;
-		margin-left: 0px;
-		margin-bottom: 0px;
+		height: 100%;
+		margin: 0;
+		position: absolute;
+		top: 72.5px;
+		bottom: 39.09px;
 		border-bottom-color: white;
-		height: 35.4em;
 		width: 13em;
 		float: left;
 		overflow: hidden;
 	}
 	.table {
-		margin-top: 3.6em;
-		margin-bottom: 0px;
+		position: absolute;
+		top: 72.5px;
+		left: 13em; // The width of the groups menu on the left
+		bottom: 39.09px;
+		right: 0px;
 		border-bottom-color: white;
 		padding: 0;
 		float: left;
-		width: 550px;
-		height: 35.4em;
 		overflow: auto;
 	}
 	.tr {
@@ -456,12 +465,14 @@ form.settings {
 	}
 
 	.period-table {
-    position: relative;
+		// Horizontally and vertically center the periodic table
+    position: absolute;
 		width: 671px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-left: -335.5px; // Half of the width
+		margin-top: -190.5px; // Half of the height
+		top: 50%;
+		left: 50%;
+
 		tr.period-table-top-numbers>th{
 			padding-bottom: 50px;
 		}

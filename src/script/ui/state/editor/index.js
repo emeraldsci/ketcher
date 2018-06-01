@@ -94,7 +94,7 @@ export default function initEditor(dispatch, getState) {
 				// Escape out right now, when Wolfram finishes the chemical spec,
 				// we can fill out the r group logic dialog.
 				return true;
-				
+
 				const rgroupLabels = Array.from(struct.rgroups.keys());
 				if (!rgroup.range) rgroup.range = '>0';
 
