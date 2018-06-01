@@ -89,11 +89,11 @@ form[role=dialog] {
 	footer {
 		position: absolute;
 		width:100%;
-		height: 28px;
-
+		height: 39px;
+		padding-top: 5px;
+		padding-bottom: 3px;
 		bottom: 0px;
 		clear: both;
-		border-top: 1.1px solid #BDC8D2;
 		text-align: right;
 
 	}
@@ -144,7 +144,7 @@ form[role=dialog] {
 		height: 100%;
 		margin: 0;
 		position: absolute;
-		top: 72.5px;
+		top: 72px;
 		bottom: 39.09px;
 		border-bottom-color: white;
 		width: 13em;
@@ -153,7 +153,7 @@ form[role=dialog] {
 	}
 	.table {
 		position: absolute;
-		top: 72.5px;
+		top: 72px;
 		left: 13em; // The width of the groups menu on the left
 		bottom: 39.09px;
 		right: 0px;
@@ -523,15 +523,15 @@ form.settings {
 			height: 2.2em;
 			line-height: 2;
 			vertical-align: middle;
-			padding: 0.15em;
+			padding: 0.3em;
 			margin: 1px;
 			border: 0;
 			display: block;
 			position: relative;
 			font-family: Helvetica;
 			color: #3E454C;
-			background-color: #F7F8F9;
-			border-radius: 0px;
+			background-color: rgba(214,220,226,0.2);
+			border-radius: 2px;
 
 			&:after {
 				position: absolute;
@@ -552,18 +552,25 @@ form.settings {
 			}
 
 			&:hover {
-				.highlight-scale(@scale:1.25);
-				.highlight-shadow(black);
 				z-index: 60;
-				background: #fff;
+				background: rgba(214,220,226,0.4);
 			}
 
-			&:active {
-				.highlight-scale(none);
-				.highlight-shadow(none);
-			}
 			&.selected {
-				border: 1.5px solid #1EA7F2;
+				border: 1px solid #57C4FF;
+				background: rgba(214,220,226,0.4);
+
+				&:after {
+					position: absolute;
+					top: 0.2em;
+					right: 0.2em;
+				}
+
+				& > span {
+					position: absolute;
+					left: 5px;
+					bottom: -1px;
+				}
 			}
 		}
 

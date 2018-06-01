@@ -116,7 +116,11 @@ body, main[role=application] {
 			fill: @dropdown-color;
 			display: none; // dropdown
 		}
-
+		li{
+			&:hover {
+				background-color: #E7EBEF;
+			}
+		}
 	}
 
 	li li { // For buttons in general, add a margin
@@ -261,9 +265,17 @@ span.button-span{
 #cancel, #done{
 	float: right;
 	margin-top:4px;
-	margin-right: 10px;
+	margin-left: 0px;
 	height:28px;
 	width:82px;
+}
+
+#done{
+	margin-right: 10px;
+}
+
+#cancel{
+	margin-right: 5px;
 }
 
 #cancel-button, #done-button{
@@ -288,24 +300,25 @@ span.button-span{
 
 #cancel-dialog-button,  #ok-dialog-button{
 	float: right;
-	height: 18px;
-	width: 82px;
+	font-size: 15px;
+	text-align: center;
+	height:22px;
+	width:81px;
+	margin-top: 5px;
 	padding-top: 5px;
 	border-radius: 3px;
 	cursor: default;
 }
 
 #cancel-dialog-button{
-	margin-top: 2px;
-	margin-right: 10px;
+	margin-right: 9px;
 	text-align: center;
 	color: #B2B2B2;
 	background-color: #232628;
 }
 
 #ok-dialog-button{
-	margin-top: 2px;
-	margin-right: 10px;
+	margin-right: 13px;
 	text-align: center;
 	color: #232628;
   background-color: #35B8FF;
