@@ -71,12 +71,10 @@ body, main[role=application] {
 
 #mainmenu {
 	position: absolute;
-	white-space: nowrap;
 }
 #toolbox {
 	position: absolute;
 	top: 45px; // Add extra padding
-	white-space: nowrap;
 }
 
 #template {
@@ -84,7 +82,6 @@ body, main[role=application] {
 	& > menu {
 		overflow: hidden; // #300 quick fix,
 	}                     // no menu expansion
-	white-space: nowrap;
 }
 
 #meta {
@@ -116,7 +113,10 @@ body, main[role=application] {
 			fill: @dropdown-color;
 			display: none; // dropdown
 		}
-		li{
+		li.disabled{
+			opacity: 0.8;
+		}
+		li:not(.disabled){
 			&:hover {
 				background-color: #E7EBEF;
 			}
@@ -140,6 +140,11 @@ body, main[role=application] {
 		border: 1.5px solid #1EA7F2;
 	}
 
+	// By default, hide the menu icon.
+	#hidden-menu-icon{
+		visibility: hidden;
+	}
+
 	li.opened.menu-button {
 		li{
 			display:inline;
@@ -147,14 +152,18 @@ body, main[role=application] {
 		}
 
 		menu {
-			background-color: @border-color
+			background-color: @border-color;
+			box-shadow: 0px 2px #7F7F7F;
 		}
-	}
 
-	kbd {
-		display: none;
-		font: 0.8em monospace;
-		color: @border-color;
+		// When the menu-button is open, show the menu icon.
+		#hidden-menu-icon{
+			position: relative;
+			padding: 5px;
+			width: 18px;
+			height: 18px;
+			visibility: visible;
+		}
 	}
 }
 
@@ -254,10 +263,15 @@ li#clean{ //Clean up button
 	width: 2*@button-grow + @button-size + 80px;
 }
 
+button.open-button{
+	margin-top: 7px;
+}
+
 span.button-span{
 	font-family: "Helvetica";
 	color: #31353B;
-	font-size:17.5px;
+	font-size:15px;
+	padding-bottom: 4px;
 	vertical-align: middle;
 }
 
@@ -370,6 +384,9 @@ li.opened {
 	.expanded-menu;
 }
 
+li.disabled{
+	cursor: not-allowed;
+}
 #atom button, #freq-atoms button {
 	font-size: @atom-size;
 }

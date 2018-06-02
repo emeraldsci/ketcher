@@ -127,6 +127,29 @@ function ActionButton({ name, action, status = {}, onAction }) { // eslint-disab
 	);
 }
 
+function containsActiveTool(props,item){
+	// Our item has to contain a menu key and the tool schema has to be defined
+	if(!(item.menu && toolsSchema))
+		return false;
+
+	// Get the active tool
+	let activeTool=props.active;
+
+	// For each of our tools in our menu, check to see if it is equal to the active button
+	for(var i = 0; i < item.menu.length; i++){
+		// Get the schema of this tools
+		let currentTool=toolsSchema[item.menu[i]].action;
+
+		// If it is equal to the active tool, return true
+		if(isEqual(activeTool, currentTool)){
+			return item.menu[i];
+		}
+	}
+
+	// We were unable to find a match. Return false.
+	return false;
+};
+
 function ActionMenu({ name, menu, className, direction, role, ...props }) {
 	return (
 		<menu
@@ -156,16 +179,25 @@ function ActionMenu({ name, menu, className, direction, role, ...props }) {
 					// check that the main toolbars (mainmenu, toolbox, template, elements)
 					// are not specified this way. The atoms and templates should also not
 					// be specified this way.
+
+					// If we have an item.id, we're dealing with a menu. If that id is not one of these super-menus, we're dealing with a menu-button.
+					let isMenuButton = !["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id);
+
+					// We should include an svg of the current button if the current selected tool is in this menu-button. This current button will show up
+					// when we expand the menu.
+
+					let activeTool = (isMenuButton&&containsActiveTool(props,item));
+
 					return(
 						<li
 							id={item.id || item}
 							className={classNames(props.status[item]) + ` ${item.id === props.opened ? 'opened' : ''}` + ` ${isAtomActiveTool?'selected':''} `
-								+ ` ${(typeof item.id !== "undefined") && (!["mainmenu","toolbox","template","elements","atom","freq-atoms","template-common","zoom-list"].includes(item.id)) ? 'menu-button' : ''}` + `${direction==="vertical" ? 'vertical-menu' : ''}`}
+								+ ` ${(typeof item.id !== "undefined") && (isMenuButton) ? 'menu-button' : ''}` + `${direction==="vertical" ? 'vertical-menu' : ''}`}
 							onClick={ev => openHandle(ev, props.onOpen)}
-							//style={`${direction==="vertical" ? 'display:inline; margin: 1px;' : ''}`}
 						>
 							{ showMenuOrButton(action, item, props.status[item], direction, props) }
 							{ item.menu && <Icon name="dropdown" /> }
+							{ activeTool && <Icon name={activeTool} id="hidden-menu-icon" />}
 						</li>
 					)
 				})

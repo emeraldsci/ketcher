@@ -32,13 +32,15 @@ function RGroup({ disabledIds, values, formState, type, ...props }) {
 			result={() => formState.result}
 		>
 			<Form schema={rgroupSchema} init={{ values }} {...formState} >
-				<Field
-					name="values"
-					multiple={type === 'atom'}
-					labelPos={false}
-					component={ButtonList}
-					disabledIds={disabledIds}
-				/>
+				<div class="r-group-holder">
+					<Field
+						name="values"
+						multiple={type === 'atom'}
+						labelPos={false}
+						component={ButtonList}
+						disabledIds={disabledIds}
+					/>
+				</div>
 			</Form>
 		</Dialog>
 	);

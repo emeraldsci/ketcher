@@ -257,6 +257,14 @@ form.attach-points {
 	form {
 		width: 17em;
 		text-align: right;
+		position: relative;
+
+		top: 50%;
+		right: 0;
+		left: 0;
+		margin:auto;
+		margin-top: -71.5px;
+
 		label {
 			margin: @input-height / 3;
 			display: inline-block;
@@ -420,38 +428,71 @@ form.settings {
 
 .rgroup {
 	ul {
-		width: 25.6em;
+		width: 28.6em;
 		padding: 0.5em;
 	}
 	li {
 		display: inline-block;
-		margin: 0.2em 0.1em;
+		margin: 0.2em 0.2em;
 	}
+	form{
+		top: 34.09px;
+		position: absolute;
+		bottom: 47px;
+		left: 0;
+		right: 0;
+
+		div.r-group-holder{
+			top: 50%;
+			position: absolute;
+			margin-top: -77.155px;
+			left: 50%;
+			margin-left: -162.795px;
+		}
+	}
+
 	form button {
 		font-size: 1.3em;
-		width: 2.3em;
-		height: 2em;
+		width: 2.2em;
+    height: 2.2em;
 		line-height: 1;
 		vertical-align: middle;
-		padding: 0.15em;
-		background: inherit;
+		padding: 0.3em;
+		border-radius: 0px;
+		font-family: helvetica;
+		background-color: rgba(214,220,226,.2);
+		border: none;
+
+		div{
+			position: relative;
+    	left: -5px;
+    	bottom: -5px;
+			font-size: 14px;
+		}
+		sup{
+			position:absolute;
+			top: -7px;
+			right: -6px;
+			font-size: .70em;
+			color: #aab4be;
+		}
 		&:first-letter {
 			font-weight: 600;
 			color: lighten(@main-color, 20%);
 		}
-		&:hover {
-			.highlight-scale(@scale:1);
-			.highlight-shadow(black);
+
+		&:hover{
+			z-index: 60;
+    	background: rgba(214,220,226,.4);
 		}
+
 		&:active {
 			.highlight-scale(none);
 			.highlight-shadow(none);
 		}
 		&.selected {
-			.highlight-invert;
-			&:first-letter {
-				color: darken(white, 30%);
-			}
+			border: 1px solid #57c4ff;
+    	background: rgba(214,220,226,.4);
 		}
 	}
 }
@@ -745,18 +786,32 @@ form.settings {
 	// max-height: 70%;
 	label {
 		display: block;
+		position: absolute;
+		bottom: 47px;
 		width: 22.5em;
 		input {
 			margin-bottom: 0.1em;
 		}
 	}
 	textarea {
-		min-width: 32em;
-		min-height: 23em;
 		overflow: auto;
 		white-space: pre;
-		//make it resizable
-		resize: both;
+		resize: none;
+	}
+	div.paste-text-div{
+		position: absolute;
+    bottom: 75px;
+    top: 34.09px;
+    left: 0;
+    right: 5px;
+	}
+	textarea.paste-text{
+		width:100%;
+		height:100%;
+		top:0;
+		bottom:0;
+		left:0;
+		right:0;
 	}
 }
 

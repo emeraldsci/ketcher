@@ -63,10 +63,13 @@ class Open extends Component {
 					'OK', 'Cancel'
 				]}
 			>
+			<div class="paste-text-div">
 				<textarea
+					class="paste-text"
 					value={structStr}
 					onInput={ev => this.changeStructStr(ev.target.value)}
 				/>
+			</div>
 				<label>
 					<input
 						type="checkbox"

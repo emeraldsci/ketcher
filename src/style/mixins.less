@@ -106,6 +106,8 @@
 		position: absolute; // TODO fix it
 		top: 0em;
 		left: 0em;
+		bottom: 0em;
+		right: 0em;
 		font-size: @icon-size;
 		width: @icon-size;
 		height: @icon-size;
@@ -198,8 +200,6 @@
 
 		background: white;
 		border: 1px solid @border-color;
-		border-radius: 5px;
-		box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
 	}
 }
 
@@ -224,12 +224,17 @@
 		justify-content: space-between;
 		width: 100%;
 		margin: 1px 0;
-		padding: 0.3em 0.3em 0.3em 2em;
+		padding: 0.3em 2.8em 0.3em 2.2em;
 		height: 1.7em;
 
 		font-size: @menu-font-size;
 		//line-height: 18px;
 		text-align: left;
+		color: #31353B;
+		font-family: Helvetica;
+		font-size: 13px;
+		line-height: 13px;
+
 		&:before, &:after {
 			padding-right: 0.4em;
 			font-size: @menu-icon-size;
@@ -238,12 +243,22 @@
 			.highlight-invert(disabled); // refactor
 		}
 		kbd {
-			margin: 2.5px 0 0 10px;
+			position: absolute;
+			font-size: 13px;
+			color: #9CA6B0;
+			font-family: Helvetica;
+			top:0px;
+			bottom:0px;
+			right: 0px;
+			padding-top: 4px;
+			margin-right: 3px;
 			display: inline-block;
 		}
 		& > svg {
 			width: @expanded-icon-size;
 			height: @expanded-icon-size;
+			padding-left: 2px;
+			padding-top: 2px;
 		}
 	}
 	button:hover {
