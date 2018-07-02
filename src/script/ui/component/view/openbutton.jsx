@@ -17,7 +17,7 @@
 import { h, Component } from 'preact';
 
 class OpenButton extends Component {
-	constructor(props) {
+  constructor(props) {
 		super(props);
 	}
 
@@ -26,21 +26,26 @@ class OpenButton extends Component {
 		const noop = () => null;
 		const { onLoad = noop, onError = noop } = this.props;
 
-		if (this.state.opener && files.length)
-			this.state.opener(files[0]).then(onLoad, onError);
-		else if (files.length)
-			onLoad(files[0]);
+
+
+		//if (this.state.opener && files.length)
+		//	this.state.opener(files[0]).then(onLoad, onError);
+		//else if (files.length)
+		//	onLoad(files[0]);
+    if(files.length)
+      throughFileReader(files[0]).then(onLoad, onError);
+
 		ev.target.value = null;
 		ev.preventDefault();
 	}
 
 	render() {
 		const { children, type, server, className = 'open-button', ...props } = this.props;
-    
+
 		return (
 			<button onClick={() => this.btn.click()} className={className} {...props}>
 				<input
-					onChange={ev => this.open(ev)}
+					onChange={ev =>  this.open(ev)}
 					accept={type}
 					type="file"
 					ref={(el) => { this.btn = el; }}
@@ -90,6 +95,8 @@ function throughFileReader(file) {
 		};
 
 		rd.readAsText(file, 'UTF-8');
+
+    rd.result
 	});
 }
 

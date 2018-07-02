@@ -31,6 +31,7 @@ import templates from '../data/templates';
 import { zoomList } from '../../ui/action/zoom';
 
 import kvp from 'key-value-pointer';
+import molfile from '../../chem/molfile';
 
 // The variable toolbar_configuration is imported if a toolbar_configuration.json
 // file exists in the main directory. If the correct settings are not found in
@@ -205,11 +206,18 @@ function CancelButton({ status, onAction }) {
 	);
 }
 
+// Return the MOL string  of the molecules draw in the edit
+function writeMolfile() {
+  console.log(molfile.stringify(ketcher.editor.struct(),
+		{ ignoreErrors: true })
+  );
+}
+
 function DoneButton({ status, onAction }) {
 	return (
 		<div
 			id="done-button"
-			onClick={() => (window.close())}
+			onClick={() => {writeMolfile(); window.close();}}
 		>
 		Insert
 		</div>
