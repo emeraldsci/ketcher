@@ -213,18 +213,21 @@ function download_nwjs(platform){
 		return Promise.all([
 			new Promise(function(resolve,reject){
 				// Check if the path exists. If it doesn't download NWJS
-				pathExists('./nwjs-v0.31.5-'+platform).then(
+				pathExists('./nwjs-v0.32.0-'+platform).then(
 					function(exists){
 						if(!exists){
-							var file = fs.createWriteStream("nwjs-v0.31.5-"+platform+".zip");
-							// Download NWJS
-							http.get("https://dl.nwjs.io/v0.31.5/nwjs-v0.31.5-"+platform+".zip", function(response) {
+							// Linux NWJS distributions are .tar.gz not .zip
+							var nwjs_name=platform==="linux-ia32"||platform==="linux-x64"?"nwjs-v0.32.0-"+platform+".tar.gz":"nwjs-v0.32.0-"+platform+".zip";
+
+							// Download NWJS v0.32
+							http.get("https://dl.nwjs.io/v0.32.0/"+nwjs_name, function(response) {
 								// Pipe the download into a file
+								var file = fs.createWriteStream(nwjs_name);
 								var stream=response.pipe(file);
 								stream.on('finish', function(){
 
-									decompress("nwjs-v0.31.5-"+platform+".zip", '.').then(files => {
-										fs.copySync("./nwjs-v0.31.5-"+platform, './dist/')
+									decompress(nwjs_name, '.').then(files => {
+										fs.copySync("./nwjs-v0.32.0-"+platform, './dist/')
 									});
 								})
 							})
@@ -232,7 +235,7 @@ function download_nwjs(platform){
 						}else{
 							// The file is already downloaded and unzipped. Just need to copy it into dist
 							// Copy the contents of the unzipped folder into ./dist
-							fs.copySync("./nwjs-v0.31.5-"+platform, './dist/')
+							fs.copySync("./nwjs-v0.32.0-"+platform, './dist/')
 						}
 					}
 				)
@@ -255,8 +258,12 @@ gulp.task('serve', ['clean', 'style', 'html', 'assets', 'copy-toolbar-configurat
 
 /*== production ==*/
 gulp.task('build', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
-gulp.task('build-win-ia32', ['clean', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
-gulp.task('build-win-x64', ['clean', 'style', 'html', 'code', 'assets', 'nwjs-win-x64', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+
+gulp.task('build-win-ia32', ['clean', 'nwjs-win-ia32', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+gulp.task('build-win-x64', ['clean', 'nwjs-win-x64', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+
+gulp.task('build-linux-ia32', ['clean', 'nwjs-linux-ia32', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
+gulp.task('build-linux-x64', ['clean', 'nwjs-linux-x64', 'style', 'html', 'code', 'assets', 'copy-package-info', 'copy-toolbar-configuration', 'copy-shortcut-configuration', 'copy-stylesheet']);
 
 gulp.task('build-mac', ['clean', 'nwjs-osx-x64', 'style-mac', 'html-mac', 'code-mac', 'assets-mac', 'copy-package-info-mac', 'copy-toolbar-configuration-mac', 'copy-shortcut-configuration-mac', 'copy-stylesheet-mac']);
 
