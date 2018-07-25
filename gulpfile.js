@@ -19,9 +19,6 @@ const pkg = require('./package.json');
 const request = require('request');
 const http = require('https');
 const fs = require('fs-extra');
-const unzip = require('unzip');
-const fileExists = require('file-exists');
-const runSequence = require('run-sequence');
 const pathExists = require('path-exists');
 const decompress = require('decompress');
 

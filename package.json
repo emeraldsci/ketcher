@@ -106,7 +106,6 @@
     "babel-polyfill": "6.23.0",
     "classnames": "2.2.5",
     "decompress": "^4.2.0",
-    "file-exists": "^5.0.1",
     "filesaver.js": "0.2.0",
     "font-face-observer": "1.0.0",
     "fs-extra": "^7.0.0",
@@ -128,9 +127,7 @@
     "redux-thunk": "2.2.0",
     "reselect": "3.0.1",
     "resemblejs": "2.2.3",
-    "run-sequence": "^2.2.1",
     "subscription": "3.0.0",
-    "unzip": "^0.1.11",
     "w3c-keyname": "1.1.8",
     "whatwg-fetch": "2.0.3"
   }
