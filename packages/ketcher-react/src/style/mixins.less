@@ -14,11 +14,11 @@
 /////////////////////
 
 .canvas(@dim: inherit) {
-  position: absolute;
-  border: @border-color 1px solid;
-  border-radius: 5px;
+  // position: absolute;
+  // border: @border-color 1px solid;
+  // border-radius: 5px;
   overflow: auto;
-  .canvas-size(@dim);
+  //.canvas-size(@dim);
   // svg {
   //		display: block;
   // }
@@ -75,7 +75,7 @@
   padding: 0;
   position: relative;
   background: inherit;
-  background-color: white;
+  background-color: @ecl-menu;
   //background-image: none;
 
   //text-align: center;
@@ -163,7 +163,7 @@
 .collapsed-size(@dim) {
   .set-size(@dim);
   height: @toolbar-size;
-  width: 100%; //@toolbar-size;
+   //width: 100%; //@toolbar-size;
 }
 
 .collapsed-ifnot(@classname, @dim: inherit) {

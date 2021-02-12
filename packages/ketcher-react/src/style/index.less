@@ -49,8 +49,19 @@ main[role='application'] {
   }
 }
 
+.ketcher.root {
+  display: flex;
+  flex-direction: column;
+}
+
 #mainmenu {
   .toolbar(top);
+  position: unset;
+  top: unset;
+  left: unset;
+  right: unset;
+  display: flex;
+  margin: 5px;
 }
 #elements {
   .toolbar(right);
@@ -78,6 +89,7 @@ main[role='application'] {
 
 [role='toolbar'] {
   user-select: none;
+  background: @ecl-menu;
   menu {
     .remove-inline-spacing;
   }
@@ -237,25 +249,39 @@ select {
 }
 
 @media (min-height: 650px) {
-  #erase,
-  #chain,
+  // #erase,
+  // #chain,
   #charge,
-  #transform,
-  #atom,
+  // #transform,
+  // #atom,
   #freq-atoms {
     .separate-item(vertical, 5px);
   }
 }
 
-@media (min-width: 1160px) {
+// @media (min-width: 1160px) {
   #analyse,
   #document,
   #edit,
-  #zoom {
+  #transform,
+  #erase,
+  #atom,
+  #clean,
+  // #zoom 
+  #chain {
     .separate-item(horizontal, 10px);
   }
+// }
+#mainmenu {
+  display: flex;
 }
-
+#undoredo {
+  flex-grow: 2;
+  > menu {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 @media (max-height: 600px), (max-width: 1040px) {
   .set-size(small);
 
@@ -264,10 +290,10 @@ select {
   form {
     font-size: @base-size;
   }
-  #canvas {
-    .canvas-size(small);
-  }
-  #mainmenu,
+  // #canvas {
+  //   .canvas-size(small);
+  // }
+
   #template {
     .toolbar-size(horizontal, small);
   }

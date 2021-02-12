@@ -48,8 +48,8 @@ function AppView(props) {
   return (
     <React.Fragment>
       <AppHidden />
-      <Editor id="canvas" />
       <Toolbar {...props} />
+      <Editor id="canvas" />
       <AppClipArea />
       <AppModal />
     </React.Fragment>

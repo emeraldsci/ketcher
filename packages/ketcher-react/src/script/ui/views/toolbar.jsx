@@ -29,20 +29,84 @@ import { atomCuts, basic as basicAtoms } from '../action/atoms'
 import { zoomList } from '../action/zoom'
 import templates from '../data/templates'
 
+// const mainmenu = [
+//   {
+//     id: 'document',
+//     menu: ['new', 'open', 'save']
+//   },
+//   {
+//     id: 'edit',
+//     menu: ['undo', 'redo', 'cut', 'copy', 'paste']
+//   },
+//   {
+//     id: 'zoom',
+//     menu: [
+//       'zoom-in',
+//       'zoom-out',
+//       {
+//         id: 'zoom-list',
+//         component: ZoomList
+//       }
+//     ]
+//   },
+//   {
+//     id: 'process',
+//     menu: [
+//       'layout',
+//       'clean',
+//       'arom',
+//       'dearom',
+//       'cip',
+//       'check',
+//       'analyse',
+//       'recognize',
+//       'miew'
+//     ]
+//   },
+//   {
+//     id: 'meta',
+//     menu: ['settings', 'help', 'about']
+//   }
+// ]
+
 const mainmenu = [
   {
     id: 'document',
-    menu: ['new', 'open', 'save']
+    menu: ['open']
   },
   {
     id: 'edit',
-    menu: ['undo', 'redo', 'cut', 'copy', 'paste']
+    menu: ['copy', 'cut', 'paste']
   },
+  {
+    id: 'select',
+    menu: ['select-lasso']
+  },
+  'erase',
+  {
+    id: 'transform',
+    menu: ['transform-rotate', 'transform-flip-h', 'transform-flip-v']
+  },
+  {
+    id: 'atom',
+    menu: [
+      {
+        id: 'atom-list',
+        component: props => AtomsList(basicAtoms, props)
+      },
+      'period-table'
+    ]
+  },
+  'bond-single',
+  'bond-double',
+  'bond-triple',
+  'bond-up',
+  'bond-down',
+  'chain',
+  'clean',
   {
     id: 'zoom',
     menu: [
-      'zoom-in',
-      'zoom-out',
       {
         id: 'zoom-list',
         component: ZoomList
@@ -50,31 +114,22 @@ const mainmenu = [
     ]
   },
   {
-    id: 'process',
-    menu: [
-      'layout',
-      'clean',
-      'arom',
-      'dearom',
-      'cip',
-      'check',
-      'analyse',
-      'recognize',
-      'miew'
-    ]
-  },
-  {
-    id: 'meta',
-    menu: ['settings', 'help', 'about']
+    id: 'undoredo',
+    menu: ['undo', 'redo']
   }
 ]
 
 const toolbox = [
   {
-    id: 'select',
-    menu: ['select-lasso', 'select-rectangle', 'select-fragment']
+    id: 'edit',
+    menu: [
+      {
+        id: 'select',
+        menu: ['select-lasso', 'select-rectangle', 'select-fragment']
+      },
+      'erase'
+    ]
   },
-  'erase',
   {
     id: 'bond',
     menu: [
@@ -223,9 +278,9 @@ function initToolbar() {
 
   return [
     { id: 'mainmenu', menu: mainmenu },
-    { id: 'toolbox', menu: toolboxItems },
-    { id: 'template', menu: template },
-    { id: 'elements', menu: elements }
+    // { id: 'toolbox', menu: toolboxItems },
+    // { id: 'template', menu: template },
+    // { id: 'elements', menu: elements }
   ]
 }
 
