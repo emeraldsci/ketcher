@@ -19,7 +19,7 @@ menu {
 .set-size(large);
 
 html,
-body {
+body, #root {
   height: 100%;
   width: 100%;
 }
@@ -50,6 +50,8 @@ main[role='application'] {
 }
 
 .ketcher.root {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -164,6 +166,7 @@ select {
 #bond-common,
 #bond-stereo,
 #bond-query,
+#misc,
 #reaction {
   .collapsed-ifnot(opened);
 }
@@ -248,16 +251,16 @@ select {
   }
 }
 
-@media (min-height: 650px) {
+//@media (min-height: 650px) {
   // #erase,
   // #chain,
-  #charge,
+  // #charge,
   // #transform,
   // #atom,
-  #freq-atoms {
-    .separate-item(vertical, 5px);
-  }
-}
+  //#freq-atoms {
+  //  .separate-item(vertical, 5px);
+  //}
+//}
 
 // @media (min-width: 1160px) {
   #analyse,
@@ -267,21 +270,41 @@ select {
   #erase,
   #atom,
   #clean,
-  // #zoom 
+  // #zoom
+  #rgroup-attpoints,
+  #templates,
   #chain {
     .separate-item(horizontal, 10px);
   }
 // }
 #mainmenu {
   display: flex;
+  width: 100%;
+}
+menu {
+  display: flex;
 }
 #undoredo {
   flex-grow: 2;
   > menu {
-    display: flex;
     justify-content: flex-end;
   }
 }
+
+#clean,
+#template-lib {
+  button {
+    display: flex;
+    width: 100px;
+    font-size: @base-size;
+    >span {
+      line-height: 32px;
+      margin-left: 32px;
+      width: 60px;
+    }
+  }
+}
+
 @media (max-height: 600px), (max-width: 1040px) {
   .set-size(small);
 
@@ -306,7 +329,7 @@ select {
     .toolbutton-size(small);
   }
 
-  #select,
+  //#select,
   #reaction {
     .collapsed-size(small);
   }

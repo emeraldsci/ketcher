@@ -19,7 +19,7 @@ import templates from '../data/templates'
 const templateLib = {
   'template-lib': {
     shortcut: 'Shift+t',
-    title: 'Custom Templates',
+    title: 'Templates',
     action: { dialog: 'templates' },
     disabled: (editor, server, options) => !options.app.templates
   }

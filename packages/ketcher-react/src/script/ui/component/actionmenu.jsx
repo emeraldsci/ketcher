@@ -73,6 +73,7 @@ function ActionButton({
   const menuRef = useRef(null)
   const disabled =
     status.disabled || (indigoVerification && disableableButtons.includes(name))
+  const displayTitle = (name === 'clean' || name === 'template-lib')
   return (
     <button
       ref={menuRef}
@@ -85,6 +86,8 @@ function ActionButton({
       }}
       title={shortcut ? `${action.title} (${shortcut})` : action.title}>
       <Icon name={name} />
+      {displayTitle &&
+        <span>{action.title}</span>}
       <kbd>{shortcut}</kbd>
     </button>
   )

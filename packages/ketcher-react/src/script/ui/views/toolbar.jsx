@@ -80,7 +80,7 @@ const mainmenu = [
   },
   {
     id: 'select',
-    menu: ['select-lasso']
+    menu: ['select-lasso', 'select-rectangle', 'select-fragment']
   },
   'erase',
   {
@@ -103,6 +103,27 @@ const mainmenu = [
   'bond-up',
   'bond-down',
   'chain',
+  {
+    id: 'templates',
+    menu: [
+      {
+        id: 'temp1',
+        menu: ['template-0', 'template-1']
+      },
+      {
+        id: 'temp2',
+        menu: ['template-2', 'template-3', 'template-4', 'template-5', 'template-6', 'template-7']
+      },
+      'template-lib'
+    ]
+  },
+  {
+    id: 'charge',
+    menu: ['charge-plus', 'charge-minus']
+  },
+  'rgroup-label',
+  'rgroup-fragment',
+  'rgroup-attpoints',
   'clean',
   {
     id: 'zoom',

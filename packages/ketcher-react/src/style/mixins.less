@@ -14,6 +14,8 @@
 /////////////////////
 
 .canvas(@dim: inherit) {
+  display: flex;
+  flex-grow: 2;
   // position: absolute;
   // border: @border-color 1px solid;
   // border-radius: 5px;
@@ -195,7 +197,8 @@
   & > menu {
     margin: 0 !important;
     position: absolute;
-    left: @toolbar-size + @menu-pad;
+    top: @toolbar-size + @menu-pad;
+    flex-direction: column;
     z-index: 20;
 
     //display: table-cell;
