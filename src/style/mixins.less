@@ -14,11 +14,13 @@
 /////////////////////
 
 .canvas(@dim: inherit) {
-	position: absolute;
-	border: @border-color 1px solid;
-	border-radius: 5px;
+	// position: absolute;
+	// border: @border-color 1px solid;
+	// border-radius: 5px;
+	display: flex;
+	flex-grow: 2;
 	overflow: auto;
-	.canvas-size(@dim);
+	// .canvas-size(@dim);
 	// svg {
 	//		display: block;
 	// }
@@ -75,7 +77,7 @@
 	padding: 0;
 	position: relative;
 	background: inherit;
-	background-color: white;
+	background-color: @ecl-menu;
 	//background-image: none;
 
 	//text-align: center;
@@ -159,7 +161,7 @@
 .collapsed-size(@dim) {
 	.set-size(@dim);
 	height: @toolbar-size;
-	width: 100%; //@toolbar-size;
+	// width: 100%; //@toolbar-size;
 }
 
 .collapsed-ifnot(@classname, @dim: inherit) {
@@ -191,7 +193,8 @@
 	& > menu {
 		margin: 0 !important;
 		position: absolute;
-		left: @toolbar-size + @menu-pad;
+		// left: @toolbar-size + @menu-pad;
+		top: @toolbar-size + @menu-pad;
 		z-index: 20;
 
 		//display: table-cell;

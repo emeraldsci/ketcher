@@ -64,6 +64,7 @@ function ActionButton({ name, action, status = {}, onAction }) {
   // eslint-disable-line no-shadow
   const shortcut = action.shortcut && shortcutStr(action.shortcut)
   const menuRef = useRef(null)
+  const displayTitle = (name === 'clean' || name === 'template-lib')
   return (
     <button
       ref={menuRef}
@@ -76,6 +77,8 @@ function ActionButton({ name, action, status = {}, onAction }) {
       }}
       title={shortcut ? `${action.title} (${shortcut})` : action.title}>
       <Icon name={name} />
+      {displayTitle &&
+        <span>{action.title}</span>}
       <kbd>{shortcut}</kbd>
     </button>
   )

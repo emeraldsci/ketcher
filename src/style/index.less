@@ -15,12 +15,13 @@ li, ul, menu { // move to reset
 
 .set-size(large);
 
-html, body {
-	height: 100%;
-	width: 100%;
-}
+// html, body {
+//	height: 100%;
+//	width: 100%;
+// }
 
-body, main[role=application] {
+// body, 
+main[role=application] {
 	height: 100%;
 	position: relative;
 	font: @base-size FreeSans, Arimo, "Droid Sans", Helvetica,
@@ -44,8 +45,21 @@ body, main[role=application] {
 	}
 }
 
+.ketcher.root {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 #mainmenu {
 	.toolbar(top);
+  position: unset;
+  top: unset;
+  left: unset;
+  right: unset;
+  display: flex;
+  margin: 5px;
 }
 #elements {
 	.toolbar(right);
@@ -73,6 +87,7 @@ body, main[role=application] {
 
 [role='toolbar'] {
 	user-select: none;
+	background: @ecl-menu;
 	menu {
 		.remove-inline-spacing;
 	}
@@ -142,7 +157,7 @@ select {
 //////////////////////////
 // Adjust to custom sizes
 
-#select, #bond-common, #bond-stereo, #bond-query, #reaction {
+#select, #bond-common, #bond-stereo, #bond-query, #reaction, #misc {
 	.collapsed-ifnot(opened);
 }
 
@@ -214,27 +229,57 @@ select {
 	}
 }
 
-@media (min-height: 650px) {
-	#erase, #chain, #charge, #transform, #atom, #freq-atoms {
-		.separate-item(vertical, 5px);
-	}
-}
+// @media (min-height: 650px) {
+// 	#erase, #chain, #charge, #transform, #atom, #freq-atoms {
+// 		.separate-item(vertical, 5px);
+// 	}
+// }
 
-@media (min-width: 1160px) {
-	#analyse, #document, #edit, #zoom {
+// @media (min-width: 1160px) {
+	// #analyse, #document, #edit, #zoom {
+	#analyse, #document, #edit, #transform, #erase, #arom, #clean, #rgroup-attpoints, #templates, #chain {
 		.separate-item(horizontal, 10px);
 	}
+// }
+
+#mainmenu {
+  display: flex;
+  width: 100%;
+}
+menu {
+  display: flex;
+}
+#undoredo {
+  flex-grow: 2;
+  > menu {
+    justify-content: flex-end;
+  }
+}
+
+#clean, #template-lib {
+  button {
+    display: flex;
+    width: 100px;
+    font-size: @base-size;
+    >span {
+      line-height: 32px;
+      margin-left: 32px;
+      width: 60px;
+    }
+  }
 }
 
 @media (max-height: 600px), (max-width: 1040px) {
 	.set-size(small);
 
-	body, select, form {
-		font-size: @base-size;
+	.ketcher {
+		select, form {
+			font-size: @base-size;
+		}
 	}
-	#canvas {
-		.canvas-size(small);
-	}
+	// #canvas {
+	// 	.canvas-size(small);
+	// }
 	#mainmenu, #template {
 		.toolbar-size(horizontal, small);
 	}
@@ -246,7 +291,8 @@ select {
 		.toolbutton-size(small);
 	}
 
-	#select, #reaction {
+	// #select,
+	#reaction {
 		.collapsed-size(small);
 	}
 

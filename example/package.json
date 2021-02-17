@@ -13,7 +13,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
-    "ketcher-react": "link:..",
+    "@emeraldsci/ketcher-react": "link:..",
     "miew": "^0.9.0",
     "react": "link:../node_modules/react",
     "react-app-polyfill": "^2.0.0",

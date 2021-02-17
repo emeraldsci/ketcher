@@ -41,8 +41,8 @@ const App = connect(null, { onAction, checkServer })(
       return (
         <React.Fragment>
           <AppHidden />
-          <AppEditor id="canvas" />
           <Toolbar {...this.props} />
+          <AppEditor id="canvas" />
           <AppCliparea />
           <AppModal />
         </React.Fragment>
