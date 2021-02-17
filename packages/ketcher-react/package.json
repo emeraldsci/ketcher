@@ -1,6 +1,6 @@
 {
-  "name": "ketcher-react",
-  "version": "2.1.0",
+  "name": "@emeraldsci/ketcher-react",
+  "version": "2.1.0-0.0.2",
   "description": "Web-based molecule sketcher",
   "license": "Apache-2.0",
   "homepage": "http://lifescience.opensource.epam.com/ketcher",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/epam/ketcher.git",
+    "url": "https://github.com/emeraldsci/ketcher.git",
     "directory": "packages/ketcher-react"
   },
   "keywords": [
