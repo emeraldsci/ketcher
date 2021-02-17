@@ -1,6 +1,6 @@
 {
   "name": "@emeraldsci/ketcher-react",
-  "version": "2.1.0-0.0.2",
+  "version": "2.1.0-0.0.3",
   "description": "Web-based molecule sketcher",
   "license": "Apache-2.0",
   "homepage": "http://lifescience.opensource.epam.com/ketcher",
@@ -28,7 +28,7 @@
     "node": ">=10"
   },
   "scripts": {
-    "build": "cross-env NODE_ENV=production rollup -c -m true --silent",
+    "build": "cross-env NODE_ENV=production rollup -c -m true",
     "start": "cross-env NODE_ENV=development rollup -c -m true -w",
     "test": "run-s test:unit test:lint prettier stylelint test:build",
     "test:build": "run-s build",
