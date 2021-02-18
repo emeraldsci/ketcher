@@ -16,16 +16,17 @@
 
 import React from 'react'
 import element from '../../../chem/element'
-import { sketchingColors as elementColor } from '../../../chem/element-color'
+// import { sketchingColors as elementColor } from '../../../chem/element-color'
 
-const metPrefix = ['alkali', 'alkaline-earth', 'transition', 'post-transition'] // 'lanthanide', 'actinide'
+// const metPrefix = ['alkali', 'alkaline-earth', 'transition', 'post-transition'] // 'lanthanide', 'actinide'
 
 function atomClass(el) {
-  const type =
-    metPrefix.indexOf(el.type) >= 0
-      ? `${el.type} metal`
-      : el.type || 'unknown-props'
-  return [type, el.state || 'unknown-state', el.origin]
+  // const type =
+  //   metPrefix.indexOf(el.type) >= 0
+  //     ? `${el.type} metal`
+  //     : el.type || 'unknown-props'
+  // return [type, el.state || 'unknown-state', el.origin]
+  return ["ecl-atom", el.state || 'unknown-state', el.origin]
 }
 
 function Atom({ el, shortcut, className, ...props }) {

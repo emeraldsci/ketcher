@@ -175,24 +175,25 @@ class TemplateLib extends Component {
         className="template-lib"
         params={omit(['group'], props)}
         result={() => this.result()}
-        buttons={[
-          <SaveButton
-            key="save-to-SDF"
-            data={sdf.stringify(this.props.lib)}
-            filename="ketcher-tmpls.sdf">
-            Save To SDF…
-          </SaveButton>,
-          'Cancel',
-          'OK'
-        ]}>
-        <label>
-          Filter:
-          <Input
-            type="search"
-            value={filter}
-            onChange={value => onFilter(value)}
-          />
-        </label>
+        buttons={[]}>
+        <div className="filter">
+          <label>
+            Search:
+            <Input
+              type="search"
+              value={filter}
+              onChange={value => onFilter(value)}
+            />
+          </label>
+          <span>
+            <SaveButton
+              key="save-to-SDF"
+              data={sdf.stringify(this.props.lib)}
+              filename="ketcher-tmpls.sdf">
+              Download library to SDF
+            </SaveButton>
+          </span>
+        </div>
         <Input
           className="groups"
           component={SelectList}

@@ -87,10 +87,10 @@ function MainRow({ row, caption, refer, selected, onSelect, curEvents }) {
   return (
     <tbody>
       <tr>
-        <th>{caption}</th>
-        {row.map(el =>
+        {/* <th>{caption}</th> */}
+        {row.map((el, index) =>
           typeof el !== 'number' ? ( // eslint-disable-line
-            <td>
+            <td key={index}>
               <Atom
                 el={el}
                 className={selected(el.label) ? 'selected' : ''}
@@ -99,9 +99,9 @@ function MainRow({ row, caption, refer, selected, onSelect, curEvents }) {
               />
             </td>
           ) : refer(el) ? (
-            <td className="ref">{refer(el)}</td>
+            <td key={index} className="ref ecl-atom">{refer(el)}</td>
           ) : (
-            <td colSpan={el} />
+            <td key={index} colSpan={el} />
           )
         )}
       </tr>
@@ -113,7 +113,8 @@ function OutinerRow({ row, caption, selected, onSelect, curEvents }) {
   return (
     <tbody>
       <tr>
-        <th colSpan="3" className="ref">
+        <th></th>
+        <th className="ref ecl-atom">
           {caption}
         </th>
         {row.map(el => (
@@ -134,11 +135,11 @@ function OutinerRow({ row, caption, selected, onSelect, curEvents }) {
 
 function AtomInfo({ el, isInfo }) {
   const numberStyle = {
-    color: elementColor[el.label] || 'black',
+    // color: elementColor[el.label] || 'black',
     fontSize: '1.2em'
   }
   const elemStyle = {
-    color: elementColor[el.label] || 'black',
+    // color: elementColor[el.label] || 'black',
     fontWeight: 'bold',
     fontSize: '2em'
   }
@@ -226,7 +227,7 @@ class PeriodTable extends Component {
 
     const { type, value } = this.state
     const tabs = [
-      { caption: 'Table', component: renderPeriodicTable, props: { value } },
+      { caption: 'Periodic Table', component: renderPeriodicTable, props: { value } },
       {
         caption: 'Extended',
         component: GenericGroups,
@@ -240,7 +241,7 @@ class PeriodTable extends Component {
 
     return (
       <Dialog
-        title="Periodic table"
+        title="Insert Element"
         className="elements-table"
         params={this.props}
         result={() => this.result()}>
@@ -266,8 +267,8 @@ class ElementsTable extends Component {
     const { curEvents, selected, onSelect } = this.props
     const callbacks = { curEvents, selected, onSelect }
     return (
-      <table summary="Periodic table of the chemical elements">
-        <Header />
+      <table summary="Periodic table of the chemical elements" style={{ width: '100%' }}>
+        {/* <Header /> */}
         {main.map((row, i) => (
           <MainRow
             key={i}
