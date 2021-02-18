@@ -66,10 +66,12 @@ class Attach extends Component {
         className="attach"
         result={this.onResult}
         params={prop}>
-        <label>
-          Template name:
-          <Input value={name} onChange={onNameEdit} placeholder="tmpl" />
-        </label>
+        <div className="template-name">
+          <label>
+            Template name:
+            <Input value={name} onChange={onNameEdit} placeholder="tmpl" />
+          </label>
+        </div>
         <label>Choose attachment atom and bond:</label>
         <StructEditor
           className="editor"

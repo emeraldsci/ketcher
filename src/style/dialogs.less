@@ -1009,10 +1009,31 @@
 	}
 
 	.attach {
-		label {
-			display: block;
-			padding: 0 5px;
-			font-size: 16px;
+
+		width: 430px;
+		.dialog-body {
+			> label {
+				font-size: 13px;
+				color: @ecl-gray-750;
+				padding: 7px 9px;
+			}
+		}
+
+		.template-name {
+			display: flex;
+			background-color: @ecl-menu;
+			padding: 7px 9px;
+			label {
+				display: flex;
+				flex: 2;
+				// padding: 0 5px;
+				font-size: 13px;
+				align-items: center;
+				input {
+					flex: 2;
+					color: @ecl-gray-800;
+				}
+			}
 		}
 
 		.warning {
@@ -1020,12 +1041,18 @@
 		}
 
 		.editor {
-			border: 1px solid @border-color;
-			border-radius: 5px;
+			// border: 1px solid @border-color;
+			// border-radius: 5px;
 			position: relative;
 			height: 25em;
 			max-width: 30em;
 			overflow: auto;
+			.measure-log {
+				position: absolute;
+				bottom: 5px;
+				left: 5px;
+				padding: 5px;
+			}
 		}
 	}
 }
