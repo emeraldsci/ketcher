@@ -60,14 +60,14 @@ export function showMenuOrButton(action, item, status, props) {
   return item.component(props)
 }
 
-function ActionButton({ name, action, status = {}, onAction }) {
+function ActionButton({ name, action, status = {}, className, onAction }) {
   // eslint-disable-line no-shadow
   const shortcut = action.shortcut && shortcutStr(action.shortcut)
   const menuRef = useRef(null)
-  const displayTitle = (name === 'clean' || name === 'template-lib')
   return (
     <button
       ref={menuRef}
+      className={className}
       disabled={status.disabled}
       onClick={ev => {
         if (!status.selected || isMenuOpened(menuRef.current)) {
@@ -77,8 +77,8 @@ function ActionButton({ name, action, status = {}, onAction }) {
       }}
       title={shortcut ? `${action.title} (${shortcut})` : action.title}>
       <Icon name={name} />
-      {displayTitle &&
-        <span>{action.title}</span>}
+      {action.title &&
+        <span className={status.selected ? 'active' : ''}>{action.title}</span>}
       <kbd>{shortcut}</kbd>
     </button>
   )
@@ -110,6 +110,7 @@ function renderActiveMenuItem(item, props) {
   let activeMenuItem = null
   if (isOpened(item, opened)) {
     if (isLeaf(menu)) {
+      attrs['className'] = 'menu-item';
       activeMenuItem = findActiveMenuItem(menu, status) || menu[0]
     } else {
       const subMenuItems = menu.reduce((acc, curr) => {
@@ -161,8 +162,8 @@ function ActionMenu({ name, menu, className, role, ...props }) {
 function toolMargin(menuName, menu, visibleTools) {
   if (!visibleTools[menuName]) return {}
   // now not found better way
-  const iconHeight =
-    window.innerHeight <= 600 || window.innerWidth <= 1040 ? 32 : 40
+  const iconHeight = 28;
+    // window.innerHeight <= 600 || window.innerWidth <= 1040 ? 32 : 40
   let index = menu.indexOf(visibleTools[menuName]) // first level
 
   if (index === -1) {
@@ -174,7 +175,7 @@ function toolMargin(menuName, menu, visibleTools) {
     index = tools.indexOf(visibleTools[menuName]) // second level. example: `bond: bond-any`
   }
 
-  return index !== -1 ? { marginTop: -(iconHeight * index) + 'px' } : {}
+  return index !== -1 ? { marginLeft: -(iconHeight * index) + 'px' } : {}
 }
 
 function openHandle(event, onOpen) {

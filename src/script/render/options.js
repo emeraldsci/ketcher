@@ -71,11 +71,11 @@ function defaultOptions(opt) {
     },
     /* eslint-enable quote-props */
     selectionStyle: {
-      fill: '#7f7',
-      stroke: 'none'
+      fill: '#daf2ff',
+      stroke: '#51c3ff'
     },
     highlightStyle: {
-      stroke: '#0c0',
+      stroke: '#51c3ff',
       'stroke-width': (0.6 * scaleFactor) / 20
     },
     sgroupBracketStyle: {

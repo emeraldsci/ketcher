@@ -1,17 +1,22 @@
 @static-path: '.';
 
+@ecl-blue-100: #daf2ff;
+@ecl-blue-150: #51c3ff;
+@ecl-blue-200: #2aa4e6;
+
+
 @ecl-gray-400: #d6dce2;
+@ecl-gray-500: #bac3cc;
 @ecl-gray-600: #bdc8d2;
 @ecl-gray-700: #b9c2cb;
 @ecl-gray-750: #949ea7;
 @ecl-gray-800: #677484;
-@ecl-blue-200: #2aa4e6;
 
 @ecl-menu: @ecl-gray-400;
 @ecl-menu-border: @ecl-gray-600;
-@ecl-font-color: #3e454c;
+@ecl-font-color: #31353b;
 @ecl-button-selected: @ecl-gray-600;
-@ecl-button-hover: #daf2ff;
+@ecl-button-hover: @ecl-blue-100;
 @ecl-dialog-header: @ecl-gray-600;
 @ecl-dialog-button: @ecl-gray-600;
 @ecl-struct-background: #f7f8f9;
@@ -43,7 +48,7 @@
 	@icon-size: 26px;
 	@expanded-icon-size: 20px;
 	@button-size: 32px;
-	@button-grow: 4px; // additional padding button may grow
+	@button-grow: 2px; // additional padding button may grow
 
 	@atom-size: 19px;
 
@@ -59,12 +64,12 @@
 }
 
 #small-dim() {
-	@base-size: 11px;
+	@base-size: 13px;
 
-	@icon-size: 20px;
+	@icon-size: 18px;
 	@expanded-icon-size: 17px;
 	@button-size: 24px;
-	@button-grow: 4px;
+	@button-grow: 2px;
 
 	@atom-size: 16px;
 

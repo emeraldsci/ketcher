@@ -151,11 +151,11 @@ class TemplateLib extends Component {
               className="struct"
               onClick={() => this.select(tmpl)}
             />
-            <button
+            {/* <button
               className="attach-button"
               onClick={() => this.props.onAttach(tmpl)}>
               Edit
-            </button>
+            </button> */}
           </div>
         ))}
       </div>

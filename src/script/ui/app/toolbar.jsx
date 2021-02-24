@@ -75,56 +75,23 @@ const mainmenu = [
     menu: ['open']
   },
   {
-    id: 'edit',
-    menu: ['copy', 'cut', 'paste']
-  },
-  {
     id: 'select',
-    menu: ['select-lasso', 'select-rectangle', 'select-fragment']
+    menu: ['select-lasso', 'select-rectangle']
   },
   'erase',
-  {
-    id: 'transform',
-    menu: ['transform-rotate', 'transform-flip-h', 'transform-flip-v']
-  },
-  {
-    id: 'atom',
-    menu: [
-      {
-        id: 'atom-list',
-        component: props => AtomsList(basicAtoms, props)
-      },
-      'period-table'
-    ]
-  },
-  'bond-single',
-  'bond-double',
-  'bond-triple',
-  'bond-up',
-  'bond-down',
-  'chain',
-  {
-    id: 'templates',
-    menu: [
-      {
-        id: 'temp1',
-        menu: ['template-0', 'template-1']
-      },
-      {
-        id: 'temp2',
-        menu: ['template-2', 'template-3', 'template-4', 'template-5', 'template-6', 'template-7']
-      },
-      'template-lib'
-    ]
-  },
+  'clean',
+  'transform-rotate',
+  'transform-flip-h',
+  'transform-flip-v',
   {
     id: 'charge',
     menu: ['charge-plus', 'charge-minus']
   },
-  'rgroup-label',
-  'rgroup-fragment',
-  'rgroup-attpoints',
-  'clean',
+  {
+    id: 'rgroup',
+    menu: ['rgroup-label', 'rgroup-fragment']
+  },
+  'sgroup',
   {
     id: 'zoom',
     menu: [
@@ -138,6 +105,50 @@ const mainmenu = [
     id: 'undoredo',
     menu: ['undo', 'redo']
   }
+]
+
+const secondmenu = [
+  {
+    id: 'atom',
+    menu: [
+      {
+        id: 'atom-list',
+        component: props => AtomsList(basicAtoms, props)
+      },
+      'period-table'
+    ]
+  },
+  {
+    id: 'bond',
+    menu: [
+      {
+        id: 'bond-common',
+        menu: ['bond-single', 'bond-double', 'bond-triple']
+      },
+      {
+        id: 'bond-stereo',
+        menu: ['bond-up', 'bond-down', 'bond-updown', 'bond-crossed']
+      },
+      {
+        id: 'bond-query',
+        menu: [
+          'bond-any',
+          'bond-aromatic',
+          'bond-singledouble',
+          'bond-singlearomatic',
+          'bond-doublearomatic'
+        ]
+      }
+    ]
+  },
+  'chain',
+  'template-0',
+  'template-1',
+  {
+    id: 'templates',
+    menu: ['template-2', 'template-3', 'template-4', 'template-5', 'template-6', 'template-7']
+  },
+  'template-lib'
 ]
 
 const toolbox = [
@@ -224,6 +235,7 @@ const elements = [
 
 const toolbar = [
   { id: 'mainmenu', menu: mainmenu },
+  { id: 'secondmenu', menu: secondmenu }
   // { id: 'toolbox', menu: toolbox },
   // { id: 'template', menu: template },
   // { id: 'elements', menu: elements }
@@ -231,18 +243,32 @@ const toolbar = [
 
 function ZoomList({ status, onAction }) {
   const zoom = status.zoom && status.zoom.selected // TMP
+
+  const upDown = (val) => {
+    const currentVal = zoom;
+    const ix = zoomList.indexOf(currentVal) + val;
+    if (ix > -1 && ix < zoomList.length) {
+      const newValue = zoomList[ix];
+      onAction(editor => editor.zoom(parseFloat(newValue)));
+    }
+  };
+
   return (
-    <select
-      value={zoom}
-      onChange={ev =>
-        onAction(editor => editor.zoom(parseFloat(ev.target.value)))
-      }>
-      {zoomList.map(val => (
-        <option key={val.toString()} value={val}>{`${(
-          val * 100
-        ).toFixed()}%`}</option>
-      ))}
-    </select>
+    <div id="zoom-select">
+      <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
+      <select
+        value={zoom}
+        onChange={ev =>
+          onAction(editor => editor.zoom(parseFloat(ev.target.value)))
+        }>
+        {zoomList.map(val => (
+          <option key={val.toString()} value={val}>
+            {`${(val * 100).toFixed()}%`}
+          </option>
+        ))}
+      </select>
+      <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
+    </div>
   )
 }
 

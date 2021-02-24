@@ -14,8 +14,7 @@
  * limitations under the License.
  ***************************************************************************/
 
-// export const basic = ['H', 'C', 'N', 'O', 'S', 'P', 'F', 'Cl', 'Br', 'I']
-export const basic = ['H', 'C', 'N', 'O', 'S', 'P']
+export const basic = ['H', 'C', 'N', 'O', 'S', 'P', 'F', 'Cl', 'Br', 'I']
 
 export const atomCuts = {
   H: 'h',
