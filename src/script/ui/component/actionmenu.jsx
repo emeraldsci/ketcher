@@ -75,7 +75,7 @@ function ActionButton({ name, action, status = {}, className, onAction }) {
           ev.stopPropagation()
         }
       }}
-      title={shortcut ? `${action.title} (${shortcut})` : action.title}>
+      data-title={shortcut ? `${action.title} (${shortcut})` : action.title}>
       <Icon name={name} />
       {action.title &&
         <span className={status.selected ? 'active' : ''}>{action.title}</span>}
@@ -110,7 +110,7 @@ function renderActiveMenuItem(item, props) {
   let activeMenuItem = null
   if (isOpened(item, opened)) {
     if (isLeaf(menu)) {
-      attrs['className'] = 'menu-item';
+      attrs['className'] = 'menu-item selected';
       activeMenuItem = findActiveMenuItem(menu, status) || menu[0]
     } else {
       const subMenuItems = menu.reduce((acc, curr) => {

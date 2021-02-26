@@ -112,6 +112,10 @@ export default {
     title: 'Periodic Table',
     action: { dialog: 'period-table' }
   },
+  'generic-elements': {
+    title: 'Generic Elements',
+    action: { dialog: 'generic-elements' }
+  },
   'select-all': {
     title: 'Select All',
     shortcut: 'Mod+a',

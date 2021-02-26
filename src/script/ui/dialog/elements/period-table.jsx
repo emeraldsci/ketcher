@@ -33,9 +33,9 @@ import { onAction } from '../../state'
 import { addAtoms } from '../../state/toolbar'
 
 const typeSchema = [
-  { title: 'Single', value: 'atom' },
-  { title: 'List', value: 'list' },
-  { title: 'Not List', value: 'not-list' }
+  { title: 'Single select', value: 'atom' },
+  { title: 'Multiple select (list)', value: 'list' },
+  // { title: 'Not List', value: 'not-list' }
 ]
 
 const beforeSpan = {
@@ -66,9 +66,9 @@ function Header() {
 
 function TypeChoise({ value, onChange, ...props }) {
   return (
-    <fieldset>
+    <fieldset className="type-choice">
       {typeSchema.map(sc => (
-        <label key={sc.title}>
+        <label key={sc.title} className={sc.value === value ? 'selected' : ''}>
           <input
             type="radio"
             value={sc.value}
@@ -220,38 +220,40 @@ class PeriodTable extends Component {
             selected={this.selected.bind(this)}
             onSelect={this.onSelect.bind(this)}
           />
-          <TypeChoise value={type} onChange={t => this.changeType(t)} />
         </div>
       )
     }
 
     const { type, value } = this.state
-    const tabs = [
-      { caption: 'Periodic Table', component: renderPeriodicTable, props: { value } },
-      {
-        caption: 'Extended',
-        component: GenericGroups,
-        props: {
-          className: 'generic-groups',
-          selected: this.selected.bind(this),
-          onSelect: this.onSelect.bind(this)
-        }
-      }
-    ]
+    // const tabs = [
+    //   { caption: 'Periodic Table', component: renderPeriodicTable, props: { value } },
+    //   {
+    //     caption: 'Extended',
+    //     component: GenericGroups,
+    //     props: {
+    //       className: 'generic-groups',
+    //       selected: this.selected.bind(this),
+    //       onSelect: this.onSelect.bind(this)
+    //     }
+    //   }
+    // ]
 
     return (
       <Dialog
-        title="Insert Element"
+        title="Periodic Table"
         className="elements-table"
         params={this.props}
+        buttons={['Confirm']}
         result={() => this.result()}>
-        <Tabs
+        {/* <Tabs
           className="tabs"
           captions={tabs}
           tabIndex={type !== 'gen' ? 0 : 1}
           changeTab={i => this.changeType(i === 0 ? 'atom' : 'gen')}
           tabs={tabs}
-        />
+        /> */}
+        <TypeChoise value={type} onChange={t => this.changeType(t)} />
+        {renderPeriodicTable(value)}
       </Dialog>
     )
   }

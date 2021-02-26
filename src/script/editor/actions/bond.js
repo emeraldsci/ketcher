@@ -188,7 +188,7 @@ export function fromBondStereoUpdate(restruct, bid, withReverse) {
       bond.begin,
       {
         stereoParity: newAtomParity,
-        stereoLabel: 'and-1'
+        stereoLabel: '' // 'and-1'
       },
       withReverse
     )

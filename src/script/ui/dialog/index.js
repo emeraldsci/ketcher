@@ -38,12 +38,14 @@ import Save from './mainmenu/save'
 import Settings from './mainmenu/options'
 import Sgroup from './toolbox/sgroup'
 import Sdata from './toolbox/sdata'
+import GenericElements from './elements/generic-elements'
 
 export default {
   open: Open,
   analyse: Analyse,
   recognize: Recognize,
   'period-table': PeriodTable,
+  'generic-elements': GenericElements,
   rgroup: Rgroup,
   attach: TemplateAttach,
   templates: TemplatesLib,

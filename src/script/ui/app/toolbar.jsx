@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 import { connect } from 'react-redux'
-import React from 'react'
+import React, { useState } from 'react'
 
 import classNames from 'classnames'
 
@@ -115,6 +115,20 @@ const secondmenu = [
         id: 'atom-list',
         component: props => AtomsList(basicAtoms, props)
       },
+      {
+        id: 'generic-elements',
+        component: props => {
+          console.log(props)
+          return (<li
+            className={classNames({
+            selected: props.active?.opts?.label === 'X'
+          })}>
+            <Atom
+              el={{ title: 'Generic elements', label: 'X' }}
+              onClick={() => props.onAction({ dialog: 'generic-elements', opts: { label: 'X' }})}
+            />
+      </li>)
+      }},
       'period-table'
     ]
   },
@@ -242,6 +256,7 @@ const toolbar = [
 ]
 
 function ZoomList({ status, onAction }) {
+  const [ showMenu, setShowMenu ] = useState(false);
   const zoom = status.zoom && status.zoom.selected // TMP
 
   const upDown = (val) => {
@@ -249,25 +264,53 @@ function ZoomList({ status, onAction }) {
     const ix = zoomList.indexOf(currentVal) + val;
     if (ix > -1 && ix < zoomList.length) {
       const newValue = zoomList[ix];
-      onAction(editor => editor.zoom(parseFloat(newValue)));
+      if (showMenu) {
+        setShowMenu(false);
+      }
+      submitChange(newValue);
     }
+  };
+
+  const doClick = (e, val) => {
+    const ix = zoomList.indexOf(val);
+    if (ix >= 0) {
+      setShowMenu(false);
+      submitChange(val);
+    }
+    e.stopPropagation();
+  };
+
+  const submitChange = (val) => {
+    onAction(editor => editor.zoom(parseFloat(val)));
+  };
+
+  const toggleMenu = (ev) => {
+    setShowMenu(!showMenu);
+    ev.preventDefault();
   };
 
   return (
     <div id="zoom-select">
-      <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
-      <select
-        value={zoom}
-        onChange={ev =>
-          onAction(editor => editor.zoom(parseFloat(ev.target.value)))
-        }>
-        {zoomList.map(val => (
-          <option key={val.toString()} value={val}>
-            {`${(val * 100).toFixed()}%`}
-          </option>
-        ))}
-      </select>
-      <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
+      <div>
+        <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
+        <div className="dd-wrapper">
+          <div onClick={toggleMenu}>
+            <div className="dd-text">{`${(zoom * 100).toFixed()}%`}</div>
+            <div className="dd-toggle">&#8964;</div>
+          </div>
+        </div>
+        <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
+      </div>
+      <ul className={'dd-menu ' + classNames({ hidden: !showMenu })}>
+      {zoomList.map(val => (
+        <li
+          key={val.toString()}
+          className={classNames({ selected: val === zoom })}
+          onClick={(e) => doClick(e, val)}>
+          {`${(val * 100).toFixed()}%`}
+        </li>
+      ))}
+      </ul>
     </div>
   )
 }
@@ -319,6 +362,10 @@ function TemplatesList({ active, onAction }) {
   )
 }
 
+const onGenericTableClick = () => {
+  console.log('onGenericTableClick');
+}
+
 export default connect(
   state => ({
     active: state.actionState && state.actionState.activeTool,
@@ -331,6 +378,6 @@ export default connect(
     onOpen: (menuName, isSelected) => ({
       type: 'OPENED',
       data: { menuName, isSelected }
-    })
-  }
+  })
+}
 )(props => <ActionMenu menu={toolbar} role="toolbar" {...props} />)

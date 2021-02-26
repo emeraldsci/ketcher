@@ -527,8 +527,85 @@
 		}
 	}
 
+	.generic-elements {
+		.set-size(small);
+		display: flex;
+		width: 500px;
+		.title {
+			color: @ecl-gray-750;
+			margin: 10px 10px 0px 10px;
+			font-size: 13px;
+		}
+		.atomic {
+			border-bottom: solid 1px @ecl-gray-600;
+		}
+		input[type="button"] {
+			background-color: @ecl-blue-200;
+			&:hover {
+				background-color: @ecl-button-hover;
+				background-image: unset;
+			}
+		}
+
+		.col {
+			flex: 2;
+			flex-wrap: wrap;
+			>li {
+				flex: 2 1 50%;
+				> div {
+					display: flex;
+				  margin: 10px;
+					align-items: center;
+					color: @ecl-gray-700;
+					font-size: 13px;
+				}
+				button {
+					-webkit-appearance: none;
+					font-family: Helvetica;
+					font-size: 13px;
+					width: 28px;
+					height: 28px;
+					margin-right: 10px;
+					padding: 0px;
+					background: rgba(214, 220, 226, 0.2);
+					border: 0;
+					border-radius: 2px;
+					&.selected,
+					&:hover {
+						background: @ecl-button-hover;
+					}
+				}
+			}
+		}
+	}
+
 	.elements-table {
 		// width: 57em;
+
+		.type-choice {
+			background: @ecl-menu;
+			border: none;
+			border-radius: 0px;
+			height: 34px;
+			label {
+				color: @ecl-gray-750;
+				line-height: 34px;
+				&.selected {
+					color: @ecl-gray-800;
+				}
+				+ label {
+					margin-left: 10px;
+				}
+			}
+		}
+
+		input[type="button"] {
+			background-color: @ecl-blue-200;
+			&:hover {
+				background-color: @ecl-button-hover;
+				background-image: unset;
+			}
+		}
 
 		.ecl-atom {
 			.background-opacity(@ecl-gray-400, 0.2);
@@ -591,7 +668,7 @@
 			}
 
 			button {
-				font-size: 1.3em;
+				font-size: 13px;
 				width: 28px;
 				height: 28px;
 				line-height: 2;
@@ -642,11 +719,11 @@
 				}
 			}
 
-			fieldset {
-				border: 0;
-				padding: 0.5em;
-				margin: 0.5em 0 0 1.5em;
-			}
+			// fieldset {
+			// 	border: 0;
+			// 	padding: 0.5em;
+			// 	margin: 0.5em 0 0 1.5em;
+			// }
 
 			// .diatomic {
 			// 	background: @atom-periodic-diatomic;
@@ -713,7 +790,7 @@
 			// }
 		}
 
-		.generic-groups {
+		.generic-groups{
 			display: flex;
 			justify-content: space-around;
 			padding: 1.5em 0;

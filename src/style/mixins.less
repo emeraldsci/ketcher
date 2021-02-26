@@ -54,7 +54,8 @@
 	@{dir}: @app-gap;
 	.toolbar-size(@dir, @dim);
 	& > menu {
-			@{main-dim}: 100%;
+			// @{main-dim}: 100%;
+			flex: 2;
 	}
 }
 
@@ -184,6 +185,7 @@
 		position: absolute;
 		right: 0;
 		bottom: 0;
+		z-index: 101;
 	}
 	&:hover > svg {
 		//.scale-highlight;

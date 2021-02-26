@@ -4,12 +4,86 @@
 @import 'mixins';
 @import 'dialogs';
 
+
 .ketcher.root {
 	display: flex;
 	flex: 2;
 	flex-direction: column;
 	font-family: Helvetica;
 	color: @ecl-font-color;
+
+	#zoom-select {
+		display: flex;
+		flex-direction: column;
+		font-size: 13px;
+		>div {
+			display: flex;
+		}
+		.dd-wrapper {
+			background: white;
+			border: solid 1px @ecl-gray-700;
+			border-radius: 2px;
+			display: flex;
+			height: 24px;
+			flex-direction: column;
+			>div {
+				display: flex;
+				align-items: stretch;
+			}
+			.dd-text {
+				flex: 2;
+				text-align: center;
+				line-height: 24px;
+				width: 50px
+			}
+			.dd-toggle {
+				width: 24px;
+				font-size: 15px;
+				font-weight: bold;
+				border-left: solid 1px @ecl-menu-border;
+				text-align: center;
+				&:hover {
+					background-color: @ecl-button-hover;
+				}
+			}
+		}
+		.dd-menu {
+			position: relative;
+			top: -4px;
+			left: 28px;
+			width: 50px;
+			height: 120px;
+			background-color: white;
+			border: solid 1px @ecl-gray-700;
+			z-index: 10;
+			flex-direction: column;
+			overflow-y: auto;
+			&::-webkit-scrollbar {
+				width: 8px;
+				background-color: @ecl-gray-400;
+			}
+			&::-webkit-scrollbar-track {
+				width: 8px;
+				background-color: @ecl-gray-400;
+			}
+			&::-webkit-scrollbar-thumb {
+				background-color: @ecl-gray-750;
+			}
+			> li {
+				padding: 5px;
+				text-align: center;
+				&.selected {
+					background-color: @ecl-button-selected;
+				}
+				&:hover {
+					background-color: @ecl-button-hover;
+				}
+			}
+			&.hidden {
+				display: none;
+			}
+		}
+	}
 
 	li,
 	ul,
@@ -121,9 +195,25 @@
 
 		button {
 			.toolbutton;
+			&:hover {
+				z-index: 100;
+			}
+			&[data-title]:hover::before {
+				content: attr(data-title);
+				position: absolute;
+				bottom: -28px;
+				display: inline-block;
+				padding: 5px;
+				box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+				border-radius: 2px;
+				background: #fff;
+				color: @ecl-blue-400;
+				font-size: 13px;
+				white-space: nowrap;
+			}
 		}
 
-		.selected button {
+		.selected button, button.selected {
 			.highlight-invert;
 		}
 
@@ -173,12 +263,6 @@
 		kbd {
 			display: none;
 		}
-	}
-
-	#zoom-select {
-		display: flex;
-		flex-direction: row;
-		align-items: center;
 	}
 
 	select {
@@ -321,7 +405,6 @@
 
 	#mainmenu {
 		display: flex;
-		width: 100%;
 	}
 
 	menu {

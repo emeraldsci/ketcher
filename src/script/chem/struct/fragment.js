@@ -30,7 +30,7 @@ Fragment.prototype.clone = function (aidMap) {
 Fragment.STEREO_FLAG = {
   Mixed: 'Mixed',
   abs: 'ABS (Chiral)',
-  and: 'AND Enantiomer',
+  and: '',  // 'AND Enantiomer',
   or: 'OR Enantiomer',
   null: null
   // todo: custom in the future
