@@ -118,7 +118,6 @@ const secondmenu = [
       {
         id: 'generic-elements',
         component: props => {
-          console.log(props)
           return (<li
             className={classNames({
             selected: props.active?.opts?.label === 'X'
@@ -360,10 +359,6 @@ function TemplatesList({ active, onAction }) {
       ))}
     </menu>
   )
-}
-
-const onGenericTableClick = () => {
-  console.log('onGenericTableClick');
 }
 
 export default connect(

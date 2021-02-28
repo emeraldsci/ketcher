@@ -29,7 +29,8 @@ function Bond(props) {
       className="bond"
       result={() => formState.result}
       valid={() => formState.valid}
-      params={prop}>
+      params={prop}
+      buttons={['Submit']}>
       <Form schema={bondSchema} init={prop} {...formState}>
         <Field name="type" />
         <Field name="topology" />

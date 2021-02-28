@@ -49,6 +49,7 @@ function RgroupLogic(props) {
       className="rgroup-logic"
       result={() => formState.result}
       valid={() => formState.valid}
+      buttons={['Submit']}
       params={prop}>
       <Form
         schema={rgroupSchema}
@@ -56,13 +57,13 @@ function RgroupLogic(props) {
         init={prop}
         {...formState}>
         <Field name="range" />
-        <Field name="resth" />
         <IfThenSelect
           name="ifthen"
           className="cond"
           label={label}
           rgids={rgroupLabels}
         />
+        <Field name="resth" />
       </Form>
     </Dialog>
   )

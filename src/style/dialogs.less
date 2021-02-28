@@ -2,6 +2,25 @@
 @import "form";
 @import (reference) "component";
 
+
+.dialog-form-flex() {
+	.dialog-body {
+		margin: 10px;
+		overflow: unset;
+		input:not([type="checkbox"]),
+		select {
+			color: @ecl-gray-800;
+			width: 100%;
+			margin-bottom: 10px;
+		}
+	}
+	label {
+		color: @ecl-gray-750;
+		margin-bottom: 5px;
+		font-size: 13px;
+	}
+}
+
 .ketcher.root {
 
 	.ket-overlay {
@@ -80,6 +99,10 @@
 		// 	margin: 0.3em;
 		// }
 
+		.field {
+			margin-bottom: 10px;
+		}
+
 		header,
 		footer {
 			margin: 0;
@@ -102,6 +125,14 @@
 			border-top: 1px solid #ddd;
 			// border-radius: 0 0 6px 6px;
 			text-align: right;
+			button, input[type=button] {
+				background: @ecl-blue-200;
+				color: #fff;
+				&:hover {
+					color: #000;
+					background: @ecl-button-hover;
+				}
+			}
 		}
 
 		.close {
@@ -134,7 +165,7 @@
 				display: flex;
 				flex: 2;
 				font-size: 13px;
-				
+
 				input[type=search] {
 					width: 100%;
 					margin-left: 4px;
@@ -237,17 +268,13 @@
 	}
 
 	form.bond {
-		label {
-			text-align: right;
-			display: block;
-		}
-
-		select {
-			width: 12em;
-		}
+		.dialog-form-flex;
 	}
 
 	form.atom-props {
+		display: flex;
+		width: 480px;
+
 		fieldset {
 			margin-top: 0.7em;
 			text-align: right;
@@ -258,26 +285,65 @@
 			}
 		}
 
-		.main {
-			width: 14.5em;
-			float: left;
-			&:extend(fieldset.-hidden);
 
-			input {
-				width: 8em;
-			}
-		}
 
+		.main,
 		.query,
 		.reaction {
-			float: right;
-			clear: right;
-			width: 16em;
-
-			input[type=checkbox] {
-				margin: 0.6em 0.3em;
+			padding: 10px;
+			&:not(:nth-child(1)) {
+				border-top: solid 1px @ecl-gray-750;
 			}
 		}
+
+		.legend {
+			display: block;
+			font-size: 13px;
+			color: @ecl-gray-900;
+			padding: 5px;
+		}
+		.section {
+			display: flex;
+			flex: 2;
+			padding: 5px;
+			// width: 14.5em;
+			// float: left;
+			&:extend(fieldset.-hidden);
+
+
+			// input {
+			// 	width: 8em;
+			// }
+
+			.field {
+				display: flex;
+				flex: 1;
+				&:not(.inline) {
+					flex-direction: column;
+				}
+				label {
+					color: @ecl-gray-750;
+					font-size: 13px;
+				}
+				input[type="text"],
+				input:read-only,
+				select {
+					width: 140px;
+					height: 24px;
+				}
+			}
+		}
+
+		// .query,
+		// .reaction {
+		// 	float: right;
+		// 	clear: right;
+		// 	width: 16em;
+
+		// 	input[type=checkbox] {
+		// 		margin: 0.6em 0.3em;
+		// 	}
+		// }
 	}
 
 	form.attach-points {
@@ -303,11 +369,12 @@
 	}
 
 	form.rgroup-logic {
-		label {
-			display: inline-block;
-			text-align: right;
-			line-height: @input-height;
-		}
+		.dialog-form-flex;
+		// label {
+		// 	display: inline-block;
+		// 	text-align: right;
+		// 	line-height: @input-height;
+		// }
 
 		.cond {
 			display: block;
@@ -322,20 +389,7 @@
 	.sgroup-special {
 		width: 20em;
 
-		label {
-			display: block;
-			text-align: right;
-
-			input,
-			select {
-				width: 10em;
-			}
-
-			&:hover:after {
-				margin: 1px 0 0 3px;
-			}
-		}
-
+		.dialog-form-flex;
 		fieldset {
 			border: 0;
 			padding: 0;
@@ -483,29 +537,40 @@
 	}
 
 	.rgroup {
+		width: 320px;
 		ul {
-			width: 25.6em;
-			padding: 0.5em;
+			// width: 25.6em;
+			// padding: 0.5em;
+			display: flex;
+			flex-wrap: wrap;
 		}
 
 		li {
-			display: inline-block;
-			margin: 0.2em 0.1em;
+			// display: inline-block;
+			margin: 5px;
+			flex: 2;
 		}
 
 		form button {
-			font-size: 1.3em;
-			width: 2.3em;
-			height: 2em;
+			font-size: 13px;
+			width: 28px;
+			height: 28px;
 			line-height: 1;
 			vertical-align: middle;
-			padding: 0.15em;
-			background: inherit;
-
-			&:first-letter {
-				font-weight: 600;
-				color: lighten(@main-color, 20%);
+			color: #3e454c;
+			padding: 0px;
+			background: rgba(214, 220, 226, 0.2);
+			border: unset;
+			border-radius: 2px;
+			&:hover {
+				background-color: @ecl-button-hover;
+				background-image: unset;
 			}
+
+			// &:first-letter {
+			// 	font-weight: 600;
+			// 	color: lighten(@main-color, 20%);
+			// }
 
 			&:hover {
 				.highlight-scale(@scale: 1.005);
@@ -520,9 +585,9 @@
 			&.selected {
 				.highlight-invert;
 
-				&:first-letter {
-					color: darken(white, 30%);
-				}
+				// &:first-letter {
+				// 	color: darken(white, 30%);
+				// }
 			}
 		}
 	}
@@ -985,25 +1050,49 @@
 
 	.open {
 
-		// constrain dialog resizebility
-		// max-width: 50%;
-		// max-height: 70%;
-		label {
-			display: block;
-			width: 22.5em;
+		.dialog-body {
+			margin: 10px;
+			// constrain dialog resizebility
+			// max-width: 50%;
+			// max-height: 70%;
+			label {
+				display: block;
+				// width: 22.5em;
+				font-size: 13px;
+				margin: 5px;
+				color: @ecl-gray-750;
+				input[type="checkbox"] {
+					width: 12px;
+					height: 12px;
+					background: #fff;
+					border: 1px solid @ecl-gray-750;
+					border-radius: 0px;
+					vertical-align: unset;
+					margin: 0px 5px 0px 0px;
+				}
+			}
 
-			input {
-				margin-bottom: 0.1em;
+			textarea:not(.cliparea) {
+				min-width: 32em;
+				min-height: 23em;
+				overflow: auto;
+				white-space: pre;
+				resize: none;
+				border: solid 1px @ecl-blue-120;
+				font-size: 13px;
+				font-family: Helvetica;
+				&::-webkit-input-placeholder {
+					color: @ecl-gray-700;
+				}
+			}
+
+			textarea.cliparea {
+				width: 58px;
 			}
 		}
-
-		textarea {
-			min-width: 32em;
-			min-height: 23em;
-			overflow: auto;
-			white-space: pre;
-			//make it resizable
-			resize: both;
+		.open-button {
+			background: #4f5862;
+			color: #fff;
 		}
 	}
 
@@ -1056,7 +1145,7 @@
 	.dialog-body {
 		max-width: 80vw;
 		max-height: 80vh;
-		overflow: auto;
+		// overflow: auto;
 	}
 
 	.miew {

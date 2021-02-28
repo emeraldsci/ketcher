@@ -54,6 +54,7 @@ class Open extends Component {
       <Dialog
         title="Open Structure"
         className="open"
+        valid={() => !!this.result()}
         result={() => this.result()}
         params={this.props}
         buttons={[
@@ -62,14 +63,17 @@ class Open extends Component {
             server={this.props.server}
             type={structAcceptMimes()}
             onLoad={s => this.changeStructStr(s)}>
-            Open From File…
+            Open from file…
           </OpenButton>,
-          'Cancel',
-          'OK'
+          'Submit'
         ]}>
+        <label>
+          Accepts MOL, SMILES
+        </label>
         <textarea
           value={structStr} //TODO: fix React warning
           onInput={ev => this.changeStructStr(ev.target.value)}
+          placeholder="Type here"
         />
         <label>
           <input
@@ -77,7 +81,9 @@ class Open extends Component {
             checked={fragment} //TODO: fix React warning
             onClick={ev => this.changeFragment(ev.target)}
           />
-          Load as a fragment and copy to the Clipboard
+          <span>
+            Load as a fragment and copy to the Clipboard
+          </span>
         </label>
         <ClipArea
           focused={() => true}

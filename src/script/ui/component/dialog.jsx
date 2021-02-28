@@ -25,7 +25,7 @@ class Dialog extends Component {
   }
   exit(mode) {
     const { params, result = () => null, valid = () => !!result() } = this.props
-    const key = mode === 'OK' || mode === 'Confirm' ? 'onOk' : 'onCancel'
+    const key = mode === 'OK' || mode === 'Confirm' || mode === 'Submit' ? 'onOk' : 'onCancel'
     if (params && key in params && (key !== 'onOk' || valid()))
       params[key](result())
   }
@@ -94,7 +94,7 @@ class Dialog extends Component {
                 key={b}
                 type="button"
                 value={b}
-                disabled={(b === 'OK' || b === 'Confirm') && !valid()}
+                disabled={(b === 'OK' || b === 'Confirm' || b === 'Submit') && !valid()}
                 onClick={() => this.exit(b)}
               />
             )

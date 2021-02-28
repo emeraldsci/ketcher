@@ -25,10 +25,12 @@ import element from '../../../chem/element'
 function ElementNumber({ label }) {
   const value = element.map[capitalize(label)] || ''
   return (
-    <label>
-      Number:
+    <>
+      <label>
+        Number:
+      </label>
       <input className="number" type="text" readOnly value={value} />
-    </label>
+    </>
   )
 }
 
@@ -44,6 +46,7 @@ function Atom(props) {
       className="atom-props"
       result={() => formState.result}
       valid={() => formState.valid}
+      buttons={['Submit']}
       params={prop}>
       <Form
         schema={atomSchema}
@@ -53,28 +56,53 @@ function Atom(props) {
         }}
         init={prop}
         {...formState}>
-        <fieldset className="main">
-          <Field name="label" onChange={onLabelChangeCallback} />
-          <Field name="alias" />
-          <ElementNumber label={currentLabel} />
-          <Field name="charge" maxLength="5" />
-          <Field name="explicitValence" />
-          <Field name="isotope" />
-          <Field name="radical" />
-        </fieldset>
-        <fieldset className="query">
-          <legend>Query specific</legend>
-          <Field name="ringBondCount" />
-          <Field name="hCount" />
-          <Field name="substitutionCount" />
-          <Field name="unsaturatedAtom" />
-        </fieldset>
-        <fieldset className="reaction">
-          <legend>Reaction flags</legend>
-          <Field name="invRet" />
-          <Field name="exactChangeFlag" />
-        </fieldset>
-        PARITY: {props.stereoParity}
+        <div className="main">
+          <div className="section">
+            <div className="field">
+              <label>Parity</label>
+              <input
+                name="parity"
+                type="text"
+                defaultValue={props.stereoParity}
+                readOnly
+              />
+            </div>
+            <div className="field">
+              <ElementNumber label={currentLabel} />
+            </div>
+            <Field name="isotope" />
+          </div>
+          <div className="section">
+            <Field name="label" onChange={onLabelChangeCallback} />
+            <Field name="charge" maxLength="5" />
+            <Field name="radical" />
+          </div>
+          <div className="section">
+            <Field name="alias" />
+            <Field name="explicitValence" />
+            <div className="field"></div>
+          </div>
+        </div>
+        <div className="query">
+          <div className="legend">Query specific</div>
+          <div className="section">
+            <Field name="ringBondCount" />
+            <Field name="hCount" />
+            <Field name="substitutionCount" />
+          </div>
+          <div className="section">
+            <Field name="unsaturatedAtom" labelPos="after" />
+          </div>
+        </div>
+        <div className="reaction">
+          <div className="legend">Reaction flags</div>
+          <div className="section">
+            <Field name="invRet" />
+          </div>
+          <div className="section">
+            <Field name="exactChangeFlag" labelPos="after" />
+          </div>
+        </div>
       </Form>
     </Dialog>
   )

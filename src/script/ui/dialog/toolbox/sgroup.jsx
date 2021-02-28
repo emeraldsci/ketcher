@@ -33,7 +33,8 @@ function Sgroup({ formState, ...prop }) {
       className="sgroup"
       result={() => result}
       valid={() => valid}
-      params={prop}>
+      params={prop}
+      buttons={['Submit']}>
       <Form schema={schemes[type]} init={prop} {...formState}>
         <SelectOneOf title="Type" name="type" schema={schemes} />
         <fieldset className={type === 'DAT' ? 'data' : 'base'}>

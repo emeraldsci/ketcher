@@ -101,7 +101,7 @@ export default connect(null, dispatch => ({
 function Label({ labelPos, title, children, ...props }) {
   return (
     <label {...props}>
-      {title && labelPos !== 'after' ? `${title}:` : ''}
+      {title && labelPos !== 'after' ? `${title}` : ''}
       {children}
       {title && labelPos === 'after' ? title : ''}
     </label>
@@ -120,15 +120,20 @@ function Field(props) {
     <Input name={name} schema={desc} {...fieldOpts} {...prop} />
   )
 
+  const items = [
+  <Label
+    className={classNames({ 'data-error': dataError })}
+    error={dataError}
+    title={prop.title || desc.title}
+    labelPos={labelPos}>
+  </Label>,
+  formField];
+
   if (labelPos === false) return formField
   return (
-    <Label
-      className={classNames({ 'data-error': dataError })}
-      error={dataError}
-      title={prop.title || desc.title}
-      labelPos={labelPos}>
-      {formField}
-    </Label>
+    <div className={`field ${desc.type === 'boolean' ? 'inline' : ''}`}>
+      {desc.type === 'boolean' ? items.reverse() : items}
+    </div>
   )
 }
 
