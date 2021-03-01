@@ -3,7 +3,17 @@
 @import 'variables';
 @import 'mixins';
 @import 'dialogs';
+@import '~/react-tippy/dist/tippy.css';
 
+.tippy-popper {
+	padding: 5px;
+	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+	border-radius: 2px;
+	background: #fff;
+	color: @ecl-blue-400;
+	font-size: 13px;
+	white-space: nowrap;
+}
 
 .ketcher.root {
 	display: flex;
@@ -192,25 +202,27 @@
 				display: none; // dropdown
 			}
 		}
-
+		[data-tooltipped] {
+			display: flex;
+		}
 		button {
 			.toolbutton;
-			&:hover {
-				z-index: 100;
-			}
-			&[data-title]:hover::before {
-				content: attr(data-title);
-				position: absolute;
-				bottom: -28px;
-				display: inline-block;
-				padding: 5px;
-				box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
-				border-radius: 2px;
-				background: #fff;
-				color: @ecl-blue-400;
-				font-size: 13px;
-				white-space: nowrap;
-			}
+			// &:hover {
+			// 	z-index: 100;
+			// }
+			// &[data-title]:hover::before {
+			// 	content: attr(data-title);
+			// 	position: absolute;
+			// 	bottom: -28px;
+			// 	display: inline-block;
+			// 	padding: 5px;
+			// 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+			// 	border-radius: 2px;
+			// 	background: #fff;
+			// 	color: @ecl-blue-400;
+			// 	font-size: 13px;
+			// 	white-space: nowrap;
+			// }
 		}
 
 		.selected button, button.selected {
@@ -501,9 +513,9 @@
 	// 	}
 	// }
 
-	#template-common {
-		.separate-item(horizontal, 15px);
-	}
+	// #template-common {
+	// 	.separate-item(horizontal, 15px);
+	// }
 
 	.cellar {
 		display: none;

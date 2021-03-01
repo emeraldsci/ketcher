@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 import React, { useRef } from 'react'
-
+import { Tooltip } from 'react-tippy';
 import classNames from 'classnames'
 
 import action from '../action'
@@ -65,22 +65,37 @@ function ActionButton({ name, action, status = {}, className, onAction }) {
   const shortcut = action.shortcut && shortcutStr(action.shortcut)
   const menuRef = useRef(null)
   return (
-    <button
-      ref={menuRef}
-      className={className}
-      disabled={status.disabled}
-      onClick={ev => {
-        if (!status.selected || isMenuOpened(menuRef.current)) {
-          onAction(action.action)
-          ev.stopPropagation()
+    <Tooltip
+      title={shortcut ? `${action.title} (${shortcut})` : action.title}
+      delay={500}
+      theme="transparent"
+      position="bottom"
+      tag="span"
+      popperOptions={{
+        modifiers: {
+          offset: {
+            offset: '0,-60px'
+          }
         }
       }}
-      data-title={shortcut ? `${action.title} (${shortcut})` : action.title}>
-      <Icon name={name} />
-      {action.title &&
-        <span className={status.selected ? 'active' : ''}>{action.title}</span>}
-      <kbd>{shortcut}</kbd>
-    </button>
+    >
+      <button
+        ref={menuRef}
+        className={className}
+        disabled={status.disabled}
+        onClick={ev => {
+          if (!status.selected || isMenuOpened(menuRef.current)) {
+            onAction(action.action)
+            ev.stopPropagation()
+          }
+        }}
+        data-title={shortcut ? `${action.title} (${shortcut})` : action.title}>
+        <Icon name={name} />
+        {action.title &&
+          <span className={status.selected ? 'active' : ''}>{action.title}</span>}
+        <kbd>{shortcut}</kbd>
+      </button>
+    </Tooltip>
   )
 }
 

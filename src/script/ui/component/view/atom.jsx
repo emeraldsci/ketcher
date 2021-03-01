@@ -32,8 +32,7 @@ function atomClass(el) {
 function Atom({ el, shortcut, className, ...props }) {
   return (
     <button
-      // title={shortcut ? `${el.title} (${shortcut})` : el.title}
-      data-title={shortcut ? `${el.title} (${shortcut})` : el.title}
+      title={shortcut ? `${el.title} (${shortcut})` : el.title}
       className={[...atomClass(el), className].join(' ')}
       // style={{ color: elementColor[el.label] }}
       value={element.map[el.label]}

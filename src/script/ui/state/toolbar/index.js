@@ -17,6 +17,7 @@
 import { capitalize, throttle, isEqual } from 'lodash/fp'
 import { basic as basicAtoms } from '../../action/atoms'
 import tools from '../../action/tools'
+import templates from '../../data/templates'
 
 const initial = {
   freqAtoms: [],
@@ -115,10 +116,16 @@ export function addAtoms(atomLabel) {
 
 function toolInMenu(action) {
   const tool = Object.keys(tools).find(toolName =>
-    isEqual(action, tools[toolName].action)
+    isEqual(action, tools[toolName].action) || (toolName === 'templates' && action.opts?.struct)
   )
-
-  const sel = document.getElementById(tool)
+  let sel = document.getElementById(tool)
+  if(sel?.id === 'templates') {
+    const types = templates.map(t => t.name)
+    const ix = types.indexOf(action.opts?.struct?.name)
+    if (ix >= 0) {
+      sel = document.getElementById(`template-${ix}`)
+    }
+  }
   const dropdown = sel && hiddenAncestor(sel)
 
   return dropdown && dropdown.id !== '' ? { [dropdown.id]: sel.id } : null

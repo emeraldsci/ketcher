@@ -16,7 +16,7 @@
 
 import { connect } from 'react-redux'
 import React, { useState } from 'react'
-
+import { Tooltip } from 'react-tippy';
 import classNames from 'classnames'
 
 import element from '../../chem/element'
@@ -118,15 +118,33 @@ const secondmenu = [
       {
         id: 'generic-elements',
         component: props => {
-          return (<li
-            className={classNames({
-            selected: props.active?.opts?.label === 'X'
-          })}>
-            <Atom
-              el={{ title: 'Generic elements', label: 'X' }}
-              onClick={() => props.onAction({ dialog: 'generic-elements', opts: { label: 'X' }})}
-            />
-      </li>)
+          return (
+            <menu>
+              <li
+              className={classNames({
+              selected: props.active?.opts?.label === 'X'
+            })}>
+              <Tooltip
+                title="Generic elements"
+                delay={500}
+                theme="transparent"
+                position="bottom"
+                tag="span"
+                popperOptions={{
+                  modifiers: {
+                    offset: {
+                      offset: '0,-60px'
+                    }
+                  }
+                }}
+              >
+                <Atom
+                  el={{ title: 'Generic elements', label: 'X' }}
+                  onClick={() => props.onAction({ dialog: 'generic-elements', opts: { label: 'X' }})}
+                />
+              </Tooltip>
+            </li>
+            </menu>)
       }},
       'period-table'
     ]
@@ -318,20 +336,36 @@ function AtomsList(atoms, { active, onAction }) {
   const isAtom = active && active.tool === 'atom'
   return (
     <menu>
-      {atoms.map(label => {
+      {atoms.map((label, ix) => {
         const index = element.map[label]
         const shortcut =
           basicAtoms.indexOf(label) > -1 ? shortcutStr(atomCuts[label]) : null
         return (
           <li
+            key={ix}
             className={classNames({
               selected: isAtom && active.opts.label === label
             })}>
-            <Atom
-              el={element[index]}
-              shortcut={shortcut}
-              onClick={() => onAction({ tool: 'atom', opts: { label } })}
-            />
+            <Tooltip
+              title={shortcut ? `${label} (${shortcut})` : label}
+              delay={500}
+              theme="transparent"
+              position="bottom"
+              tag="span"
+              popperOptions={{
+                modifiers: {
+                  offset: {
+                    offset: '0,-60px'
+                  }
+                }
+              }}
+            >
+              <Atom
+                el={element[index]}
+                shortcut={shortcut}
+                onClick={() => onAction({ tool: 'atom', opts: { label } })}
+              />
+            </Tooltip>
           </li>
         )
       })}
