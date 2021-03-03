@@ -31,7 +31,7 @@ export default {
     action: {
       thunk: serverTransform('clean')
     },
-    disabled: (editor, server, options) => !options.app.server
+    disabled: false // (editor, server, options) => !options.app.server
   },
   arom: {
     title: 'Aromatize',

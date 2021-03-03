@@ -73,7 +73,7 @@ function showMolfile(clientArea, molString, options) {
 
 // TODO: replace window.onload with something like <https://github.com/ded/domready>
 // to start early
-export default function init(el, staticResourcesUrl, apiPath) {
+export default function init(el, staticResourcesUrl, apiPath, cleanMolecule) {
   ketcher.apiPath = apiPath
   const params = new URLSearchParams(document.location.search)
   if (params.has('api_path')) ketcher.apiPath = params.get('api_path')
@@ -83,6 +83,18 @@ export default function init(el, staticResourcesUrl, apiPath) {
     'mass-skip-error-on-pseudoatoms': false,
     'gross-formula-add-rsites': true
   })
+  ketcher.server.clean = (data, options) => {
+    if (cleanMolecule) {
+      const { struct } = data;
+      cleanMolecule(struct)
+        .then(res => {
+          if (res) {
+            ketcher.setMolecule(res)
+          }
+        });
+    }
+  }
+
   ketcher.ui = ui(
     el,
     staticResourcesUrl,

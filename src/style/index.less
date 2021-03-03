@@ -187,6 +187,7 @@
 		background: @ecl-menu;
 		padding: 0px 5px;
 		flex-direction: column;
+		flex: 0 0 auto;
 
 		menu {
 			.remove-inline-spacing;
@@ -414,12 +415,10 @@
 
 	// }
 
-	#mainmenu {
-		display: flex;
-	}
-
+	#mainmenu,
+	#secondmenu,
 	menu {
-		display: flex;
+		display: inline-flex;
 	}
 
 	#undoredo {
@@ -427,6 +426,7 @@
 
 		>menu {
 			justify-content: flex-end;
+			display: flex;
 		}
 	}
 

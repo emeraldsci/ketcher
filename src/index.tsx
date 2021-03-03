@@ -9,12 +9,13 @@ import './index.less'
 interface EditorProps {
   staticResourcesUrl: string
   apiPath?: string
+  cleanMolecule(molData: string): Promise<string>
 }
 
-export function Editor({ staticResourcesUrl, apiPath }: EditorProps) {
+export function Editor({ staticResourcesUrl, apiPath, cleanMolecule }: EditorProps) {
   const rootElRef = useRef(null)
   useEffect(() => {
-    init(rootElRef.current, staticResourcesUrl, apiPath)
+    init(rootElRef.current, staticResourcesUrl, apiPath, cleanMolecule)
   }, [])
 
   return <div ref={rootElRef} className="ketcher root"></div>

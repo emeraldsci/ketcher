@@ -138,7 +138,7 @@ const colors = {
 }
 
 export const sketchingColors = Object.keys(colors).reduce((res, item) => {
-  res[item] = colors[item][0]
+  res[item] = '#000' //colors[item][0]
   return res
 }, {})
 
