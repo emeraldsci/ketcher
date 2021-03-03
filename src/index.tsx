@@ -9,7 +9,7 @@ import './index.less'
 interface EditorProps {
   staticResourcesUrl: string
   apiPath?: string
-  cleanMolecule(molData: string): Promise<string>
+  cleanMolecule?(molData: string): Promise<string>
 }
 
 export function Editor({ staticResourcesUrl, apiPath, cleanMolecule }: EditorProps) {
