@@ -1,56 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="bond_any.svg"
-   inkscape:version="0.48.4 r9939"
-   id="svg3079"
-   version="1.1"
-   viewBox="0 0 1000 1000"
-   height="1000px"
-   width="1000px">
-  <metadata
-     id="metadata3094">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs3092" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="985"
-     id="namedview3090"
-     showgrid="false"
-     inkscape:zoom="0.788"
-     inkscape:cx="405.21344"
-     inkscape:cy="500"
-     inkscape:window-x="-2"
-     inkscape:window-y="16"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg3079"
-     inkscape:snap-object-midpoints="true" />
-  <path
-     inkscape:connector-curvature="0"
-     d="m 807.5889,373.70454 -17.41667,-30.746 167.41111,-82.27937 17.41667,30.69765 z m -257.39723,123.32238 -17.41667,-30.746 174.48334,-84.4548 17.41667,30.746 z m -252.7,118.97153 -17.41667,-30.69765 167.41112,-82.37607 17.41666,30.79434 z M 42.416668,739.32083 25.000001,708.52649 199.48334,624.07169 216.9,654.81768 z"
-     id="path3088" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / bond-any</title>
+    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exportable-Icon-assets" transform="translate(-339.000000, -146.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Line" transform="translate(339.000000, 146.000000)">
+                <path d="M2.00508853,10.0712136 L4.00498496,10.0508594 L3.99480789,9.05091123 L1.99491147,9.07126536 L2.00508853,10.0712136 Z M5.00493317,10.0406824 L7.0048296,10.0203282 L6.99465253,9.02038003 L4.9947561,9.04073416 L5.00493317,10.0406824 Z M8.00477781,10.0101512 L10.0046742,9.98979704 L9.99449716,8.98984883 L7.99460074,9.01020296 L8.00477781,10.0101512 Z M11.0046224,9.97961997 L13.0045189,9.95926584 L12.9943418,8.95931763 L10.9944454,8.97967176 L11.0046224,9.97961997 Z M14.0044671,9.94908877 L16.0043635,9.92873464 L15.9941864,8.92878642 L13.99429,8.94914056 L14.0044671,9.94908877 Z" transform="translate(8.999637, 9.500000) rotate(-29.416887) translate(-8.999637, -9.500000) "></path>
+            </g>
+        </g>
+    </g>
 </svg>

@@ -177,7 +177,7 @@ function ActionMenu({ name, menu, className, role, ...props }) {
 function toolMargin(menuName, menu, visibleTools) {
   if (!visibleTools[menuName]) return {}
   // now not found better way
-  const iconHeight = 28;
+  const iconHeight = 24;
     // window.innerHeight <= 600 || window.innerWidth <= 1040 ? 32 : 40
   let index = menu.indexOf(visibleTools[menuName]) // first level
 

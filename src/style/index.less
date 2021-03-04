@@ -1,5 +1,3 @@
-// @import (less) 'normalize.css';
-
 @import 'variables';
 @import 'mixins';
 @import 'dialogs';
@@ -108,12 +106,6 @@
 
 	.set-size(large);
 
-	// html, body {
-	//	height: 100%;
-	//	width: 100%;
-	// }
-
-	// body, 
 	main[role=application] {
 		height: 100%;
 		position: relative;
@@ -138,9 +130,6 @@
 				opacity: 1;
 			}
 		}
-	}
-	#mainmenu {
-		border-bottom: 1px solid @ecl-gray-600;
 	}
 
 	#mainmenu, #secondmenu {
@@ -185,18 +174,17 @@
 	[role='toolbar'] {
 		user-select: none;
 		background: @ecl-menu;
-		padding: 0px 5px;
-		flex-direction: column;
 		flex: 0 0 auto;
+
+		@media (max-width: @ecl-breakpoint) {
+			flex-direction: column;
+		}
 
 		menu {
 			.remove-inline-spacing;
 		}
 
 		li {
-			// display: inline-block;
-			// vertical-align: top;
-
 			&>svg {
 				fill: @main-color;
 				display: none; // dropdown
@@ -207,22 +195,6 @@
 		}
 		button {
 			.toolbutton;
-			// &:hover {
-			// 	z-index: 100;
-			// }
-			// &[data-title]:hover::before {
-			// 	content: attr(data-title);
-			// 	position: absolute;
-			// 	bottom: -28px;
-			// 	display: inline-block;
-			// 	padding: 5px;
-			// 	box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
-			// 	border-radius: 2px;
-			// 	background: #fff;
-			// 	color: @ecl-blue-400;
-			// 	font-size: 13px;
-			// 	white-space: nowrap;
-			// }
 		}
 
 		.selected button, button.selected {
@@ -269,7 +241,9 @@
 	#atom,
 	#freq-atoms {
 		button {
+			font-family: HelveticaNeue-Medium;
 			font-size: @atom-size;
+			font-weight: 500;
 		}
 
 		kbd {
@@ -283,8 +257,6 @@
 		font-size: @base-size;
 		height: @button-size;
 		padding: 0px;
-		//text-align: center;
-		//appearance: none;
 	}
 
 	//////////////////////////
@@ -299,105 +271,6 @@
 		.collapsed-ifnot(opened);
 	}
 
-	// @media (max-width: 840px) {
-
-	// 	#zoom-in,
-	// 	#zoom-out {
-	// 		display: none;
-	// 	}
-	// }
-
-	// @media (max-width: 1040px) {
-
-	// 	#bond-common,
-	// 	#bond-stereo,
-	// 	#bond-query {
-	// 		.collapsed-size(small);
-	// 	}
-	// }
-
-	// @media (max-height: 850px) {
-
-	// 	#rgroup,
-	// 	#shape {
-	// 		.collapsed-ifnot(opened);
-	// 	}
-
-	// 	@media (max-width: 1040px) {
-
-	// 		// better way not to dublicate?
-	// 		#rgroup,
-	// 		#shape {
-	// 			// inherit 100%, small? overflow-x?
-	// 			.collapsed-size(small);
-	// 		}
-	// 	}
-	// }
-
-	// @media (max-height: 800px) {
-	// 	#transform {
-	// 		.collapsed-ifnot(opened);
-	// 	}
-
-	// 	@media (max-width: 1040px) {
-	// 		#transform {
-	// 			.collapsed-size(small);
-	// 		}
-	// 	}
-	// }
-
-	// @media (max-height: 700px) {
-	// 	li.opened {
-	// 		.expanded-menu;
-	// 	}
-
-	// 	#bond-common,
-	// 	#bond-stereo,
-	// 	#bond-query {
-	// 		.collapsed(none);
-	// 	}
-
-	// 	#bond {
-	// 		.collapsed-ifnot(opened);
-	// 	}
-
-	// 	@media (max-width: 850px) {
-	// 		li.opened {
-	// 			.expanded-menu(small);
-	// 		}
-	// 	}
-
-	// 	@media (max-width: 1040px) {
-	// 		#bond {
-	// 			.collapsed-size(small);
-	// 		}
-	// 	}
-	// }
-
-	// @media (max-height: 600px) {
-
-	// 	#rgroup,
-	// 	#transform,
-	// 	#bond,
-	// 	#shape {
-	// 		.collapsed-size(small);
-	// 	}
-	// }
-
-	// @media (min-height: 800px) {
-	// 	#reaction {
-	// 		.separate-item(vertical, 5px);
-	// 	}
-	// }
-
-	// @media (min-height: 650px) {
-	// 	#erase, #chain, #charge, #transform, #atom, #freq-atoms {
-	// 		.separate-item(vertical, 5px);
-	// 	}
-	// }
-
-	// @media (min-width: 1160px) {
-	// #analyse, #document, #edit, #zoom {
 	#analyse,
 	#document,
 	#edit,
@@ -409,25 +282,33 @@
 	#templates,
 	#sgroup,
 	#atom,
+	#redo,
+	#charge,
 	#chain {
-		.separate-item(horizontal, 10px);
+		.separate-item(horizontal, 7px);
 	}
 
-	// }
+	#mainmenu {
+		padding: 5px;
+	}
+	@media (min-width: @ecl-breakpoint + 1) {
+		#atom-list {
+			.separator(horizontal, 7px, 7px);
+		}
+	}
+	@media (max-width: @ecl-breakpoint) {
+		#mainmenu {
+			border-bottom: 1px solid @ecl-gray-600;
+		}
+		#secondmenu {
+			padding: 5px;
+		}
+	}
 
 	#mainmenu,
 	#secondmenu,
 	menu {
 		display: inline-flex;
-	}
-
-	#undoredo {
-		flex-grow: 2;
-
-		>menu {
-			justify-content: flex-end;
-			display: flex;
-		}
 	}
 
 	li {
@@ -447,74 +328,13 @@
 			align-items: center;
 
 			>span {
-				margin-left: @button-size;
+				margin-left: @icon-size;
 				padding: 0px 5px;
 				display: flex;
+				white-space: nowrap;
 			}
 		}
 	}
-
-	// @media (max-height: 600px),
-	// (max-width: 1040px) {
-	// 	.set-size(small);
-
-	// 	.ketcher {
-
-	// 		select,
-	// 		form {
-	// 			font-size: @base-size;
-	// 		}
-	// 	}
-
-	// 	// #canvas {
-	// 	// 	.canvas-size(small);
-	// 	// }
-	// 	#mainmenu,
-	// 	#template {
-	// 		.toolbar-size(horizontal, small);
-	// 	}
-
-	// 	#elements,
-	// 	#toolbox {
-	// 		.toolbar-size(vertical, small);
-	// 	}
-
-	// 	[role='toolbar'] button {
-	// 		.toolbutton-size(small);
-	// 	}
-
-	// 	// #select,
-	// 	#reaction {
-	// 		.collapsed-size(small);
-	// 	}
-
-	// 	li.opened {
-	// 		.expanded-size(small);
-	// 	}
-
-	// 	#atom button,
-	// 	#freq-atoms button {
-	// 		font-size: @atom-size;
-	// 	}
-	// }
-
-	// @media (max-width: 770px) {
-
-	// 	#help,
-	// 	#about {
-	// 		display: none;
-	// 	}
-
-	// 	#mainmenu {
-	// 		.set-size(small);
-	// 		left: @toolbar-gap;
-	// 		right: @toolbar-gap;
-	// 	}
-	// }
-
-	// #template-common {
-	// 	.separate-item(horizontal, 15px);
-	// }
 
 	.cellar {
 		display: none;

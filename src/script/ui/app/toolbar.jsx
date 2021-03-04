@@ -75,6 +75,10 @@ const mainmenu = [
     menu: ['open']
   },
   {
+    id: 'edit',
+    menu: ['undo', 'redo', 'cut', 'copy', 'paste']
+  },
+  {
     id: 'select',
     menu: ['select-lasso', 'select-rectangle']
   },
@@ -100,10 +104,6 @@ const mainmenu = [
         component: ZoomList
       }
     ]
-  },
-  {
-    id: 'undoredo',
-    menu: ['undo', 'redo']
   }
 ]
 
@@ -309,14 +309,14 @@ function ZoomList({ status, onAction }) {
   return (
     <div id="zoom-select">
       <div>
-        <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
+        <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
         <div className="dd-wrapper">
           <div onClick={toggleMenu}>
             <div className="dd-text">{`${(zoom * 100).toFixed()}%`}</div>
             <div className="dd-toggle">&#8964;</div>
           </div>
         </div>
-        <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
+        <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
       </div>
       <ul className={'dd-menu ' + classNames({ hidden: !showMenu })}>
       {zoomList.map(val => (

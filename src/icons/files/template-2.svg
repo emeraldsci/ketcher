@@ -1,55 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000px"
-   height="1000px"
-   viewBox="0 0 1000 1000"
-   version="1.1"
-   id="svg2"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="template2.svg">
-  <metadata
-     id="metadata11">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs9" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="985"
-     id="namedview7"
-     showgrid="false"
-     inkscape:zoom="0.236"
-     inkscape:cx="116.52542"
-     inkscape:cy="502.11864"
-     inkscape:window-x="-2"
-     inkscape:window-y="16"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path5"
-     d="M 500,975 85.905556,742.30278 l 0,-474.94722 L 500,24.999998 914.09445,257.64444 l 0,475.00001 z M 124.90833,722.45834 500,936.15556 880.26389,713.69722 l 0,-436.15555 L 500,63.949998 124.90833,286.40833 z"
-     sodipodi:nodetypes="cccccccccccccc" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / template-2</title>
+    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exportable-Icon-assets" transform="translate(-606.000000, -294.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Combined-Shape" transform="translate(606.000000, 294.000000)">
+                <path d="M9.0710502,2.88196421 L15.4419741,7.51137694 L13.0088294,15 L5.13436779,15 L2.7,7.51021582 L9.0710502,2.88196421 Z M9.07082184,4.118 L3.87482184,7.891 L5.86082184,14 L12.2818218,14 L14.2658218,7.892 L9.07082184,4.118 Z M5.98497062,7.99012453 L7.485543,12.4423615 L6.80254433,12.6764509 L5.30197195,8.22421398 L5.98497062,7.99012453 Z M12.1343291,7.99012453 L12.8173278,8.22421398 L11.3167554,12.6764509 L10.6337567,12.4423615 L12.1343291,7.99012453 Z"></path>
+            </g>
+        </g>
+    </g>
 </svg>

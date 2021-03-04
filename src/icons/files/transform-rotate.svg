@@ -1,55 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000px"
-   height="1000px"
-   viewBox="0 0 1000 1000"
-   version="1.1"
-   id="svg2"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="transform-rotate.svg">
-  <metadata
-     id="metadata11">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs9" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="985"
-     id="namedview7"
-     showgrid="false"
-     inkscape:zoom="0.236"
-     inkscape:cx="116.52542"
-     inkscape:cy="502.11864"
-     inkscape:window-x="-2"
-     inkscape:window-y="16"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg2" />
-  <path
-     inkscape:connector-curvature="0"
-     id="path5"
-     d="M 852.48959,687.55903 C 879.93403,630.75693 895.70138,567.29166 895.70138,500 895.70138,259.92708 700.4236,64.649296 460.3507,64.649296 220.27777,64.649296 24.999995,259.92708 24.999995,500 c 0,240.07292 195.277775,435.3507 435.350705,435.3507 69.60068,0 135.30901,-16.82292 193.62846,-45.98265 L 641.37848,856.05208 C 587.01736,883.82638 525.59722,899.79167 460.3507,899.79167 239.93749,899.79167 60.493042,720.47916 60.493042,500 c 0,-220.47918 179.378478,-399.85764 399.857658,-399.85764 220.54512,0 399.85763,179.37846 399.85763,399.85764 0,61.15625 -14.64584,118.61805 -39.45139,170.40625 l -2.63889,-1.64932 -81.27778,-94.53819 29.9514,226.68056 L 975,706.42708 z"
-     sodipodi:nodetypes="cssssccsssscccccc" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / transform-rotate</title>
+    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exportable-Icon-assets" transform="translate(-43.000000, -228.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Combined-Shape" transform="translate(43.000000, 228.000000)">
+                <path d="M10.1645888,4.10350067 C12.4544765,4.67443381 13.9782762,6.73944473 13.9559169,9.0002776 L15.5,9 L13.5,12 L11.5,9 L12.9556337,8.99992316 C12.9775262,7.1878548 11.7575157,5.53127559 9.92266688,5.07379639 C7.77914875,4.5393573 5.60823549,5.84377359 5.07379639,7.98729172 C4.5393573,10.1308098 5.84377359,12.3017231 7.98729172,12.8361622 C9.0154443,13.0925094 10.0782167,12.9312154 10.9708278,12.4099309 L11.1594224,12.292738 L11.7102832,13.1273352 C10.5498358,13.8932674 9.12143632,14.1495498 7.74536982,13.8064579 C5.06597216,13.1384091 3.4354518,10.4247675 4.10350067,7.74536982 C4.77154953,5.06597216 7.48519111,3.4354518 10.1645888,4.10350067 Z"></path>
+            </g>
+        </g>
+    </g>
 </svg>

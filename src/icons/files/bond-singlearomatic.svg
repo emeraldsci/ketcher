@@ -1,55 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000px"
-   height="1000px"
-   viewBox="0 0 1000 1000"
-   version="1.1"
-   id="svg3619"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="bond_singlearomatic.svg">
-  <metadata
-     id="metadata3636">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs3634" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="985"
-     id="namedview3632"
-     showgrid="false"
-     inkscape:zoom="0.236"
-     inkscape:cx="-36.016949"
-     inkscape:cy="502.11864"
-     inkscape:window-x="-2"
-     inkscape:window-y="16"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg3619" />
-  <path
-     sodipodi:nodetypes="ccccccccccccccccccccccccc"
-     inkscape:connector-curvature="0"
-     d="M 144.81672,842.64301 127.97985,810.1234 958.16973,380.25911 975,412.77214 z M 798.40091,157.357 l 49.27733,0 0,49.59389 -49.27733,0 z m -449.35232,240.68865 49.22458,0 0,49.59389 -49.22458,0 z m 137.64943,-22.89761 -16.93579,-32.55258 206.07845,-107.8931 16.88303,32.55259 z M 41.935778,611.35214 24.999991,578.7468 231.02568,470.8537 l 16.93579,32.60535 z"
-     id="path3630" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / bond-singlearomatic</title>
+    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exportable-Icon-assets" transform="translate(-339.000000, -217.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Group" transform="translate(339.000000, 217.000000)">
+                <path d="M4.60257174,9.51813045 L5.10257174,10.3841559 L2.50449553,11.8841559 L2.50253412,11.8821304 L2.43753412,11.921024 L1.93753412,11.0549986 L2.80355952,10.5549986 L2.80453412,10.5551304 L3.67053412,10.0551304 L3.66958493,10.0549986 L4.53561033,9.55499857 L4.53653412,9.55513045 L4.60257174,9.51813045 Z M6.26766114,8.55499857 L6.76766114,9.42102398 L5.90163574,9.92102398 L5.40163574,9.05499857 L6.26766114,8.55499857 Z M9.79872416,6.51813045 L10.2987242,7.38415585 L7.70064795,8.88415585 L7.69953412,8.88213045 L7.63368654,8.92102398 L7.13368654,8.05499857 L7.99971195,7.55499857 L8.00053412,7.55513045 L8.86653412,7.05513045 L8.86573735,7.05499857 L9.73176276,6.55499857 L9.73253412,6.55513045 L9.79872416,6.51813045 Z M11.4638136,5.55499857 L11.9638136,6.42102398 L11.0977882,6.92102398 L10.5977882,6.05499857 L11.4638136,5.55499857 Z M14.1288512,4.01813045 L14.6288512,4.88415585 L12.8968004,5.88415585 L12.8955341,5.88213045 L12.829839,5.92102398 L12.329839,5.05499857 L13.1958644,4.55499857 L13.1965341,4.55613045 L14.1288512,4.01813045 Z" id="Combined-Shape"></path>
+                <polygon id="Line-Copy-2" transform="translate(9.816673, 10.549219) rotate(-29.416887) translate(-9.816673, -10.549219) " points="16.8112223 9.97800579 16.8213994 10.977954 2.8221244 11.1204329 2.81194733 10.1204847"></polygon>
+            </g>
+        </g>
+    </g>
 </svg>

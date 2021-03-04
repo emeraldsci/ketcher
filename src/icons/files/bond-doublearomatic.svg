@@ -1,55 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1000px"
-   height="1000px"
-   viewBox="0 0 1000 1000"
-   version="1.1"
-   id="svg3397"
-   inkscape:version="0.48.4 r9939"
-   sodipodi:docname="bond_doublearomatic.svg">
-  <metadata
-     id="metadata3420">
-    <rdf:RDF>
-      <cc:Work
-         rdf:about="">
-        <dc:format>image/svg+xml</dc:format>
-        <dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-      </cc:Work>
-    </rdf:RDF>
-  </metadata>
-  <defs
-     id="defs3418" />
-  <sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="1280"
-     inkscape:window-height="985"
-     id="namedview3416"
-     showgrid="false"
-     inkscape:zoom="0.236"
-     inkscape:cx="-36.016949"
-     inkscape:cy="502.11864"
-     inkscape:window-x="-2"
-     inkscape:window-y="16"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="svg3397" />
-  <path
-     sodipodi:nodetypes="cccccccccccccccccccccccccccccccccccccccc"
-     inkscape:connector-curvature="0"
-     d="m 924.75556,388.79722 50.24444,0 0,50.61389 -50.24444,0 z m -110.04167,-238.81945 50.24444,0 0,50.66667 -50.24444,0 z m -458.79723,245.83889 50.24445,0 0,50.61389 -50.24445,0 z m 114.68612,238.71389 50.24444,0 0,50.66667 -50.24444,0 z m 147.51389,-30.34722 -17.25834,-33.30278 210.425,-110.09444 17.31112,33.25 z M 149.97777,850.02222 132.71944,816.71944 343.09166,706.57222 360.40278,739.875 z m 346.48612,-477.58611 -17.31111,-33.30278 210.425,-110.14722 17.25833,33.30278 z M 42.258329,613.57778 24.999996,580.275 235.425,470.12778 l 17.25833,33.30277 z"
-     id="path3414" />
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon / bond-doublearomatic</title>
+    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Exportable-Icon-assets" transform="translate(-339.000000, -240.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Group" transform="translate(339.000000, 240.000000)">
+                <path d="M4.60257174,9.51813045 L5.10257174,10.3841559 L2.50449553,11.8841559 L2.50253412,11.8821304 L2.43753412,11.921024 L1.93753412,11.0549986 L2.80355952,10.5549986 L2.80453412,10.5551304 L3.67053412,10.0551304 L3.66958493,10.0549986 L4.53561033,9.55499857 L4.53653412,9.55513045 L4.60257174,9.51813045 Z M6.26766114,8.55499857 L6.76766114,9.42102398 L5.90163574,9.92102398 L5.40163574,9.05499857 L6.26766114,8.55499857 Z M9.79872416,6.51813045 L10.2987242,7.38415585 L7.70064795,8.88415585 L7.69953412,8.88213045 L7.63368654,8.92102398 L7.13368654,8.05499857 L7.99971195,7.55499857 L8.00053412,7.55513045 L8.86653412,7.05513045 L8.86573735,7.05499857 L9.73176276,6.55499857 L9.73253412,6.55513045 L9.79872416,6.51813045 Z M11.4638136,5.55499857 L11.9638136,6.42102398 L11.0977882,6.92102398 L10.5977882,6.05499857 L11.4638136,5.55499857 Z M14.1288512,4.01813045 L14.6288512,4.88415585 L12.8968004,5.88415585 L12.8955341,5.88213045 L12.829839,5.92102398 L12.329839,5.05499857 L13.1958644,4.55499857 L13.1965341,4.55613045 L14.1288512,4.01813045 Z" id="Combined-Shape"></path>
+                <path d="M6.06503762,12.2 L6.56503762,13.0660254 L3.9669614,14.5660254 L3.965,14.564 L3.9,14.6028935 L3.4,13.7368681 L4.2660254,13.2368681 L4.267,13.237 L5.133,12.737 L5.13205081,12.7368681 L5.99807621,12.2368681 L5.999,12.237 L6.06503762,12.2 Z M7.73012702,11.2368681 L8.23012702,12.1028935 L7.36410162,12.6028935 L6.86410162,11.7368681 L7.73012702,11.2368681 Z M11.26119,9.2 L11.76119,10.0660254 L9.16311383,11.5660254 L9.162,11.564 L9.09615242,11.6028935 L8.59615242,10.7368681 L9.46217783,10.2368681 L9.463,10.237 L10.329,9.737 L10.3282032,9.73686812 L11.1942286,9.23686812 L11.195,9.237 L11.26119,9.2 Z M12.9262794,8.23686812 L13.4262794,9.10289353 L12.560254,9.60289353 L12.060254,8.73686812 L12.9262794,8.23686812 Z M15.5913171,6.7 L16.0913171,7.5660254 L14.3592662,8.5660254 L14.358,8.564 L14.2923048,8.60289353 L13.7923048,7.73686812 L14.6583302,7.23686812 L14.659,7.238 L15.5913171,6.7 Z" id="Combined-Shape-Copy"></path>
+            </g>
+        </g>
+    </g>
 </svg>
