@@ -24,13 +24,14 @@
 .ketcher.root {
 
 	.ket-overlay {
-		position: fixed;
+		position: absolute;
 		left: 0;
 		top: 0;
 		bottom: 0;
 		right: 0;
 		z-index: 40;
 		text-align: center;
+		overflow: auto;
 
 		background-image: data-uri('overlay.svg');
 		.background-opacity(#777, 0.2);

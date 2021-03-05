@@ -78,7 +78,7 @@ class Dialog extends Component {
         <header>
           {title}
           {params.onCancel && title && (
-            <button className="close" onClick={() => this.exit('Cancel')}>
+            <button type="button" className="close" onClick={() => this.exit('Cancel')}>
               ×
             </button>
           )}
