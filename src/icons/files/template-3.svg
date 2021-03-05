@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / template-3</title>
+    <title>icon / <template-3></template-3></title>
     <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Exportable-Icon-assets" transform="translate(-606.000000, -57.000000)" fill="#31353B" fill-rule="nonzero">
-            <g id="Path" transform="translate(606.000000, 57.000000)">
-                <path d="M15.3661154,14.0253668 L8.99933554,3.00007185 L2.63398161,14.0253668 L15.3661154,14.0253668 Z M8.999,4.999 L13.634,13.025 L4.366,13.025 L8.999,4.999 Z"></path>
+        <g id="Exportable-Icon-assets" transform="translate(-606.000000, -78.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Path" transform="translate(606.000000, 78.000000)">
+                <path d="M14,4 L4,4 L4,14.0009544 L14,14.0009544 L14,4 Z M13,5 L13,13 L5,13 L5,5 L13,5 Z"></path>
             </g>
         </g>
     </g>

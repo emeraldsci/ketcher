@@ -2,9 +2,9 @@
 <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>icon / template-7</title>
     <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Exportable-Icon-assets" transform="translate(-606.000000, -144.000000)" fill="#31353B" fill-rule="nonzero">
-            <g id="Path" transform="translate(606.000000, 144.000000)">
-                <path d="M14.0826005,5.32085875 L9.12071561,2.94503584 L4.1708785,5.34278409 L2.95925358,10.7069891 L6.39728905,15.0005838 L11.8999217,14.9872161 L15.3185358,10.6802241 L14.0826005,5.32085875 Z M9.123,4.054 L13.216,6.014 L14.236,10.435 L11.416,13.988 L6.877,13.999 L4.04,10.457 L5.04,6.032 L9.123,4.054 Z"></path>
+        <g id="Exportable-Icon-assets" transform="translate(-606.000000, -165.000000)" fill="#31353B" fill-rule="nonzero">
+            <g id="Path" transform="translate(606.000000, 165.000000)">
+                <path d="M11.4842182,3 L6.51356964,3 L3,6.51474948 L3,11.4852505 L6.51356964,15 L11.4842182,15 L14.9989185,11.4852997 L14.9989185,6.51470032 L11.4842182,3 Z M11.07,4 L13.998,6.928 L13.998,11.071 L11.069,14 L6.928,14 L3.999,11.07 L3.999,6.929 L6.927,4 L11.07,4 Z"></path>
             </g>
         </g>
     </g>
