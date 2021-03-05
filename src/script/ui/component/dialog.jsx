@@ -84,22 +84,22 @@ class Dialog extends Component {
           )}
         </header>
         <div className="dialog-body">{children}</div>
-
-        <footer>
-          {buttons.map(b =>
-            typeof b !== 'string' ? (
-              b
-            ) : (
-              <input
-                key={b}
-                type="button"
-                value={b}
-                disabled={(b === 'OK' || b === 'Confirm' || b === 'Submit') && !valid()}
-                onClick={() => this.exit(b)}
-              />
-            )
-          )}
-        </footer>
+        {buttons && buttons.length > 0 &&
+          <footer>
+            {buttons.map(b =>
+              typeof b !== 'string' ? (
+                b
+              ) : (
+                <input
+                  key={b}
+                  type="button"
+                  value={b}
+                  disabled={(b === 'OK' || b === 'Confirm' || b === 'Submit') && !valid()}
+                  onClick={() => this.exit(b)}
+                />
+              )
+            )}
+          </footer>}
       </form>
     )
   }

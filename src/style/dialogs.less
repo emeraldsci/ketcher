@@ -646,7 +646,6 @@
 	}
 
 	.elements-table {
-		// width: 57em;
 
 		.type-choice {
 			background: @ecl-menu;
@@ -708,22 +707,14 @@
 				padding: 0.3em 0.8em;
 			}
 
-			// th.ref {
-			// 	vertical-align: top;
-			//  text-align: right;
-			// }
-
 			tr:nth-of-type(8) {
 				border-bottom: 1em solid transparent;
 			}
 
 			.ket-atom-info {
 				position: absolute;
-				// padding: 0.75em 0.75em;
 				left: 10em;
-				// top: 2em;
 				width: 7em;
-				// .highlight-shadow(black);
 				opacity: 1;
 				transition: opacity 1s, visibility 0s;
 
@@ -742,7 +733,6 @@
 				padding: 0.15em;
 				margin: 1px;
 				border: 0;
-				// display: block;
 				position: relative;
 
 				&:after {
@@ -756,27 +746,15 @@
 					content: attr(value);
 				}
 
-				// &:hover,
-				// &.selected {
-				// 	&:after {
-				// 		visibility: hidden;
-				// 	}
-				// }
-
 				&:not(:hover)>span {
 					color: black;
 				}
 
 				&:hover {
-					// .highlight-scale(@scale: 1.25);
-					// .highlight-shadow(black);
-					// z-index: 60;
-
 					background: @ecl-button-hover;
 				}
 
 				&:active {
-					// .highlight-scale(none);
 					.highlight-shadow(none);
 				}
 
@@ -784,76 +762,6 @@
 					.highlight-invert;
 				}
 			}
-
-			// fieldset {
-			// 	border: 0;
-			// 	padding: 0.5em;
-			// 	margin: 0.5em 0 0 1.5em;
-			// }
-
-			// .diatomic {
-			// 	background: @atom-periodic-diatomic;
-			// }
-
-			// .noble {
-			// 	background: @atom-periodic-noble-gas;
-			// }
-
-			// .alkali {
-			// 	background: @atom-periodic-alkali-metal;
-			// }
-
-			// .alkaline-earth {
-			// 	background: @atom-periodic-alkaline-earth-metal;
-			// }
-
-			// .metalloid {
-			// 	background: @atom-periodic-metalloid;
-			// }
-
-			// .polyatomic {
-			// 	background: @atom-periodic-polyatomic;
-			// }
-
-			// .post-transition {
-			// 	background: @atom-periodic-post-transition-metal;
-			// }
-
-			// .transition {
-			// 	background: @atom-periodic-transition-metal;
-			// }
-
-			// .lanthanide {
-			// 	background: @atom-periodic-lanthanide;
-			// }
-
-			// .actinide {
-			// 	background: @atom-periodic-actinide;
-			// }
-
-			// .unknown-props {
-			// 	background: @atom-periodic-unknown-properties;
-			// }
-
-			// .unknown-state:after {
-			// 	color: #222;
-			// }
-
-			// .solid:after {
-			// 	color: #222;
-			// }
-
-			// .metal:after {
-			// 	color: #006;
-			// }
-
-			// .gas:after {
-			// 	color: #c00;
-			// }
-
-			// .liquid:after {
-			// 	color: #0a0;
-			// }
 		}
 
 		.generic-groups{

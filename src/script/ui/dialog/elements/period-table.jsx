@@ -193,9 +193,13 @@ class PeriodTable extends Component {
   }
   onSelect(label) {
     const { type, value } = this.state
-    this.setState({
-      value: type === 'atom' || type === 'gen' ? label : xor([label], value)
-    })
+    if (this.selected(label)) {
+      this.props.onOk(this.result())
+    } else {
+      this.setState({
+        value: type === 'atom' || type === 'gen' ? label : xor([label], value)
+      })
+    }
   }
   result() {
     const { type, value } = this.state
@@ -243,7 +247,7 @@ class PeriodTable extends Component {
         title="Periodic Table"
         className="elements-table"
         params={this.props}
-        buttons={['Confirm']}
+        buttons={[]}
         result={() => this.result()}>
         {/* <Tabs
           className="tabs"
@@ -252,7 +256,7 @@ class PeriodTable extends Component {
           changeTab={i => this.changeType(i === 0 ? 'atom' : 'gen')}
           tabs={tabs}
         /> */}
-        <TypeChoise value={type} onChange={t => this.changeType(t)} />
+        {/* <TypeChoise value={type} onChange={t => this.changeType(t)} /> */}
         {renderPeriodicTable(value)}
       </Dialog>
     )

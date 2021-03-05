@@ -76,7 +76,7 @@ const mainmenu = [
   },
   {
     id: 'edit',
-    menu: ['undo', 'redo', 'cut', 'copy', 'paste']
+    menu: ['undo', 'redo']
   },
   {
     id: 'select',
