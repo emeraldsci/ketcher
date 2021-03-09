@@ -31,8 +31,9 @@ class ClipArea extends Component {
     this.listeners = {
       mouseup: event => {
         if (
-          el === event.target ||
-          (!isActiveElement(event.target) && this.props.focused())
+          (el === event.target ||
+          (!isActiveElement(event.target) && this.props.focused()))
+          && !document.querySelector('#zoom-list').contains(event.target)
         )
           autofocus(el)
       },

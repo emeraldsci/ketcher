@@ -16,6 +16,7 @@
 
 import React, { Component } from 'react'
 import { omit } from 'lodash'
+import ReactSelect from 'react-select'
 
 function GenericInput({
   schema,
@@ -70,31 +71,83 @@ CheckBox.val = function (ev) {
 }
 
 function Select({ schema, value, selected, onSelect, ...props }) {
+  const options = enumSchema(schema, (title, val) => ({
+    value: (typeof val !== 'object' && val),
+    label: title
+  }));
+
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderRadius: '2px',
+      minHeight: 'unset',
+      fontSize: '13px',
+      ...(
+        state.isFocused ? {
+          borderColor: '#6acbff',
+          boxShadow: 'unset',
+          '&:hover': {
+            borderColor: '#6acbff'
+          }
+        } : {}
+      )
+    }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: '0px 2px'
+    }),
+    indicatorSeparator: (provided, state) => ({
+      ...provided,
+      marginBottom: '0px',
+      marginTop: '0px',
+    }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      padding: '0px'
+    }),
+    input: (provided, state) => ({
+      ...provided,
+      margin: '0px',
+      padding: '0px'
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      background: state.isSelected ? '#daf2ff' : 'unset',
+      color: state.isSelected ? 'hsl(0, 0%, 20%)' : 'inherit',
+      fontSize: '13px'
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      marginTop: '2px'
+    })
+  };
+
   return (
-    <select onChange={onSelect} {...props}>
-      {enumSchema(schema, (title, val) => (
-        <option
-          key={val}
-          //TODO: Warning: Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>
-          selected={selected(val, value)}
-          //TODO: looks strange
-          value={typeof val !== 'object' && val}>
-          {title}
-        </option>
-      ))}
-    </select>
+    <ReactSelect
+      options={options}
+      styles={customStyles}
+      onChange={onSelect}
+      value={options.find(opt => opt.value === value)}
+    />
   )
 }
 
 Select.val = function (ev, schema) {
-  const select = ev.target
-  if (!select.multiple) return enumSchema(schema, select.selectedIndex)
+  // const select = ev.target
 
-  return [].reduce.call(
-    select.options,
-    (res, o, i) => (!o.selected ? res : [enumSchema(schema, i), ...res]),
-    []
-  )
+  if (!Array.isArray(ev.value)) {
+    return ev.value;
+  }
+
+  return ev.value.map(opt => opt.value);
+
+  // if (!select.multiple) return enumSchema(schema, select.selectedIndex)
+
+  // return [].reduce.call(
+  //   select.options,
+  //   (res, o, i) => (!o.selected ? res : [enumSchema(schema, i), ...res]),
+  //   []
+  // )
 }
 
 function FieldSet({

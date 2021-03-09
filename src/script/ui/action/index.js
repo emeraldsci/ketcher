@@ -94,7 +94,7 @@ export default {
     action: { dialog: 'settings' }
   },
   help: {
-    shortcut: ['?', '&', 'Shift+/'],
+    // shortcut: ['?', '&', 'Shift+/'],
     title: 'Help',
     action: { dialog: 'help' }
   },

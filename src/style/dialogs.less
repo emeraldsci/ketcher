@@ -7,11 +7,13 @@
 	.dialog-body {
 		margin: 10px;
 		overflow: unset;
-		input:not([type="checkbox"]),
-		select {
-			color: @ecl-gray-800;
-			width: 100%;
-			margin-bottom: 10px;
+		.field {
+			>input:not([type="checkbox"]),
+			>select {
+				color: @ecl-gray-800;
+				margin-bottom: 10px;
+				height: 20px;
+			}
 		}
 	}
 	label {
@@ -32,19 +34,17 @@
 		z-index: 40;
 		text-align: center;
 		overflow: auto;
+		padding: 10px;
 
 		background-image: data-uri('overlay.svg');
 		.background-opacity(#777, 0.2);
-		//opacity: 1;
 
 		&.animate {
 			transition: background-color 0.3s;
-			//transition: opacity 0.3s;
 		}
 
 		&.hide {
 			background-color: fade(#777, 1%);
-			//opacity: 0.1;
 		}
 
 		&:after {
@@ -86,22 +86,16 @@
 	form[role=dialog] {
 		text-align: left;
 		background-color: #fff;
-		// border: 1px solid #999;
-		// border: 1px solid rgba(0, 0, 0, .3);
 		border: 1px solid @ecl-dialog-header;
-		// border-radius: 6px;
-		// box-shadow: 0 3px 9px rgba(0, 0, 0, .5);
-		// background-clip: padding-box;
 		overflow: visible;
 		.transition-zoom;
 
-		//outline: 0;
-		// >* {
-		// 	margin: 0.3em;
-		// }
-
 		.field {
-			margin-bottom: 10px;
+			margin: 0px 0px 10px 5px;
+			display: flex;
+			&:not(.inline) {
+				flex-direction: column;
+			}
 		}
 
 		header,
@@ -112,19 +106,16 @@
 		}
 
 		header {
-			// font-size: 13px;
 			font-family: Helvetica-Bold;
 			font-weight: bold;
 			line-height: 32px;
 			height: 32px;
 			border-bottom: 1px solid #ddd;
-			// border-radius: 6px 6px 0 0;
 		}
 
 		footer {
 			clear: both;
 			border-top: 1px solid #ddd;
-			// border-radius: 0 0 6px 6px;
 			text-align: right;
 			button, input[type=button] {
 				background: @ecl-blue-200;
@@ -193,7 +184,6 @@
 
 		.groups {
 			&:extend(.-SelectList all);
-			// margin-top: 1em;
 			height: 27em;
 			width: 11em;
 			float: left;
@@ -202,7 +192,6 @@
 		}
 
 		.table {
-			// margin-top: 1em;
 			padding: 0;
 			float: left;
 			width: 550px;
@@ -230,7 +219,6 @@
 				border-radius: 3px;
 				font-size: 11px;
 				color: darken(@border-color, 30%);
-				// background-color: white;
 				content: attr(title);
 			}
 
@@ -253,8 +241,6 @@
 			padding: 1em;
 			width: 98%;
 			height: 98%;
-
-			// border: 1px solid @border-color;
 			border-radius: 5px;
 			background: @ecl-struct-background;
 
@@ -307,14 +293,7 @@
 			display: flex;
 			flex: 2;
 			padding: 5px;
-			// width: 14.5em;
-			// float: left;
 			&:extend(fieldset.-hidden);
-
-
-			// input {
-			// 	width: 8em;
-			// }
 
 			.field {
 				display: flex;
@@ -326,25 +305,14 @@
 					color: @ecl-gray-750;
 					font-size: 13px;
 				}
-				input[type="text"],
-				input:read-only,
-				select {
+				>input[type="text"]:not([type="checkbox"]),
+				>input:read-only:not([type="checkbox"]),
+				>select {
 					width: 140px;
-					height: 24px;
+					height: 20px;
 				}
 			}
 		}
-
-		// .query,
-		// .reaction {
-		// 	float: right;
-		// 	clear: right;
-		// 	width: 16em;
-
-		// 	input[type=checkbox] {
-		// 		margin: 0.6em 0.3em;
-		// 	}
-		// }
 	}
 
 	form.attach-points {
@@ -371,11 +339,6 @@
 
 	form.rgroup-logic {
 		.dialog-form-flex;
-		// label {
-		// 	display: inline-block;
-		// 	text-align: right;
-		// 	line-height: @input-height;
-		// }
 
 		.cond {
 			display: block;
@@ -540,15 +503,12 @@
 	.rgroup {
 		width: 320px;
 		ul {
-			// width: 25.6em;
-			// padding: 0.5em;
 			display: flex;
 			flex-wrap: wrap;
 			justify-content: center;
 		}
 
 		li {
-			// display: inline-block;
 			margin: 5px;
 			flex: 0 0 auto;
 		}
@@ -569,11 +529,6 @@
 				background-image: unset;
 			}
 
-			// &:first-letter {
-			// 	font-weight: 600;
-			// 	color: lighten(@main-color, 20%);
-			// }
-
 			&:hover {
 				.highlight-scale(@scale: 1.005);
 				.highlight-shadow(black);
@@ -586,10 +541,6 @@
 
 			&.selected {
 				.highlight-invert;
-
-				// &:first-letter {
-				// 	color: darken(white, 30%);
-				// }
 			}
 		}
 	}
@@ -962,12 +913,8 @@
 
 		.dialog-body {
 			margin: 10px;
-			// constrain dialog resizebility
-			// max-width: 50%;
-			// max-height: 70%;
 			label {
 				display: block;
-				// width: 22.5em;
 				font-size: 13px;
 				margin: 5px;
 				color: @ecl-gray-750;
@@ -1052,12 +999,6 @@
 		border: 0;
 	}
 
-	.dialog-body {
-		max-width: 80vw;
-		max-height: 80vh;
-		// overflow: auto;
-	}
-
 	.miew {
 		.warning {
 			display: inline-block;
@@ -1117,8 +1058,6 @@
 		}
 
 		.editor {
-			// border: 1px solid @border-color;
-			// border-radius: 5px;
 			position: relative;
 			height: 25em;
 			max-width: 30em;

@@ -15,7 +15,7 @@
  ***************************************************************************/
 
 import { connect } from 'react-redux'
-import React, { useState } from 'react'
+import React from 'react'
 import { Tooltip } from 'react-tippy';
 import classNames from 'classnames'
 
@@ -28,6 +28,7 @@ import action from '../action'
 import { atomCuts, basic as basicAtoms } from '../action/atoms'
 import { zoomList } from '../action/zoom'
 import templates from '../data/templates'
+import ReactSelect from 'react-select'
 
 // const mainmenu = [
 //   {
@@ -273,7 +274,6 @@ const toolbar = [
 ]
 
 function ZoomList({ status, onAction }) {
-  const [ showMenu, setShowMenu ] = useState(false);
   const zoom = status.zoom && status.zoom.selected // TMP
 
   const upDown = (val) => {
@@ -281,53 +281,79 @@ function ZoomList({ status, onAction }) {
     const ix = zoomList.indexOf(currentVal) + val;
     if (ix > -1 && ix < zoomList.length) {
       const newValue = zoomList[ix];
-      if (showMenu) {
-        setShowMenu(false);
-      }
       submitChange(newValue);
     }
-  };
-
-  const doClick = (e, val) => {
-    const ix = zoomList.indexOf(val);
-    if (ix >= 0) {
-      setShowMenu(false);
-      submitChange(val);
-    }
-    e.stopPropagation();
   };
 
   const submitChange = (val) => {
     onAction(editor => editor.zoom(parseFloat(val)));
   };
 
-  const toggleMenu = (ev) => {
-    setShowMenu(!showMenu);
-    ev.preventDefault();
+  const customStyles = {
+    control: (provided, state) => ({
+      ...provided,
+      borderRadius: '2px',
+      minHeight: 'unset',
+      fontSize: '13px',
+      width: '75px',
+      ...(
+        state.isFocused ? {
+          borderColor: '#6acbff',
+          boxShadow: 'unset',
+          '&:hover': {
+            borderColor: '#6acbff'
+          }
+        } : {}
+      )
+    }),
+    valueContainer: (provided, state) => ({
+      ...provided,
+      padding: '0px 2px',
+      justifyContent: 'center'
+    }),
+    indicatorSeparator: (provided, state) => ({
+      ...provided,
+      marginBottom: '0px',
+      marginTop: '0px',
+    }),
+    dropdownIndicator: (provided, state) => ({
+      ...provided,
+      padding: '0px'
+    }),
+    input: (provided, state) => ({
+      ...provided,
+      margin: '0px',
+      padding: '0px'
+    }),
+    option: (provided, state) => ({
+      ...provided,
+      background: state.isSelected ? '#daf2ff' : 'unset',
+      color: state.isSelected ? 'hsl(0, 0%, 20%)' : 'inherit',
+      fontSize: '13px'
+    }),
+    menu: (provided, state) => ({
+      ...provided,
+      marginTop: '2px'
+    })
   };
+
+  const options = zoomList.map(val => ({ label: `${(val * 100).toFixed()}%`, value: val }));
 
   return (
     <div id="zoom-select">
       <div>
         <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
         <div className="dd-wrapper">
-          <div onClick={toggleMenu}>
-            <div className="dd-text">{`${(zoom * 100).toFixed()}%`}</div>
-            <div className="dd-toggle">&#8964;</div>
-          </div>
+          <ReactSelect
+            options={options}
+            styles={customStyles}
+            onChange={opt => submitChange(opt.value)}
+            value={options.find(opt => opt.value === zoom)}
+            isSearchable={false}
+          />
         </div>
         <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
       </div>
-      <ul className={'dd-menu ' + classNames({ hidden: !showMenu })}>
-      {zoomList.map(val => (
-        <li
-          key={val.toString()}
-          className={classNames({ selected: val === zoom })}
-          onClick={(e) => doClick(e, val)}>
-          {`${(val * 100).toFixed()}%`}
-        </li>
-      ))}
-      </ul>
     </div>
   )
 }

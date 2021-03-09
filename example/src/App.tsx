@@ -19,7 +19,7 @@ const App = () => {
     <Editor
       staticResourcesUrl={process.env.PUBLIC_URL}
       // staticResourcesUrl="/static/"
-      // apiPath={process.env.REACT_APP_API_PATH}
+      apiPath=""
       cleanMolecule={cleanMolecule}
     />
   )

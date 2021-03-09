@@ -115,13 +115,14 @@ function Field(props) {
   const { dataError, ...fieldOpts } = stateStore.field(name, onChange)
   const Component = component
   const formField = component ? (
-    <Component name={name} schema={desc} {...fieldOpts} {...prop} />
+    <Component key="component" name={name} schema={desc} {...fieldOpts} {...prop} />
   ) : (
-    <Input name={name} schema={desc} {...fieldOpts} {...prop} />
+    <Input key="label" name={name} schema={desc} {...fieldOpts} {...prop} />
   )
 
   const items = [
   <Label
+    key={prop.title || desc.title}
     className={classNames({ 'data-error': dataError })}
     error={dataError}
     title={prop.title || desc.title}
