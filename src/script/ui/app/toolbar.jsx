@@ -308,8 +308,12 @@ function ZoomList({ status, onAction }) {
     }),
     valueContainer: (provided, state) => ({
       ...provided,
-      padding: '0px 2px',
-      justifyContent: 'center'
+      padding: '0px 2px'
+    }),
+    singleValue: (provided, state) => ({
+      ...provided,
+      width: '100%',
+      textAlign: 'center'
     }),
     indicatorSeparator: (provided, state) => ({
       ...provided,
