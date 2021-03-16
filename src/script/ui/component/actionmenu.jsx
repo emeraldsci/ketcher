@@ -88,8 +88,7 @@ function ActionButton({ name, action, status = {}, className, onAction }) {
             onAction(action.action)
             ev.stopPropagation()
           }
-        }}
-        data-title={shortcut ? `${action.title} (${shortcut})` : action.title}>
+        }}>
         <Icon name={name} />
         {action.title &&
           <span className={status.selected ? 'active' : ''}>{action.title}</span>}

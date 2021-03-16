@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>icon / zoom-out</title>
-    <g id="Details" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Exportable-Icon-assets" transform="translate(-43.000000, -482.000000)" fill="#3E454C" fill-rule="nonzero">
-            <g id="Fill-720" transform="translate(43.000000, 482.000000)">
-                <polygon points="5 9.5 13 9.5 13 8 5 8"></polygon>
-            </g>
+    <title>9E2988FC-5C0A-43DE-9203-4DB033BC064C@1x</title>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="zoom-/--" fill="#3E454C" fill-rule="nonzero">
+            <polygon id="Fill-720" points="5 9.5 13 9.5 13 8 5 8"></polygon>
         </g>
     </g>
 </svg>

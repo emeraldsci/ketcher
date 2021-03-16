@@ -123,8 +123,9 @@ function RenderTmpl({ tmpl, ...props }) {
 
 class TemplateLib extends Component {
   select(tmpl) {
-    if (tmpl === this.props.selected) this.props.onOk(this.result())
-    else this.props.onSelect(tmpl)
+    const that = this
+    Promise.resolve(this.props.onSelect(tmpl))
+      .then(() => that.props.onOk(that.result()))
   }
 
   result() {
@@ -220,7 +221,7 @@ export default connect(
   store => ({ ...omit(['attach'], store.templates) }),
   (dispatch, props) => ({
     onFilter: filter => dispatch(changeFilter(filter)),
-    onSelect: tmpl => dispatch(selectTmpl(tmpl)),
+    onSelect: (tmpl) => dispatch(selectTmpl(tmpl)),
     onChangeGroup: group => dispatch(changeGroup(group)),
     onAttach: tmpl => dispatch(editTmpl(tmpl)),
     onOk: res => {

@@ -235,42 +235,42 @@ const sgroup = {
       },
       required: ['mul']
     },
-    {
-      key: 'SRU',
-      title: 'SRU polymer',
-      properties: {
-        type: { enum: ['SRU'] },
-        subscript: {
-          title: 'Polymer label',
-          type: 'string',
-          default: 'n',
-          pattern: /^[a-zA-Z]$/,
-          invalidMessage: 'SRU subscript should consist of a single letter'
-        },
-        connectivity: {
-          title: 'Repeat Pattern',
-          enum: ['ht', 'hh', 'eu'],
-          enumNames: ['Head-to-tail', 'Head-to-head', 'Either unknown'],
-          default: 'ht'
-        }
-      },
-      required: ['subscript', 'connectivity']
-    },
-    {
-      key: 'SUP',
-      title: 'Superatom',
-      properties: {
-        type: { enum: ['SUP'] },
-        name: {
-          title: 'Name',
-          type: 'string',
-          default: '',
-          minLength: 1,
-          invalidMessage: 'Please, provide a name for the superatom'
-        }
-      },
-      required: ['name']
-    }
+    // {
+    //   key: 'SRU',
+    //   title: 'SRU polymer',
+    //   properties: {
+    //     type: { enum: ['SRU'] },
+    //     subscript: {
+    //       title: 'Polymer label',
+    //       type: 'string',
+    //       default: 'n',
+    //       pattern: /^[a-zA-Z]$/,
+    //       invalidMessage: 'SRU subscript should consist of a single letter'
+    //     },
+    //     connectivity: {
+    //       title: 'Repeat Pattern',
+    //       enum: ['ht', 'hh', 'eu'],
+    //       enumNames: ['Head-to-tail', 'Head-to-head', 'Either unknown'],
+    //       default: 'ht'
+    //     }
+    //   },
+    //   required: ['subscript', 'connectivity']
+    // },
+    // {
+    //   key: 'SUP',
+    //   title: 'Superatom',
+    //   properties: {
+    //     type: { enum: ['SUP'] },
+    //     name: {
+    //       title: 'Name',
+    //       type: 'string',
+    //       default: '',
+    //       minLength: 1,
+    //       invalidMessage: 'Please, provide a name for the superatom'
+    //     }
+    //   },
+    //   required: ['name']
+    // }
   ]
 }
 export const sgroupMap = mapOf(sgroup, 'type')

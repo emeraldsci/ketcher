@@ -192,14 +192,13 @@ class PeriodTable extends Component {
       : value.includes(label)
   }
   onSelect(label) {
+    const that = this
     const { type, value } = this.state
-    if (this.selected(label)) {
-      this.props.onOk(this.result())
-    } else {
-      this.setState({
-        value: type === 'atom' || type === 'gen' ? label : xor([label], value)
-      })
-    }
+    this.setState({
+      value: type === 'atom' || type === 'gen' ? label : xor([label], value)
+    }, () => {
+      that.props.onOk(that.result())
+    })
   }
   result() {
     const { type, value } = this.state

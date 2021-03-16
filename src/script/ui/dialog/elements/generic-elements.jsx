@@ -116,22 +116,22 @@ function GenGroup({ gen, name, path, selected, onSelect }) {
   )
 }
 
-const atomicGenerics = [
-  { pseudo: 'A', label: 'any atom' },
-  { pseudo: 'M', label: 'any metal' },
-  { pseudo: 'AH', label: 'any atom with H' },
-  { pseudo: 'MH', label: 'any metal with H' },
-  { pseudo: 'Q', label: 'any atom except C or H' },
-  { pseudo: 'X', label: 'any halogen' },
-  { pseudo: 'QH', label: 'any atom except C or H with H' },
-  { pseudo: 'XH', label: 'any halogen with H' }
-];
+// const atomicGenerics = [
+//   { pseudo: 'A', label: 'any atom' },
+//   { pseudo: 'M', label: 'any metal' },
+//   { pseudo: 'AH', label: 'any atom with H' },
+//   { pseudo: 'MH', label: 'any metal with H' },
+//   { pseudo: 'Q', label: 'any atom except C or H' },
+//   { pseudo: 'X', label: 'any halogen' },
+//   { pseudo: 'QH', label: 'any atom except C or H with H' },
+//   { pseudo: 'XH', label: 'any halogen with H' }
+// ];
 
 const specialNodes = [
   { pseudo: 'H+', label: 'Hydrogen ion' },
-  { pseudo: 'R', label: 'any functional group' },
+  // { pseudo: 'R', label: 'any functional group' },
   { pseudo: 'D', label: 'Deuterium' },
-  { pseudo: 'Pol', label: 'polymer' },
+  // { pseudo: 'Pol', label: 'polymer' },
   { pseudo: 'T', label: 'Tritium' }
 ];
 
@@ -140,7 +140,9 @@ function GenericElements(props) {
   const [selectedElement, setSelectedElement] = useState(null);
   const selected = (l) => l === selectedElement;
   const onSelect = (l) => {
-    setSelectedElement(l);
+    debugger;
+    Promise.resolve(setSelectedElement(l))
+      .then(() => props.onOk(result()));
   };
   const result = () => {
     return selectedElement ? { type: 'gen', label: selectedElement, pseudo: selectedElement } : null;
@@ -151,10 +153,10 @@ function GenericElements(props) {
       title="Generic"
       className="generic-elements"
       params={props}
-      buttons={['Confirm']}
+      buttons={[]}
       result={result}>
       <div summary="Generic Groups" {...props}>
-        <div className="title">Atomic Generics</div>
+        {/* <div className="title">Atomic Generics</div>
         <menu className="col atomic">
           {atomicGenerics.map((el, index) =>
             <li key={index}>
@@ -166,7 +168,7 @@ function GenericElements(props) {
               </div>
             </li>
           )}
-        </menu>
+        </menu> */}
         <div className="title">Special Nodes</div>
         <menu className="col">
         {specialNodes.map((el, index) =>

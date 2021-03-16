@@ -92,10 +92,10 @@ const mainmenu = [
     id: 'charge',
     menu: ['charge-plus', 'charge-minus']
   },
-  {
-    id: 'rgroup',
-    menu: ['rgroup-label', 'rgroup-fragment']
-  },
+  // {
+  //   id: 'rgroup',
+  //   menu: ['rgroup-label', 'rgroup-fragment']
+  // },
   'sgroup',
   {
     id: 'zoom',
@@ -161,16 +161,16 @@ const secondmenu = [
         id: 'bond-stereo',
         menu: ['bond-up', 'bond-down', 'bond-updown', 'bond-crossed']
       },
-      {
-        id: 'bond-query',
-        menu: [
-          'bond-any',
-          'bond-aromatic',
-          'bond-singledouble',
-          'bond-singlearomatic',
-          'bond-doublearomatic'
-        ]
-      }
+      // {
+      //   id: 'bond-query',
+      //   menu: [
+      //     'bond-any',
+      //     'bond-singledouble',
+      //     'bond-singlearomatic',
+      //     'bond-doublearomatic'
+      //   ]
+      // }
+      'bond-aromatic',
     ]
   },
   'chain',
@@ -183,87 +183,87 @@ const secondmenu = [
   'template-lib'
 ]
 
-const toolbox = [
-  {
-    id: 'select',
-    menu: ['select-lasso', 'select-rectangle', 'select-fragment']
-  },
-  'erase',
-  {
-    id: 'bond',
-    menu: [
-      {
-        id: 'bond-common',
-        menu: ['bond-single', 'bond-double', 'bond-triple']
-      },
-      {
-        id: 'bond-stereo',
-        menu: ['bond-up', 'bond-down', 'bond-updown', 'bond-crossed']
-      },
-      {
-        id: 'bond-query',
-        menu: [
-          'bond-any',
-          'bond-aromatic',
-          'bond-singledouble',
-          'bond-singlearomatic',
-          'bond-doublearomatic'
-        ]
-      }
-    ]
-  },
-  'chain',
-  {
-    id: 'charge',
-    menu: ['charge-plus', 'charge-minus']
-  },
-  {
-    id: 'transform',
-    menu: ['transform-rotate', 'transform-flip-h', 'transform-flip-v']
-  },
-  'sgroup',
-  'sgroup-data',
-  {
-    id: 'reaction',
-    menu: [
-      'reaction-arrow',
-      'reaction-plus',
-      'reaction-automap',
-      'reaction-map',
-      'reaction-unmap'
-    ]
-  },
-  {
-    id: 'rgroup',
-    menu: ['rgroup-label', 'rgroup-fragment', 'rgroup-attpoints']
-  },
-  {
-    id: 'shape',
-    menu: ['shape-circle', 'shape-rectangle', 'shape-line']
-  }
-]
+// const toolbox = [
+//   {
+//     id: 'select',
+//     menu: ['select-lasso', 'select-rectangle', 'select-fragment']
+//   },
+//   'erase',
+//   {
+//     id: 'bond',
+//     menu: [
+//       {
+//         id: 'bond-common',
+//         menu: ['bond-single', 'bond-double', 'bond-triple']
+//       },
+//       {
+//         id: 'bond-stereo',
+//         menu: ['bond-up', 'bond-down', 'bond-updown', 'bond-crossed']
+//       },
+//       {
+//         id: 'bond-query',
+//         menu: [
+//           'bond-any',
+//           'bond-aromatic',
+//           'bond-singledouble',
+//           'bond-singlearomatic',
+//           'bond-doublearomatic'
+//         ]
+//       }
+//     ]
+//   },
+//   'chain',
+//   {
+//     id: 'charge',
+//     menu: ['charge-plus', 'charge-minus']
+//   },
+//   {
+//     id: 'transform',
+//     menu: ['transform-rotate', 'transform-flip-h', 'transform-flip-v']
+//   },
+//   'sgroup',
+//   'sgroup-data',
+//   {
+//     id: 'reaction',
+//     menu: [
+//       'reaction-arrow',
+//       'reaction-plus',
+//       'reaction-automap',
+//       'reaction-map',
+//       'reaction-unmap'
+//     ]
+//   },
+//   {
+//     id: 'rgroup',
+//     menu: ['rgroup-label', 'rgroup-fragment', 'rgroup-attpoints']
+//   },
+//   {
+//     id: 'shape',
+//     menu: ['shape-circle', 'shape-rectangle', 'shape-line']
+//   }
+// ]
 
-const template = [
-  {
-    id: 'template-common',
-    component: TemplatesList
-  },
-  'template-lib'
-  //TODO: it should be enabled after starting work on enhanced stereo
-  //'enhanced-stereo'
-]
+// const template = [
+//   {
+//     id: 'template-common',
+//     component: TemplatesList
+//   },
+//   'template-lib'
+//   //TODO: it should be enabled after starting work on enhanced stereo
+//   //'enhanced-stereo'
+// ]
 
-const elements = [
-  {
-    id: 'atom',
-    component: props => AtomsList(basicAtoms, props)
-  },
-  {
-    id: 'freq-atoms',
-    component: props => AtomsList(props['freqAtoms'], props)
-  },
-  'period-table'
-]
+// const elements = [
+//   {
+//     id: 'atom',
+//     component: props => AtomsList(basicAtoms, props)
+//   },
+//   {
+//     id: 'freq-atoms',
+//     component: props => AtomsList(props['freqAtoms'], props)
+//   },
+//   'period-table'
+// ]
 
 const toolbar = [
   { id: 'mainmenu', menu: mainmenu },
@@ -346,7 +346,9 @@ function ZoomList({ status, onAction }) {
   return (
     <div id="zoom-select">
       <div>
-        <button id="zoom-down" onClick={ev => upDown(-1)}>-</button>
+        <button id="zoom-down" onClick={ev => upDown(-1)}>
+          <Icon name="zoom-out" />
+        </button>
         <div className="dd-wrapper">
           <ReactSelect
             options={options}
@@ -356,7 +358,9 @@ function ZoomList({ status, onAction }) {
             isSearchable={false}
           />
         </div>
-        <button id="zoom-up" onClick={ev => upDown(1)}>+</button>
+        <button id="zoom-up" onClick={ev => upDown(1)}>
+        <Icon name="zoom-in" />
+        </button>
       </div>
     </div>
   )
@@ -377,7 +381,7 @@ function AtomsList(atoms, { active, onAction }) {
               selected: isAtom && active.opts.label === label
             })}>
             <Tooltip
-              title={shortcut ? `${label} (${shortcut})` : label}
+              title={shortcut ? `${element[index].title} (${shortcut})` : element[index].title}
               delay={500}
               theme="transparent"
               position="bottom"
@@ -403,27 +407,27 @@ function AtomsList(atoms, { active, onAction }) {
   )
 }
 
-function TemplatesList({ active, onAction }) {
-  const shortcut = shortcutStr(action['template-0'].shortcut)
-  const isTmpl = active && active.tool === 'template'
-  return (
-    <menu>
-      {templates.map((struct, i) => (
-        <li
-          id={`template-${i}`}
-          className={classNames({
-            selected: isTmpl && active.opts.struct === struct
-          })}>
-          <button
-            title={`${struct.name} (${shortcut})`}
-            onClick={() => onAction({ tool: 'template', opts: { struct } })}>
-            <Icon name={`template-${i}`} />
-          </button>
-        </li>
-      ))}
-    </menu>
-  )
-}
+// function TemplatesList({ active, onAction }) {
+//   const shortcut = shortcutStr(action['template-0'].shortcut)
+//   const isTmpl = active && active.tool === 'template'
+//   return (
+//     <menu>
+//       {templates.map((struct, i) => (
+//         <li
+//           id={`template-${i}`}
+//           className={classNames({
+//             selected: isTmpl && active.opts.struct === struct
+//           })}>
+//           <button
+//             title={`${struct.name} (${shortcut})`}
+//             onClick={() => onAction({ tool: 'template', opts: { struct } })}>
+//             <Icon name={`template-${i}`} />
+//           </button>
+//         </li>
+//       ))}
+//     </menu>
+//   )
+// }
 
 export default connect(
   state => ({
