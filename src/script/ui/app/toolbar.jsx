@@ -84,7 +84,7 @@ const mainmenu = [
     menu: ['select-lasso', 'select-rectangle']
   },
   'erase',
-  'clean',
+  // 'clean',
   'transform-rotate',
   'transform-flip-h',
   'transform-flip-v',

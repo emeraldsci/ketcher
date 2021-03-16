@@ -68,7 +68,7 @@ class Open extends Component {
           'Submit'
         ]}>
         <label>
-          Accepts MOL, SMILES
+          Accepts MOL
         </label>
         <textarea
           value={structStr} //TODO: fix React warning
