@@ -150,7 +150,7 @@ function GenericElements(props) {
 
   return (
     <Dialog
-      title="Generic"
+      title="Other"
       className="generic-elements"
       params={props}
       buttons={[]}

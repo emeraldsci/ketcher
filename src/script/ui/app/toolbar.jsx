@@ -126,7 +126,7 @@ const secondmenu = [
               selected: props.active?.opts?.label === 'X'
             })}>
               <Tooltip
-                title="Generic elements"
+                title="Other elements"
                 delay={500}
                 theme="transparent"
                 position="bottom"
@@ -140,7 +140,7 @@ const secondmenu = [
                 }}
               >
                 <Atom
-                  el={{ title: 'Generic elements', label: 'X' }}
+                  el={{ title: 'Other elements', label: 'X' }}
                   onClick={() => props.onAction({ dialog: 'generic-elements', opts: { label: 'X' }})}
                 />
               </Tooltip>
@@ -159,7 +159,7 @@ const secondmenu = [
       },
       {
         id: 'bond-stereo',
-        menu: ['bond-up', 'bond-down', 'bond-updown', 'bond-crossed']
+        menu: ['bond-up', 'bond-down', 'bond-updown']
       },
       // {
       //   id: 'bond-query',
