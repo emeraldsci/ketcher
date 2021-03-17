@@ -113,7 +113,7 @@ export default {
     action: { dialog: 'period-table' }
   },
   'generic-elements': {
-    title: 'Generic Elements',
+    title: 'Other Elements',
     action: { dialog: 'generic-elements' }
   },
   'select-all': {
