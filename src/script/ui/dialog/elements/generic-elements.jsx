@@ -72,6 +72,7 @@ function GenSet({ labels, caption = '', selected, onSelect, ...props }) {
     <fieldset {...props}>
       {labels.map(label => (
         <button
+          type="button"
           onClick={() => onSelect(label)}
           className={selected(label) ? 'selected' : ''}>
           {label}
@@ -140,7 +141,6 @@ function GenericElements(props) {
   const [selectedElement, setSelectedElement] = useState(null);
   const selected = (l) => l === selectedElement;
   const onSelect = (l) => {
-    debugger;
     Promise.resolve(setSelectedElement(l))
       .then(() => props.onOk(result()));
   };
@@ -175,6 +175,7 @@ function GenericElements(props) {
             <li key={index}>
               <div>
                 <button
+                  type="button"
                   className={classNames({ selected: selected(el.pseudo) })}
                   onClick={() => onSelect(el.pseudo)}>{el.pseudo}
                 </button> {el.label}
@@ -211,8 +212,10 @@ export default connect(
   },
   (dispatch, props) => ({
     onOk: res => {
-      dispatch(onAction({ tool: 'atom', opts: toElement(res) }))
-      props.onOk(res)
+      if (res) {
+        dispatch(onAction({ tool: 'atom', opts: toElement(res) }))
+        props.onOk(res)
+      }
     }
   })
 )(GenericElements)

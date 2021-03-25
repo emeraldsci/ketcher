@@ -67,6 +67,7 @@ function GenSet({ labels, caption = '', selected, onSelect, ...props }) {
     <fieldset {...props}>
       {labels.map(label => (
         <button
+          type="button"
           onClick={() => onSelect(label)}
           className={selected(label) ? 'selected' : ''}>
           {label}
